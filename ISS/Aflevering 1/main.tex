@@ -1,0 +1,182 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+\newcommand{\p}{\partial}
+\newenvironment{rowequmat}[1]{\left(\array{@{}#1@{}}}{\endarray\right)}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	
+	{\huge\bfseries Handin 1 }\\[0.4cm] % Title of your document
+	
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\section*{Problem 14}
+Let A and B be two events such that
+\[
+P(A) = 0.4 \;\;\; P(B) = 0.7 \;\;\; P(A \cup B) = 0.9 
+\]
+
+\subsection*{Question (a) find $P(A \cap B)$}
+We use the 'inclusion-exclusion-principle' 
+\[
+P(A\cap B) = P(A) + P(B) - P(A \cup B)
+\]
+\[
+0.2 = 0.4 + 0.7 - 0.9
+\]
+
+\subsection*{Question (b) find $P(A^c \cap B)$}
+$P(A^c \cap B)$ can be rewritten as $P(B) - P(A \cap B)$, this can be found from the equation in figure 1.16, which is values we know
+\[
+P(A^c \cap B) = P(B) - P(A \cap B)
+ \]
+ \[
+ 0.5 = 0.7 - 0.2
+ \]
+
+
+\subsection*{Question (c) find $P(A -B)$}
+$P(A - B)$ is just another way to write $P(A \cap B^c)$, which is noted in figure 1.8 from the book, 
+hence we get
+\[
+P(A-B) = P(A) - P(A\cap B)
+\]
+\[
+0.2 = 0.4 - 0.2
+\]
+
+\subsection*{Question (d) find $P(A^c - B)$}
+Again another way to write $P(A^c \cap B^c)$.\\
+We can use De-morgans law
+\[
+P(A^c \cap B^c) = P((A\cup B)^c) 
+\]
+We can remove the 'complement' by subtracting 1
+\[
+P((A\cup B)^c) = 1- P(A \cup B)
+\]
+Now we can derive the probability since we already know the probability of $P(A \cup B)$
+\[
+0.1 = 1- 0.9
+\]
+
+\subsection*{Question (e) find $P(A^c \cup B)$}
+We use the 'inclusion-exclusion-principle' again
+\[
+P(A^c \cup B) = P(A^c) + P(B) - P(A^c \cap B)
+\]
+\[
+0.8 = 0.6 + 0.7 - 0.5
+\]
+
+
+
+
+
+\subsection*{Question (f) find $P(A \cap(B\cup A^c))$}
+We use the distributive law
+\[
+P(A \cap(B\cup A^c)) = P((A\cap B) \cup (A\cap A^c))
+\]
+The set $(A\cap A^c)$ is the empty set $\phi$ so we are left with the set $(A \cap B)$, and we know the probability of this set from (a)
+\[
+P(A \cap(B\cup A^c)) = P(A \cap B) = 0.2
+\]
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography % This prints the bibliography
+
+\end{document}
