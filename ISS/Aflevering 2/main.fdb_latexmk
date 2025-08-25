@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1756119701.19341 "main.bcf" "main.bbl" "main" 1756119711.60954 0
-  "main.bcf" 1756119711 108610 85d08b6b54b83dc79f2ec08a455ce583 "pdflatex"
+["biber main"] 1756123715.12134 "main.bcf" "main.bbl" "main" 1756125473.60775 0
+  "main.bcf" 1756125472 108669 f6e59f7e27db14b94c96be156384846c "pdflatex"
   "references.bib" 1756119585 346 e1c7300001ac259bb3e68441dd36b5c9 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1756119708.78739 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 2/main.tex" "main.pdf" "main" 1756119711.61137 0
+["pdflatex"] 1756125468.04396 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 2/main.tex" "main.pdf" "main" 1756125473.61066 0
   "Aarhus_University_seal.png" 1756119290 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1756118937 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1756118801 13259231 1eb485ca69902bedad3cfafda64fdfc0 ""
@@ -37,6 +37,7 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1247596667 36741 0ee9e374ec3e30da87cdfb0ea3575226 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1247596667 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/generic/catchfile/catchfile.sty" 1575960450 8622 63834878edeb14dd71d58d8f22bc3e06 ""
@@ -242,11 +243,11 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/was/upgreek.sty" 1665850770 5794 9054e31be15d93f1e6bd28cca2b6643f ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 2/main.tex" 1756119700 3117 e2f3d1d14657c861bfe8c6db6459b231 ""
-  "main.aux" 1756119711 422 02cf2aff4e8c081b5c8c7bfa27248048 "pdflatex"
-  "main.bbl" 1756119703 1730 bc8def7c0afbd6261074068333806688 "biber main"
-  "main.run.xml" 1756119711 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1756119700 3117 e2f3d1d14657c861bfe8c6db6459b231 ""
+  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 2/main.tex" 1756125466 4429 ee9ae41ccc77edeb82fea38126077c84 ""
+  "main.aux" 1756125472 471 388ad781ba3f040e530f4d860077e7af "pdflatex"
+  "main.bbl" 1756123735 1730 bc8def7c0afbd6261074068333806688 "biber main"
+  "main.run.xml" 1756125472 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1756125466 4429 ee9ae41ccc77edeb82fea38126077c84 ""
   (generated)
   "main.aux"
   "main.bcf"

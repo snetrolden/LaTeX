@@ -97,7 +97,7 @@
 \section*{Problem 28: In a factory there are 100 units of a certain product, 5 of which are defective. We pick
 three units from the 100 units at random. What is the probability that exactly one of
 them is defective?}
-Let's look at the numbers we have.\\
+Let's look at the numbers we have.
 \begin{align*}
 & \text{Let our total number of units be } N = 100 \\
 & \text{Let our defects be } b = 5 \\
@@ -105,17 +105,45 @@ Let's look at the numbers we have.\\
 & \text{Let the number of defects we want be } x = 1 \\
 & \text{Let our functional units be } r = 95
 \end{align*}
-Since we have a finite sample, without replacements, we will use the formula for hypergeometric distribution given in definition [3.8]\cite{STAT}.
-
-
-
-
-
+This looks like a problem that can be solved with hypergeometric 
+distribution, so
+we will use the formula for hypergeometric distribution
+given in definition [3.8]\cite{STAT}.\\
+\[
+\frac{\begin{pmatrix} b\\x\end{pmatrix}\begin{pmatrix} r\\k-x\end{pmatrix}
+}{\begin{pmatrix} b+r\\k\end{pmatrix}}
+\]
+Filling in our numbers we get
 \[
 \frac{\begin{pmatrix} 5\\1\end{pmatrix}\begin{pmatrix} 95\\2\end{pmatrix}
 }{\begin{pmatrix} 100\\3\end{pmatrix}}
 \]
-Check with an instructor?
+This problem can be seen as 'Unordered sampling without replacement' as
+we are not putting the units back after picking them.\\
+This means we use the binomial coefficient formula for unordered sampling without replacement
+given in chapter [2.1.3]\cite{STAT}.\\
+Please note that $n$ and $k$ are just variables and have no relation to the $n$ and $k$ we used earlier.
+\[
+\begin{pmatrix} n\\k\end{pmatrix} = \frac{n!}{k!(n-k)!}
+\]
+We have 3 binomial coefficients we have to calculate,  let's get to it!.
+\[
+\binom{5}{1} = \frac{5!}{1!4!} = \frac{120}{24} = 5
+\]
+For the next two we will let some of the factorials cancel out to make it easier.
+\[
+\binom{95}{2} = \frac{95!}{2!93!} = \frac{95 \cdot 94}{2} = 4465
+\]
+\[
+\binom{100}{3} = \frac{100!}{3!97!} = \frac{100 \cdot 99 \cdot 98}{6} = 161700
+\]
+Putting it all together we get
+\[
+\frac{\begin{pmatrix} 5\\1\end{pmatrix}\begin{pmatrix} 95\\2\end{pmatrix}
+}{\begin{pmatrix} 100\\3\end{pmatrix}} = \frac{5 \cdot 4465}{161700} = \frac{22325}{161700} \approx 0.138
+\]
+The probability of getting exactly one defective unit when picking 3 units is somethign along the lines of 13.8\%.\\
+Obligatory victory cry! HUZZAR!
 
 
 
