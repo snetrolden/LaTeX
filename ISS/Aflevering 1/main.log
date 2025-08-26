@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  25 AUG 2025 12:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  26 AUG 2025 10:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Afleveringer/main.tex
-(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Afleveringer/main.tex
+**"c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 1/main.tex"
+(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/ISS/Aflevering 1/main.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
 (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -1131,12 +1131,8 @@ Package pdftex.def Info: Aarhus_University_seal.png  used on input line 89.
 
 [1]
 
-LaTeX Warning: Empty bibliography on input line 180.
-
-
-
 [2]
-runsystem(latexminted cleantemp  --timestamp 20250825125622 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+runsystem(latexminted cleantemp  --timestamp 20250826103535 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1150,15 +1146,15 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 44871 strings out of 468134
- 1129168 string characters out of 5428804
- 2091570 words of memory out of 5000000
- 72867 multiletter control sequences out of 15000+600000
- 638837 words of font info for 85 fonts, out of 8000000 for 9000
+ 45089 strings out of 468134
+ 1133665 string characters out of 5428804
+ 2091618 words of memory out of 5000000
+ 73085 multiletter control sequences out of 15000+600000
+ 639184 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,6n,101p,780b,852s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,6n,101p,782b,1313s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (3 pages, 221263 bytes).
+Output written on main.pdf (3 pages, 225453 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
