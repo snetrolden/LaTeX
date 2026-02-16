@@ -1,0 +1,172 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	\center	
+	{\huge\bfseries Handin 9 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+\begin{bluebox}
+Let $X_1$ and $X_2$ denote two independent random variables such that 
+$X_1 \sim \mathrm{Exponential}(\lambda_1)$ and 
+$X_2 \sim \mathrm{Exponential}(\lambda_2)$, 
+where $\lambda_1, \lambda_2 > 0$. 
+Find the distribution of $Y := \min\{X_1, X_2\}$.
+\end{bluebox}
+We start by understanding the meaning of life...42.\\
+And then we look at the CDF of $Y$, which by the definition of CDF is given by:
+\[
+F_Y(y) = P(Y \leq y) = P(\min\{X_1, X_2\} \leq y).
+\]
+this can also be written as:
+\begin{equation}\label{start def of CDF Y}
+P(\min\{X_1, X_2\} \leq y) = P(X_1 \leq y \cup X_2 \leq y).
+\end{equation}
+Which gives us the opportunity to use the inclusion-exclusion principle to calculate the CDF of $Y$ tha way:
+\[
+F_Y(y) = P(X_1 \leq y) + P(X_2 \leq y) - P(X_1 \leq y \cap X_2 \leq y).
+\]
+Since $X_1$ and $X_2$ are independent we can write:
+\[
+P(X_1 \leq y \cap X_2 \leq y) = P(X_1 \leq y)P( X_2 \leq y).
+\]
+which gives us:
+\[
+F_Y(y) = P(X_1 \leq y) + P(X_2 \leq y) - P(X_1 \leq y)P( X_2 \leq y).
+\]
+But that's a lot of work that i don't wanna do...
+\texttt{Insert tired spongebob meme here}\\
+Instead, we will do it the lazt way!\\\\	
+Let's do some math magic on Equation \ref{start def of CDF Y} also know as taking the complement.
+\[
+ P(X_1 \leq y \cup X_2 \leq y) = 1 - P(X_1 > y \cap X_2 > y).
+\]
+Again, since $X_1$ and $X_2$ are independent we can write:
+\[
+ P(X_1 > y \cap X_2 > y) = P(X_1 > y)P(X_2 > y).
+\]
+Thus we have:
+\begin{equation}\label{CDF Y complement}
+F_Y(y) = 1 - P(X_1 > y)P(X_2 > y).
+\end{equation}
+We are smart and see that it looks like the memoryless property of the exponential distribution from chapter 4.2.2, which means we can use the expression:
+\[
+P(X > x) = e^{-\lambda x}
+\]
+We can then insert that into Equation \ref{CDF Y complement}:
+\[
+F_Y(y) = 1 - (e^{-\lambda y})(e^{-\lambda y}) = 1 - e^{-(\lambda_1 + \lambda_2)y}.
+\]
+Then to finish, we let $\lambda = \lambda_1 + \lambda_2$ and differentiate the CDF to get the PDF:
+\begin{figbox}
+\begin{figure}[H]
+	\centering
+	\includegraphics{image.png}
+\end{figure}
+\end{figbox}
+Thus we see that $Y \sim \mathrm{Exponential}(\lambda_1 + \lambda_2)$.
+
+
+\printbibliography% This prints the bibliography
+
+\end{document}

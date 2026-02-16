@@ -1,0 +1,191 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	\center	
+	{\huge\bfseries Handin 7 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+\begin{bluebox}
+\subsection*{Let $X$ be a continuous random variable with the probability density functuion (PDF) $f_X$}
+$f_X$ is given by:
+\[
+    f_X(x) =
+    \begin{cases}
+        3x^2 & \text{for } 0<x<1,\\
+        0 & \text{otherwise}.
+    \end{cases}
+\]
+The set $Y = -\frac{1}{2}\log(X)$. Find the PDF $f_Y$ for $Y$. As always, indicate the distribution of $Y$ if it is a known distribution.
+\end{bluebox}
+For this we shal utilize Theorem 4.1' from 'Uge Seddel 6'
+\begin{figbox}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Theorem41.png}
+	\label{fig:Theorem 4.1}
+\end{figure}
+\end{figbox}
+We start by defining a function $g(x) = -\frac{1}{2}\log(x)$, then let $Y = g(X)$.\\
+Now we show its monotonic and differentiable by taking the derivative of $g$:
+\[
+	g'(x) = -\frac{1}{2} \cdot \frac{1}{x} = -\frac{1}{2x}		
+\]
+We can see that $g$ is monotonic (strongly decreasing) and differentiable on the interval $(0,1)$, our range $R_X$, so we can use Theorem 4.1'.
+\subsubsection*{The Inverse}
+We define the inverse function $g^{-1}(y) = h(y)$: 
+\[
+	h(y) = e^{-2y}
+\] 
+we can check this by plugging $h$ into $g$, it's important to note the fact that $\log(e) = 1$ and $e^{\log(y)} = y$:
+\[
+	g(h(y)) = -\frac{1}{2}\log(e^{-2y}) = -\frac{1}{2} \cdot -2y \cdot \log(e) = -\frac{1}{2} \cdot -2y = y
+\]
+And then plugging $g$ into $h$:
+\[
+	h(g(y)) = e^{-2 \cdot (-\frac{1}{2})\log(y)} = e^{\log(y)} = y
+\]
+Since they both equal $y$, we can say that they are inverses (Source? WebMatematik).
+\subsubsection*{The derivative of the Inverse}
+Let's plug it in:
+\[
+h'(y) = \frac{d}{dy}e^{-2y} = -2e^{-2y}
+\]
+
+\subsubsection*{The PDF of $X$ at $h(y)$?}
+That is just $f_X(h(y))$ where we have the PDF of $f_X(x) = 3x^2$:
+\[
+	f_X(h(y)) = f_X(e^{-2y}) = 3(e^{-2y})^2 = 3e^{-4y}
+\]
+For this we used a small trick of $(a^b)^c = a^b \cdot a^b \cdot a^b \ldots = a^{b+b+\cdots+b} = a^{b \cdot c}$ where $c$ is the number of times we multiply $a^b$ with itself (more of a note to myself OwO).
+\subsubsection*{PDF of $Y$ + Conclusion}
+Now we have all the parts we need to find $f_Y(y)$:
+\[
+	f_Y(y) = |h'(y)| \cdot f_X(h(y)) = |-2e^{-2y}| \cdot 3e^{-4y} = 6e^{-6y}
+\]
+Now we need to find the range $R_Y$ of $Y$. We can do this by finding the minimum and maximum of $Y$:
+\[	
+	\min(Y) = g(1) = -\frac{1}{2}\log(1) = 0
+\]
+\[
+	\max(Y) = g(0) = -\frac{1}{2}\log(0) = \infty
+\]
+So we have $R_Y = (0, \infty)$.\\
+So now we have the final PDF of $Y$:
+\[
+	f_Y(y) =
+	\begin{cases}
+		6e^{-6y} & \text{for } 0<y<\infty,\\
+		0 & \text{otherwise}.
+	\end{cases}	
+\]
+This PDF has the form of an exponential distribution with parameter $\lambda = 6$\\
+ or $Y \sim \text{Exponential}(6)$
+\[
+ f_X(x) = \lambda e^{-\lambda x} \text{ for } x > 0 \; \;  \leftarrow \textit{ PDF for an exponential distribution}
+\]
+Thanks for reading my TED-talk on \textbf{Math fueled by coffee and need for money!}\\
+
+\printbibliography% This prints the bibliography
+
+\end{document}

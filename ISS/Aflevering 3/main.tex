@@ -1,0 +1,162 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+\newcommand{\p}{\partial}
+\newenvironment{rowequmat}[1]{\left(\array{@{}#1@{}}}{\endarray\right)}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	
+	{\huge\bfseries Handin 3 }\\[0.4cm] % Title of your document
+	
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\section*{Problem 7 (Exam Winter 2017/2018)}
+
+It is given that $10\%$ of the population has influenza in a given period.  
+
+\begin{enumerate}
+    \item Suppose that $20$ people are chosen randomly and independently of each other. Find the probability that at least one of the $20$ selected people has influenza.\\\\
+        When handling cases with 'Atleast one' it can be an advantage to look at the opposite:
+		\[
+		P(\text{Atleast one infected}) = 1 - P(\text{No infected})
+		\]
+		Since we are looking at independant trials when picking from the population, we can multiply the propability of each trials to get their intersected probability [1.4.1]\cite{STAT}.\\
+		Let:
+		\[
+		P(\text{Is infected}) = P(B) = 0.1 \;\;\;\;\;\;\;\;\; P(\text{Not infected}) = P(B^c) = 0.9
+		\]
+		We are picking 20 people which is 20 independant trials hence our probability is:
+		\[
+		P(\text{No infected}) = 0.9^{20} = 0.121  
+		\]
+		Now we can look back at the initial proposition
+		\[
+		P(\text{Atleast one infected}) = 1-0.121 = \underbar{0.879} 
+		\]
+		We Did it!\\\\\\
+
+
+
+     
+	
+    A person can be tested for influenza using a test, which does not always provide the correct answer.\\
+	The test gives a positive result for influenza $85\%$ of the time for people who have influenza, and a negative result for influenza $95\%$ of the time for people who do not have influenza.  
+    
+    \item Find the probability of having influenza given that a person has tested positive for influenza.\\\\
+	  We are looking for $P(B|A)$ where $B$ is the event that a person has influenza(Is infected) and $A$ is the event that a person tests positive.\\
+	  For this we can use Bayes' Theorem [1.4.3]\cite{STAT}, that is used to invert conditional probabilities:
+	  \[
+	  P(B|A) = \frac{P(A|B)P(B)}{P(A)}
+	  \]
+	  But we don't know $P(A)$, but Bayes' Theorem can be manipulated to rewrite $P(A)$ [1.4.3]\cite{STAT}:
+	  \[
+	 P(B|A) = \frac{P(A|B)P(B)}{P(A|B)P(B) + P(A|B^c)P(B^c)}		 
+	  \]
+	  Now we can insert our known values:
+	  \[
+	  P(A|B) = 0.85 \;\;\;\;\;\; P(B) = 0.1 \;\;\;\;\;\; P(A|B^c) = 0.05 \;\;\;\;\;\; P(B^c) = 0.9
+	  \]
+	  And we get:
+	  \[
+	  	 P(B|A) = \frac{0.85 \cdot 0.1}{0.85 \cdot 0.1 + 0.05 \cdot 0.9} = \underbar{0.654}
+	  \]
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\printbibliography % This prints the bibliography
+
+\end{document}

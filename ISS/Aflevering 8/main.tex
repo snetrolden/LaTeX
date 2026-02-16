@@ -1,0 +1,236 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	\center	
+	{\huge\bfseries Handin 8 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+\begin{bluebox}
+Consider the set of points in the set C:
+\[
+C = \{ (x,y)|x,y \in \mathbb{Z},x^2 + |y| \leq 2 \}
+\]
+Suppose that we pick a point $(X,Y)$ from this set completely at random. Thus, each
+point has a probability $\frac{1}{11}$ of being chosen.
+\end{bluebox}
+
+\subsection*{Find the joint and marginal PMFs of $X$ and $Y$}
+from the set C we can see that there are 11 points that satisfy the condition $x^2 + |y| \leq 2$:
+\[
+(0,0),(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1),(0,2),(0,-2)
+\]
+So the joint PMF is given by:
+\[
+P_{X,Y}(x,y) = \begin{cases}
+\frac{1}{11} & (x,y) \in C\\
+0 & \text{otherwise}
+\end{cases}
+\]
+or it can also be written as a table like example 5.1~\cite{STAT}:
+\[
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+P_{X,Y}(x,y) & y = -2 & y = -1 & y = 0 & y = 1 & y = 2 \\
+\hline
+x = -1 & 0 & \frac{1}{11} & \frac{1}{11} & \frac{1}{11} & 0 \\
+\hline
+x = 0 & \frac{1}{11} & \frac{1}{11} & \frac{1}{11} & \frac{1}{11} & \frac{1}{11} \\
+\hline
+x = 1 & 0 & \frac{1}{11} & \frac{1}{11} & \frac{1}{11} & 0 \\
+\hline
+\end{array}
+\]
+\noindent To find the marginal PMF of X we sum over all possible values of Y like in chapter 5 \textit{marginal PMFs}~\cite{STAT}:
+\[
+P_X(x) = \sum_{y_j \in \mathbb{R}_Y} P_{X,Y}(x,y_j)
+\]
+This gives us:
+\[
+P_X(x) = \begin{cases}
+\frac{5}{11} & x = 0\\
+\frac{3}{11} & x = 1\\
+\frac{3}{11} & x = -1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+Similarly, for the marginal PMF of Y we sum over all possible values of X:
+\[
+P_Y(y) = \sum_{x_i \in \mathbb{R}_X} P_{X,Y}(x_i,y)
+\]	
+This gives us:
+\[
+P_Y(y) = \begin{cases}
+\frac{1}{11} & y = -2\\
+\frac{3}{11} & y = -1\\
+\frac{3}{11} & y = 0\\
+\frac{3}{11} & y = 1\\	
+\frac{1}{11} & y = 2\\
+0 & \text{otherwise}
+\end{cases}
+\]
+Note: Since we are in $\mathbb{Z}$ we can't include decimals when we draw C in a coordinate system, so the correct would only be to plot the points in C.
+\begin{figbox}
+\begin{figure}[H]
+	\centering
+	\includegraphics{image.png}
+	\caption{The set C plotted in a coordinate system.}
+\end{figure}
+\end{figbox}
+
+\subsection*{Find the conditional PMF of $X$ given $Y = 1$.}
+The formula for finding the conditional PMF is given in chapter 5.1.3~\cite{STAT}:
+\[
+P_{X|Y}(x_i|y_i) = \frac{P_{XY}(x_i,y_j)}{P_Y(y_i)} 
+\]
+Then we sum all values of $X$ where $Y = 1$:
+\[
+\sum_{x_i \in R_X}^{} P_{X|Y}(x_i|1)
+\]
+This gets us:
+\[
+P_{X|Y}(-1|1) + P_{X|Y}(0|1) + P_{X|Y}(1,1)
+\]
+And we insert the numbers from the joint PMF:
+\[
+\frac{\frac{1}{11}}{\frac{3}{11}} + \frac{\frac{1}{11}}{\frac{3}{11}} + \frac{\frac{1}{11}}{\frac{3}{11}} = \frac{1}{3} + \frac{1}{3} + \frac{1}{3} = 1
+\]
+Which gives us the conditional PMF:
+\[
+P_{X|Y}(x|1) = \begin{cases}
+\frac{1}{3} & x = -1\\
+\frac{1}{3} & x = 0\\
+\frac{1}{3} & x = 1\\
+0 & \text{otherwise}
+\end{cases}
+\]
+It all sums up to 1 which validates our findings of the conditional PMF according to axiom 2 of probability~\cite{STAT}.\\
+
+\subsection*{Are $X$ and $Y$ independent?}
+Here we take the time machine back to chapter 1.4.1~\cite{STAT} where independence was born. 
+it is said in this chapter that when two variables are independant the following holds true:
+\[P(A|B) = P(A)\]
+This is applicable in our case, sinc we just found the conditional PMF of $X$ given $Y = 1$. So we just need to check if $P_{X|Y}(x|1) = P_X(x)$.\\
+We can see that this is not the case since:
+\[
+P_{X|Y}(0|1) = \frac{1}{3} \neq P_X(0) = \frac{5}{11}
+\]
+hence $X$ and $Y$ are not independent. Womp Womp *Cry Emoji*.\\
+
+\subsection*{Find $E[XY^2]$}
+By the way of LOTUS and a little bit of equation 5.5~\cite{STAT} we can find $E[XY^2]$ like so:
+\[
+E[XY^2] = \sum_{(x_i,y_j) \in R_X} x_i y_j^2 \cdot P_{X,Y}(x_i,y_j)
+\]
+Before we insert the values we note that every point in C where $x = 0$ and $y = 0$ will result in $0$ when calculating $E[XY^2]$, so we exclude those points:
+\[
+E[XY^2] = 1\cdot1^2 \frac{1}{11} + (-1)\cdot1^2 \frac{1}{11} + 1\cdot(-1)^2 \frac{1}{11} + (-1)\cdot(-1)^2 \frac{1}{11}
+\]
+\[
+E[XY^2] = \frac{1}{11} + \frac{1}{11} - \frac{1}{11} - \frac{1}{11} = 0
+\]
+\noindent Hence $E[XY^2] = 0$.
+
+\printbibliography% This prints the bibliography
+
+\end{document}

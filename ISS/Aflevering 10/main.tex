@@ -1,0 +1,179 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	\center	
+	{\huge\bfseries Handin 10 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+\begin{bluebox}
+Let $X_1, \ldots, X_n$ be a sample where $X_i \sim \mathrm{Poisson}(\theta)$ 
+with an unknown parameter $\theta > 0$.
+\end{bluebox}
+\begin{bluebox}
+	Compute the likelihood function 
+    $L(\theta) = L(x_1, \ldots, x_n; \theta)$ 
+    and find the log-likelihood function $l(\theta)$.
+\end{bluebox}
+Let's get some facts straight up in this \texttt{[Censored]!}.\\
+From chapter 8.2.3~\cite{STAT} we have the definition of the fancy likelihood function and since the Poisson distribution is a discrete probability, we'll use the definition for discrete random variables:
+\[
+L(x_1,x_2,\ldots,x_n;\theta) = P_{X_1, X_2, \ldots, X_n}(x_1, x_2, \ldots, x_n; \theta)
+\]
+The likelihood function is the joint probability of all the random variables in our sample.\\
+We note that each $X$ is independant, which allows us to multiply the marginal PMFs to get the joint probability, so we remember the PMF of the Poisson distribution is $P(X = x) = \frac{\lambda^x e^{-\lambda}}{x!}$
+\[
+L(\theta) = \prod_{i = 1}^{n} \frac{\theta^x e^{-\theta}}{x!}
+\]
+Now we should be ready to take the log-likelihood, but let's simplify the likelihood function first.
+We take each part of the product seperately:
+\[\prod_{i = 1}^{n} \theta^{x_i} = \theta^{\sum_{i = 1}^{n} x_i}\]
+\[\prod_{i = 1}^{n} e^{-\theta} = e^{-n\theta}\]
+\[\prod_{i = 1}^{n} \frac{1}{x_i!} = \frac{1}{\prod_{i = 1}^{n} x_i!}\]
+Okay...Bear(rawr) with me here, this might not be pretty, but you just gotta trust me on this one:
+\[L(\theta) = \frac{\theta^{\sum_{i = 1}^{n} x_i} e^{-n\theta}}{\prod_{i = 1}^{n} x_i!}\]
+We did this to make it easier since Mr.Sørensen don't know how to take the log of a product...Anyway!\\
+Now we can take the log-likelihood and since we are only intereseted in the parts with $\theta$ (which conveniently doesn't include the product in the denominator hehe...) Note that we can do this since $\prod_{i = 1}^{n} x_i!$ is a constant in respect to $\theta$ and will be zero when we differentiate later: 
+\[l(\theta) = \log{L(\theta)} = \log{\left(\theta^{\sum_{i = 1}^{n} x_i} \cdot e^{-n\theta}\right)}\]
+Using the 'Product Rule' for log, $\log(a \cdot b) = \log(a) + \log(b)$, we split it up:
+\[l(\theta) = \log{\left(\theta^{\sum_{i = 1}^{n} x_i}\right)} + \log{\left(e^{-n\theta}\right)}\]
+Next is the 'Power Rule', $\log(a^c)= c \cdot \log(a)$, on the first fish and the 'fancy log rule', $\log(e^a) = a$, on the second fish:
+\[l(\theta) = \left(\sum_{i = 1}^{n} x_i\right) \log{\theta} - n\theta\]
+There we have it folks or folk?, the log-likelihood function!
+\begin{bluebox}
+	Set up the likelihood equation and find the maximum likelihood estimator 
+    $\hat{\theta}_{ML}$.
+\end{bluebox}
+Now for for the easy part! \href{https://www.youtube.com/watch?v=mR3jnW2kcUs}{Click for epic intro music}\\
+To find the MLE we take the derivative of the log-likelihood function and set it equal to zero:
+\[\frac{d}{d\theta} l(\theta) = \frac{d}{d\theta} \left(\left(\sum_{i = 1}^{n} x_i\right) \log{\theta} - n\theta\right) = 0\]
+To solve this, we first use the 'Sum Rule', $\frac{d}{d\theta}(f(\theta) - g(\theta)) = f'(\theta) - g'(\theta)$, which means we can split the fishies up:
+\[\frac{d}{d\theta} \left(\left(\sum_{i = 1}^{n} x_i\right) \log{\theta}\right) - \frac{d}{d\theta}(n\theta) = 0\]
+Then for both fishies, we use the 'Constant Rule', $\frac{d}{d\theta}(c \cdot f(\theta)) = c \cdot f'(\theta)$, (treating $\sum x_i$ and $n$ as a constant) taking them our of the derivative\\
+\[\left(\sum_{i = 1}^{n} x_i\right) \frac{d}{d\theta} (\log{\theta}) - n \frac{d}{d\theta}(\theta) = 0\]
+The first fish becomes $\frac{1}{\theta}$ using the 'Log Rule', $\frac{d}{d\theta}(\log{\theta}) = \frac{1}{\theta}$, and the second fish becomes $1$ using the 'Power Rule', $\frac{d}{d\theta}(\theta) = 1$ Which gives us the beautiful fishy:
+\[\left(\sum_{i = 1}^{n} x_i\right) \frac{{1}}{\theta} - n = 0\]
+Now we isolate $\theta$ to find the MLE:
+\[\left(\sum_{i = 1}^{n} x_i\right) \frac{{1}}{\theta} = n\]
+\[\sum_{i = 1}^{n} x_i = n \theta\]
+Finally we divide by $n$:
+\[\frac{\sum_{i = 1}^{n} x_i}{n} = \theta\]
+And there we have it... folkies? (idk, i know numbers not words), the MLE for $\theta$ that is:
+\[\hat{\theta}_{ML} = \frac{\sum_{i = 1}^{n} x_i}{n}\]
+\begin{bluebox}
+Interpret what the problem states about the MLE for $\theta$.
+\end{bluebox}
+Well, if we looke reeeal careful at the MLE we can see it's just the sample mean Def 7.1~\cite{STAT}:
+\[\hat{\theta}_{ML} = \overline{X}\]
+This means that the MLE for the Poisson with $\theta$ is simply the average of all the data in our sample
+
+\printbibliography% This prints the bibliography
+\end{document}

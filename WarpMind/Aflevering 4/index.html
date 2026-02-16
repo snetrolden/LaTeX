@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--Head calls external dependencies and define some meta-data-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://warp.cs.au.dk/libs/warpmind.js"></script>
+     <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- reference to our CSS and JS -->
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Bulma CSS Framework -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    
+
+</head>
+<body>
+    <div id="app">
+        <!-- Vue Wraps everything here to control it (Super-villain style) -->
+         <!--Extra comments added this version refere to any changes from the framework refactoring we find relevant to comment on-->
+
+        <img src="warpmind-logo-no-background.png"
+    alt="Warpmind logo"
+    class="Logo">
+</img>
+
+<!-- Loading/Upload page (Initial page) existence is linked to a variable in JS-->
+<div id="StartScreen" class="StartScreen" v-if="current === 'start'">
+    <!--Clicking calls the renderPDF method in JS-->
+    <button class="UploadButton button is-link" id="UploadButton" @click="renderPDF">
+         Upload Document
+    </button>
+</div>
+
+
+<!-- Main Page (After loading page) connected to StartScreen with an if-else statement from Vue -->
+<div id="MainPage" v-else>
+
+    <aside class="SideBar" id="SideBar">
+    <!-- SideBar (1/3) (use <aside>) -->
+        <div id="SideBarHeader" class="SideBarHeader">
+        <!-- Header (tabs) added a relation with Vue -->
+            <button id="GoToConcepts" class="ConceptButton button is-link" :disabled="tabs === 'core'" @click="tabs = 'core'">
+                Core Concepts
+            <!-- Concepts Button -->
+            </button>
+
+            <!--Clicks changes the value 'tabs' to disable the other button and vice-versa-->
+            <button id="GoToSavedConcepts" class="ConceptButton button is-link" :disabled="tabs === 'saved'" @click="tabs = 'saved'">
+                Saved Concepts
+            <!-- Saved Concepts Button -->
+            </button>
+
+            
+        </div>
+
+        <!-- Concepts -->
+        <div id="ConceptsPanel" v-if="tabs === 'core'"> <!--Vue handles the actual change when switching tabs-->
+            
+            <div v-if="isLoading">
+                        <progress class="progress is-large is-link" max="100"></progress>
+                
+            </div>
+
+
+            <ul id="ConceptList"> <!--vue handles the adding of the concepts with v-for, we give it a 'key' since we are handling tempory DOM states-->
+                <li v-for="(concept, index) in concepts" 
+                :key = "index"
+                class="ConceptItem button is-warning is-fullwidth"
+                @click = "createStickyNote(concept)">
+                    {{ concept }}
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- SavedConcepts -->
+        <div id="SavedConceptsPanel" v-if="tabs === 'saved'">
+
+            <ul id="SavedConceptList">
+               <li v-for="(saved, index) in savedConcepts" 
+               :key = "index"
+               class = "SavedConceptItem button is-warning is-fullwidth"
+               @click = "createSavedStickyNote(saved)">
+                    {{saved.concept}}
+            </ul>
+            <!--use saved.concept to only get the concepts name and not the extra fluff-->
+        </div>
+
+
+    </aside>
+
+    <div id="Document">
+        <!-- PDF Side? (2/3) -->
+        <iframe 
+        id="PDF" 
+        src="Irish_Society_and_Culture_in_the_Twenty-First_Cent.pdf#toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0" 
+        title="PDF Document" >
+        </iframe>
+    </div>
+
+</div>
+
+<!-- the container will contain the template, and vue will call/use it whenever a stickyNote is created -->
+<div id="StickyNoteContainer">
+    <!-- The style is for handling the drag and placement -->
+            <div v-for="(note, index) in stickyNotes" 
+                 :key="note.id" 
+                 class="StickyNote"
+                 :style="{ top: note.y + 'px', left: note.x + 'px' }">
+                <!-- mousedown for dragging and click for events to each button -->
+                <div class="NoteHeader" @mousedown="startDrag($event, note)">
+                    <div class="ConceptName">{{ note.concept }}</div>
+                    <button class="Regenerate button is-link" @click="generateExplanation(note)" title="Regenerate">⟳</button>
+                    <button class="SaveBtn button is-success" @click="saveConcept(note)" title="Save Concept">✓</button>
+                    <button class="CloseBtn button is-danger" @click="removeStickyNote(index)" title="Close Concept">X</button>
+                </div>
+
+
+                <div class="NoteBody" v-html="note.content"></div>
+                
+                <!-- simple eventhandler for the UI switching fo the settings -->
+                <div class="NoteArrow" @click="note.showSettings = !note.showSettings">
+                    {{ note.showSettings ? '▲ Settings' : '▼ Settings' }}
+                </div>
+                <!-- Actual handler for showing the settings menu, use v-show since we don't want delete and initialise each time, + it saves the instance of settings -->
+                <div class="SettingsPanel" v-show="note.showSettings">
+                    <div class="SettingsColumn">
+                        <div class="SettingItem">
+                            
+                            <label>Language</label>
+                            <select v-model="note.settings.language" >
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="danish">Danish</option>
+                            </select>
+                        </div>
+                        <div class="SettingItem">
+                            <label>Context</label>
+                            <select v-model="note.settings.context" >
+                                <option value="document">Document</option>
+                                <option value="mix">Mix</option>
+                                <option value="broad">Broad</option>
+                            </select>
+                        </div>
+                        <div class="SettingItem">
+                            <label>Complexity</label>
+                            <input type="range" v-model="note.settings.complexity" min="1" max="5" >
+                        </div>
+                    </div>
+                    <div class="SettingsColumn">
+                        <div class="SettingItem">
+                            <label>Audience</label>
+                            <select v-model="note.settings.audience" >
+                                <option value="child">Child</option>
+                                <option value="teen">Teen</option>
+                                <option value="adult">Adult</option>
+                                <option value="god">God</option>
+                            </select>
+                        </div>
+                        <div class="SettingItem">
+                            <label>Form</label>
+                            <select v-model="note.settings.form" >
+                                <option value="bullets">Bullets</option>
+                                <option value="examples">Examples</option>
+                                <option value="detailed">Detailed</option>
+                            </select>
+                        </div>
+                        <div class="SettingItem">
+                            <label>Length</label>
+                            <input type="range" v-model="note.settings.length" min="1" max="5" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<!-- #app div tail-end -->
+    </div>
+</body>
+</html>

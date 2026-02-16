@@ -1,0 +1,214 @@
+body {
+    background: rgba(40, 40, 41);
+    margin: 0;
+}
+
+.StartScreen {
+    background-color: gray;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 100vh;
+}
+
+.Logo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    height: 100px;
+    width: 100px;
+}
+
+.StartScreen button {
+    min-height: 60px;
+    max-height: 100px;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+    white-space: normal;
+    transition: all 0.2s;
+}
+
+.StartScreen button:hover {
+    transform : translate(-50%, -53%);
+}
+
+/* contains the sidebar and PDF */
+#MainPage {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+/* container */
+#StickyNoteContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2000;
+}
+/* Sidebar */
+.SideBar {
+    background: linear-gradient(90deg, rgb(47, 144, 218, 0.25), rgba(40, 40, 41));
+    width: 25%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.progress {
+    margin: 7% !important;
+    width: 86% !important;
+}
+
+.SideBarHeader {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    height: 7%;
+}
+
+.ConceptButton{
+    width: 48% !important;
+    margin: 1% !important;
+    height: 95% !important;
+    border-radius: 20px !important;
+    border: 0 !important;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6) !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    transition: all 0.2s !important;
+}
+
+.ConceptButton:hover {
+    transform : translateY(-2px) !important;
+}
+
+.ConceptButton[disabled]:hover {
+    transform : none !important;
+}
+
+#ConceptList, #SavedConceptList {
+    list-style: none !important;
+    padding: 10px !important;
+    margin: 0 !important;
+}
+/* Don't mind the important stuff, it's important */
+.ConceptItem, .SavedConceptItem {
+    justify-content: left !important;
+    padding: 8px !important;
+    margin: 7px 0 !important;
+    border-radius: 0% !important;
+    border-top-right-radius: 10px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    transition: all 0.2s !important;
+}
+
+.ConceptItem:hover, .SavedConceptItem:hover {
+    background: rgb(254, 213, 81);
+    transform: translateY(-2px);
+}
+
+/* Sticky notes */
+.StickyNote {
+    position: absolute;
+    width: 350px;
+    top: 100px;
+    left: 30%;
+    background-color: rgb(255, 215, 80);
+    border-radius: 15px;
+    pointer-events: auto;
+    color: black;
+}
+
+.NoteHeader {
+    background: rgba(255, 183, 15);
+    cursor: move;
+    height: 38px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.NoteHeader button {
+    height: 35px;
+    aspect-ratio: 1 / 1;
+    transition: all 0.2s;
+}
+
+.NoteHeader button:hover {
+    transform: translateY(-1px);
+}
+
+.ConceptName {
+    position: absolute;
+    left: 5px;
+}
+
+.NoteBody {
+    overflow-y: auto;
+    min-height: 250px;
+    max-height: 300px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.NoteArrow {
+    cursor: pointer;
+    text-align: center;
+}
+
+.SettingsPanel {
+  display: flex;
+    height: auto;
+    width: 100%;
+    padding: 15px;
+    gap: 20px;
+}
+
+.SettingsColumn {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.SettingItem {
+    margin-bottom: 10px;
+}
+
+.SettingItem label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+   
+}
+.SettingItem select,
+.SettingItem input[type="range"] {
+    width: 50%;
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid #daa000;
+    box-sizing: border-box;
+}
+
+
+
+/* PDF */
+#Document {
+    width: 75%;
+    height: 100vh;
+    
+}
+#PDF {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    display: block;
+}

@@ -1,0 +1,183 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+\newcommand{\p}{\partial}
+\newenvironment{rowequmat}[1]{\left(\array{@{}#1@{}}}{\endarray\right)}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	
+	{\huge\bfseries Handin 4 }\\[0.4cm] % Title of your document
+	
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\section*{Let $0 < p < 1 $ and $X \approx $ Geometric($p$).}
+
+\subsection*{Calculate The cumulative distribution function (CDF) $F_X(x) = P(X \leq x)$ for all $x = 1,2,3,.....$}
+
+\subsection*{Show that $X$ has the 'lack of memory' property, i.e.}
+\begin{equation}
+P(X > m + k | X > m) = P(X > k) \text{ for all } k,m = 1,2,3,....
+\end{equation}
+\\
+\\
+\subsection*{Finding the CDF (Dora's solution)}
+The CDF is essentially the sum of all the probabilities up to and including $x$ for discrete variables. \\
+This means that we can express it as:
+\begin{equation}
+F_X(x) = P(X \leq x) = \sum_{i=1}^{x} P(X = i) \;\; \text{ for } x = 1,2,3,...
+\end{equation}
+From Def 3.5 \cite{STAT} we know that the PMF of a geometric distribution is:
+\begin{equation}
+P(X = i) = (1-p)^{i-1}p
+\end{equation}
+This means that we can rewrite the CDF as:
+\begin{equation}
+F_X(x) = \sum_{i=1}^{x} (1-p)^{i-1}p
+\end{equation}
+Move the constant out of the summation:
+\begin{equation}
+F_X(x) = p \sum_{i=1}^{x} (1-p)^{i-1}
+\end{equation}
+We will now show that the current summation is a geometric series.\\
+A geometric series is defined as:
+\begin{equation}
+a + ax + ax^2 + ax^3 + ... + ax^{n-1} = \sum_{k=0}^{n-1} ax^k = a \frac{1-x^n}{1-x}
+\end{equation}
+from example 1.12 equation 1.3 \cite{STAT}.\\
+We can see that our summation is a geometric series with $a = 1$, $x = (1-p)$ and $n = x$. This means that we can rewrite the CDF as:
+\begin{equation}
+F_X(x) = p \cdot \frac{1-(1-p)^x}{1-(1-p)}
+\end{equation}
+which simplifies to:
+\begin{equation}
+F_X(x) = 1-(1-p)^x
+\end{equation}
+\\\\
+\boxed{\text{Note that it's important when we use the geometric series we, it has to start at indexx 0, so we had to rewrite the summation to start at 0 instead of 1 in the future\\
+this case is a special case where it works, but in general it's bad practice.}}
+
+\subsection*{Show X has dementia (lack of memory property)}
+Reiterating equation(1)
+\[
+P(X > m + k | X > m) = P(X > k) \text{ for all } k,m = 1,2,3,....
+\]
+We use the definition of conditional probability from chapter 1.4 \cite{STAT} to do legal crime:
+\begin{equation}
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+\end{equation}
+We can then rewrite the right side of equation(1) as:
+\begin{equation}
+P(X > m + k | X > m) = \frac{P((X > m + k) \cap (X > m))}{P(X > m)} = \frac{P(X > m + k)}{P(X > m)}
+\end{equation}
+We note here that $P((X > m + k) \cap (X > m)) = P(X > m + k)$ since $X > m + k \implies X > m$.\\\\
+We can now use the CDF we found earlier to express $P(X > x)$ using the complement, like from example 3.10 \cite{STAT}:
+\begin{equation}
+P(X > x) = 1 - P(X \leq x) = 1 - F_X(x)
+\end{equation}
+We can then take equation(10) and throw our new math at it like Kobe Bryant on January 22, 2006 (60 points on 50 shots):
+\begin{equation}
+P(X > m + k | X > m) = \frac{1 - F_X(m + k)}{1 - F_X(m)}
+\end{equation}
+We can then insert the value of the CDF:
+\begin{equation}
+P(X > m + k | X > m) = \frac{1 - (1-(1-p)^{m+k})}{1 - (1-(1-p)^m)}
+\end{equation}
+which we can beautify a little bit by removing the negative vibes:
+\begin{equation}
+P(X > m + k | X > m) = \frac{(1-p)^{m+k}}{(1-p)^m}
+\end{equation}
+And as a finishing touch we will put the crown on it by simplifying the fraction even further:
+\begin{equation}
+P(X > m + k | X > m) = (1-p)^k
+\end{equation}
+Now we can see that the right side of equation(1) is:
+\begin{equation}
+P(X > k) = 1 - F_X(k) = 1 - (1-(1-p)^k) = (1-p)^k
+\end{equation}
+\printbibliography % This prints the bibliography
+
+\end{document}

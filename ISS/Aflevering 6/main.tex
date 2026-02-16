@@ -1,0 +1,182 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+\begin{mdframed}
+	\center	
+	{\huge\bfseries Handin 6 (Box Edition) }\\[0.4cm] % Title of your document
+\end{mdframed}
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+\begin{bluebox}
+\subsection*{(a) Plot the probability mass function (PMF) of $X$, i.e., plot the function $P_X$.}
+\end{bluebox}
+This PMF is a result of the 'data-frame' created in the code section in Figure~\ref{fig:poisson pmf}\\
+The PMF is also rounded down to three decimals.
+\[
+    P(X = x) =
+    \begin{cases}
+    0.049 & x = 0, \\[6pt]
+    0.149 & x = 1, \\[6pt]
+    0.224 & x = 2, \\[6pt]
+    0.224 & x = 3, \\[6pt]
+    0.168 & x = 4, \\[6pt]
+    0.100 & x = 5, \\[6pt]
+    0.050 & x = 6, \\[6pt]
+    0.021 & x = 7, \\[6pt]
+    0.008 & x = 8, \\[6pt]
+    0.002 & x = 9, \\[6pt]
+    0.001 & x = 10, \\[6pt]
+    0 & \text{otherwise}.
+    \end{cases}
+\]
+\begin{figbox}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{poissonMeme.png}
+  \caption{PMF of $X \sim \text{Poisson}(\lambda)$ with $\lambda = 3$.}\label{fig:poisson pmf}
+\end{figure}
+\end{figbox}
+\begin{bluebox}
+\subsection*{(b) Simulate the mean (expected value) of $X$, and compare it with the theoretical result.}
+\end{bluebox}
+For a Poisson distributed random variable $X \sim \text{Poisson}(\lambda)$ the theoretical expected value is $\mathbb{E}[X] = \lambda$ according to example 3.13~\cite{STAT}.  
+In our case $\lambda = 3$, so $\mathbb{E}[X] = 3$.  
+\begin{figbox}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{simEX.png}
+  \caption{Convergence of the simulated mean of $X$ compared with the theoretical mean ($\lambda=3$).}
+  \label{fig:mean convergence}
+\end{figure}
+\end{figbox}
+It's seen that for high enough number of samples, the simulated mean converges to the theoretical mean of 3, as shown in Figure~\ref{fig:mean convergence}.
+\begin{bluebox}
+\subsection*{(c) Simulate the mean of $\sqrt{X}$.}
+\end{bluebox}
+Since it's hard to simplify and calculate the theoretical $\mathbb{E}[\sqrt{X}]$ for a Poisson distribution, we will use Monty Carlo simulations to approximate it.
+\begin{figbox}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{sqX.png}
+  \caption{Simulated mean of $\sqrt{X}$ for $X \sim \text{Poisson}(3)$.}
+  \label{fig:square root of X}
+\end{figure}
+\end{figbox}
+\begin{bluebox}
+\subsection*{(d) Simulate the standard deviation of $X$, and compare it with the theoretical result.}
+\end{bluebox}
+\begin{figbox}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{def_cat.png}
+  \caption{Simulated standard deviation of $X \sim \text{Poisson}(3)$.}
+  \label{fig:simulated Var X}
+\end{figure}
+\end{figbox}
+According to problem 8 from chapter 3~\cite{STAT} we know for the Poisson distribution that $\mathrm{Var}(X) = \lambda$.\\
+And for our $\lambda = 3$, we have $SD(X) = \sqrt{3} \approx 1.732$. Which compared to the simulated value in Figure~\ref{fig:simulated Var X} shows a pretty good convergence.
+
+\printbibliography % This prints the bibliography
+
+\end{document}

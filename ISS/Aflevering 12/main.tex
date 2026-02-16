@@ -1,0 +1,213 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries Handin 12 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+
+\section*{Last Assignment}
+
+\begin{bluebox}
+We want to test the null hypothesis that 'at least 10\% of the students suffer from allergies'. We have collected data from 225 students, where 21 of them suffer from allergies. Consider the following statistical model for our data: Let $X_1, \ldots, X_{225}$ denote the sample, where $X_i \sim \mathrm{Bernoulli}(\theta)$ and $\theta \in (0, 1)$ is an unknown parameter. Consider the following hypotheses:
+$$
+H_0 : \theta \geq 0.1 \quad \text{vs} \quad H_1 : \theta < 0.1
+$$
+\end{bluebox}
+
+---
+
+\subsubsection*{
+(a) Argue that the above model corresponds to a sample with unknown mean and variance, and likewise argue that $H_0$ corresponds to the statement that at least 10\% of the students suffer from allergies.
+}
+\textit{Solution for (a)}:
+\begin{enumerate}[i.]
+    \item **Unknown Mean and Variance:** For a Bernoulli distribution $X_i \sim \mathrm{Bernoulli}(\theta)$, the mean is $E[X_i] = \theta$ and the variance is $\mathrm{Var}[X_i] = \theta(1-\theta)$. Since $\theta$ is an **unknown parameter**, both the mean and the variance of the underlying distribution are unknown.
+    \item **$H_0$ Interpretation:** $\theta$ represents the true proportion (or probability) of students in the population who suffer from allergies. The null hypothesis $H_0: \theta \geq 0.1$ states that this true proportion is greater than or equal to $0.1$ (or $10\%$). This directly translates to the statement that **at least 10\% of the students suffer from allergies**.
+\end{enumerate}
+
+---
+
+\subsubsection*{
+(b) Perform an asymptotic hypothesis test with a significance level $\alpha = 0.05$ for the null hypothesis.
+}
+\textit{Solution for (b)}:
+We perform a Z-test for a population proportion, $\theta$.
+\begin{enumerate}[i.]
+    \item **Hypotheses and Significance Level:**
+    $$H_0 : \theta \geq 0.1 \quad \text{vs} \quad H_1 : \theta < 0.1 \quad (\text{Left-tailed test})$$
+    $$\alpha = 0.05$$
+    \item **Observed Sample Proportion ($\hat{\theta}$):**
+    The number of successes is $Y = 21$, and the sample size is $n = 225$.
+    $$\hat{\theta} = \frac{Y}{n} = \frac{21}{225} \approx 0.0933$$
+    \item **Test Statistic ($Z$):**
+    The asymptotic test statistic uses the value under the null hypothesis, $\theta_0 = 0.1$.
+    $$Z = \frac{\hat{\theta} - \theta_0}{\sqrt{\frac{\theta_0(1-\theta_0)}{n}}}$$
+    $$Z = \frac{0.0933 - 0.1}{\sqrt{\frac{0.1(1-0.1)}{225}}} = \frac{-0.0067}{\sqrt{\frac{0.09}{225}}} = \frac{-0.0067}{\sqrt{0.0004}} = \frac{-0.0067}{0.02}$$
+    $$Z \approx -0.335$$
+    \item **Critical Value ($Z_{\alpha}$):**
+    Since this is a left-tailed test with $\alpha = 0.05$, the critical value $Z_{0.05}$ is found such that $P(Z \leq Z_{0.05}) = 0.05$.
+    $$Z_{0.05} \approx -1.645$$
+    \item **Conclusion:**
+    We compare the calculated test statistic ($Z \approx -0.335$) with the critical value ($Z_{0.05} \approx -1.645$).
+    Since $Z > Z_{0.05}$ (i.e., $-0.335 > -1.645$), the test statistic does not fall into the rejection region. We **do not reject $H_0$**.
+    \textit{Conclusion in context:} There is not enough evidence at the $5\%$ significance level to conclude that the true proportion of students suffering from allergies is less than 10\%.
+\end{enumerate}
+
+---
+
+\subsubsection*{
+(c) Calculate the corresponding P-value.
+}
+\textit{Solution for (c)}:
+The P-value is the probability of observing a result as extreme as, or more extreme than, the one observed, assuming $H_0$ is true. Since this is a left-tailed test, we calculate $P(Z \leq Z_{\text{obs}})$ where $Z_{\text{obs}} \approx -0.335$:
+$$
+\text{P-value} = P(Z \leq -0.335)
+$$
+Using the standard normal distribution (Z-table or calculator):
+$$
+\text{P-value} \approx 0.3687
+$$
+Since the P-value ($0.3687$) is much larger than the significance level ($\alpha = 0.05$), we confirm the decision from part (b) to **not reject the null hypothesis $H_0$**.
+\\
+
+\[
+f_{X,Y}(x,y) = \frac{2}{\sqrt{\pi}}e^{-x^2-2y} \; \text{for } y > 0
+\]
+find distribution for X and say if X and Y are independent?
+\[
+f_{X}(x) = \int_{0}^{\infty} f_{X,Y}(x,y) dy = \int_{0}^{\infty} \frac{2}{\sqrt{\pi}}e^{-x^2-2y} dy = \frac{2}{\sqrt{\pi}}e^{-x^2} \int_{0}^{\infty} e^{-2y} dy = \frac{2}{\sqrt{\pi}}e^{-x^2} \cdot \frac{1}{2} = \frac{1      }{\sqrt{\pi}}e^{-x^2}
+\]
+Now for Y:
+\[
+f_{Y}(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) dx = \int_{-\infty}^{\infty} \frac{2}{\sqrt{\pi}}e^{-x^2-2y} dx = \frac{2}{\sqrt{\pi}}e^{-2y} \int_{-\infty}^{\infty} e^{-x^2} dx = \frac{2}{\sqrt{\pi}}e^{-2y} \cdot \sqrt{\pi} = 2e^{-2y}
+\]
+To check for independence, we see if \( f_{X,Y}(x,y) = f_{X}(x) \cdot f_{Y}(y) \):
+\[
+f_{X}(x) \cdot f_{Y}(y) = \left(\frac{1}{\sqrt{\pi}}e^{-x^2}\right) \cdot   \left(2e^{-2y}\right) = \frac{2}{\sqrt{\pi}}e^{-x^2-2y} = f_{X,Y}(x,y)
+\]
+Thus, X and Y are independent.\\
+
+Find the distribution of $Z = e^{\frac{Y}{3}}-1$.
+To find the distribution of \( Z = e^{\frac{Y}{3}} - 1 \), we first need to find the cumulative distribution function (CDF) of \( Z \).
+\[F_{Z}(z) = P(Z \leq z) = P\left(e^{\frac{Y}{3}} - 1 \leq z\right) = P\left(Y \leq 3\ln(z + 1)\right)\]
+Now, we need to find the CDF of \( Y \):
+\[F_{Y}(y) = \int_{0}^{y} f_{Y}(t) dt = \int_{0}^{y} 2e^{-2t} dt = \left[-e^{-2t}\right]_{0}^{y} = 1 - e^{-2y}\]
+Substituting back into the CDF of \( Z \):
+\[F_{Z}(z) = F_{Y}(3\ln(z + 1)) = 1 - e^{-2 \cdot 3\ln(z + 1)} = 1 - e^{-6\ln(z + 1)} = 1 - (z + 1)^{-6}\]
+To find the probability density function (PDF) of \( Z \), we differentiate the CDF:
+\[f_{Z}(z) = \frac{d}{dz} F_{Z}(z) = \frac{d}{dz} \left(1 - (z + 1)^{-6}\right) = 6(z + 1)^{-7}\]
+Thus, the distribution of \( Z \) is given by the PDF:
+\[f_{Z}(z) = 6(z + 1)^{-7} \; \text{for } z > -1\]    
+
+
+
+
+\printbibliography
+\end{document}

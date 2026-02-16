@@ -58,14 +58,14 @@
 
 \HRule\\[0.4cm]
 	
-	{\huge\bfseries Handin 1 }\\[0.4cm] % Title of your document
+	{\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
 	
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
 		\begin{flushleft}
 			\large
-			\textit{Author}\\
+			\textit{Author}\\	
 			Søren M. \textsc{Damsgaard}\\
                 % Your name
 		\end{flushleft}
@@ -97,6 +97,35 @@
 \section*{Problem 28: In a factory there are 100 units of a certain product, 5 of which are defective. We pick
 three units from the 100 units at random. What is the probability that exactly one of
 them is defective?}
+\subsection*{Explanation}
+This is a typical problem that can be solved using hypergeometric distribution.
+It's assumed that we are chooosing 3 units at random without replacement.\\
+we will use the formula for hypergeometric distribution
+given in definition [3.8]\cite{STAT}.\\
+\[
+\frac{\begin{pmatrix} b\\x\end{pmatrix}\begin{pmatrix} r\\k-x\end{pmatrix}
+}{\begin{pmatrix} b+r\\k\end{pmatrix}}
+\]
+This distribution uses what we call binomial coefficients, or "n choose k".
+It's the number of ways to choose/distribute 'k' in 'n' objects [2.1.3]\cite{STAT}.\\
+The notation used for this is:
+\[
+\begin{pmatrix} n\\k\end{pmatrix}
+\]
+It also uses the classical probability formula for finite sample spaces [1.3.4]\cite{STAT}:
+\[P(E) = \frac{\text{Number of favorable outcomes}}{\text{Total number of outcomes}}\]
+Since all the ways to choose 1 defect unit and all the ways to choose 2 functional units, combined, 
+is our favorable outcome, while all the ways to choose 3 units out of a 100 regardless of condition, 
+the total number of outcomes.\\\\
+This problem can be seen as 'Unordered sampling without replacement'.
+This means we use the binomial coefficient formula for unordered sampling without replacement
+given in chapter [2.1.3]\cite{STAT}.\\
+Please note that $n$ and $k$ are dummy variables and have no relation to the $n$ and $k$ we using in the next step (Calculations).
+\[
+\begin{pmatrix} n\\k\end{pmatrix} = \frac{n!}{k!(n-k)!}
+\]
+\subsection*{Calculations}
+Now that we understand ALL THE MATH!\\	
 Let's look at the numbers we have.
 \begin{align*}
 & \text{Let our total number of units be } N = 100 \\
@@ -105,45 +134,30 @@ Let's look at the numbers we have.
 & \text{Let the number of defects we want be } x = 1 \\
 & \text{Let our functional units be } r = 95
 \end{align*}
-This looks like a problem that can be solved with hypergeometric 
-distribution, so
-we will use the formula for hypergeometric distribution
-given in definition [3.8]\cite{STAT}.\\
-\[
-\frac{\begin{pmatrix} b\\x\end{pmatrix}\begin{pmatrix} r\\k-x\end{pmatrix}
-}{\begin{pmatrix} b+r\\k\end{pmatrix}}
-\]
-Filling in our numbers we get
+throw the nummbers into our formula for 'hypergeometric distribution'
 \[
 \frac{\begin{pmatrix} 5\\1\end{pmatrix}\begin{pmatrix} 95\\2\end{pmatrix}
 }{\begin{pmatrix} 100\\3\end{pmatrix}}
 \]
-This problem can be seen as 'Unordered sampling without replacement' as
-we are not putting the units back after picking them.\\
-This means we use the binomial coefficient formula for unordered sampling without replacement
-given in chapter [2.1.3]\cite{STAT}.\\
-Please note that $n$ and $k$ are just variables and have no relation to the $n$ and $k$ we used earlier.
-\[
-\begin{pmatrix} n\\k\end{pmatrix} = \frac{n!}{k!(n-k)!}
-\]
 We have 3 binomial coefficients we have to calculate,  let's get to it!.
 \[
-\binom{5}{1} = \frac{5!}{1!4!} = \frac{120}{24} = 5
+\binom{5}{1} = \frac{5!}{1!(5-1)!} = \frac{5!}{1!4!} = \frac{120}{24} = 5
 \]
-For the next two we will let some of the factorials cancel out to make it easier.
+For the next two we will let some of the factorials cancel out to make it easier for the soul.
 \[
-\binom{95}{2} = \frac{95!}{2!93!} = \frac{95 \cdot 94}{2} = 4465
+\binom{95}{2} = \frac{95!}{2!(95-2)!} = \frac{95!}{2!93!} = \frac{95 \cdot 94}{2} = 4465
 \]
 \[
-\binom{100}{3} = \frac{100!}{3!97!} = \frac{100 \cdot 99 \cdot 98}{6} = 161700
+\binom{100}{3} = \frac{100!}{3!(100-3)!} =  \frac{100!}{3!97!} = \frac{100 \cdot 99 \cdot 98}{6} = 161700
 \]
 Putting it all together we get
 \[
 \frac{\begin{pmatrix} 5\\1\end{pmatrix}\begin{pmatrix} 95\\2\end{pmatrix}
 }{\begin{pmatrix} 100\\3\end{pmatrix}} = \frac{5 \cdot 4465}{161700} = \frac{22325}{161700} \approx 0.138
 \]
-The probability of getting exactly one defective unit when picking 3 units is somethign along the lines of 13.8\%.\\
+The probability of getting exactly one defective unit when picking 3 units is something along the lines of 13.8\%.\\
 Obligatory victory cry! HUZZAR!
+
 
 
 

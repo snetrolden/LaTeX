@@ -1,0 +1,179 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+\usepackage{mdframed}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+\newcommand{\p}{\partial}
+\newenvironment{rowequmat}[1]{\left(\array{@{}#1@{}}}{\endarray\right)}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	
+	{\huge\bfseries Handin 5 }\\[0.4cm] % Title of your document
+	
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\section*{Game Strategy with Dice!}
+We consider the following strategy:
+\[
+W = 
+\begin{cases}
+X, & \text{if } X \ge 4,\\[4pt]
+Y, & \text{if } X < 4.
+\end{cases}
+\]
+That is, the strategy consists of stopping the game if the number of eyes (die roll) is 4, 5, or 6, and rolling a new die if the number of eyes is 1, 2, or 3.
+\vspace{2cm}
+	\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!20]
+	(a) What is the expected payoff of the game if you choose to never roll a new die? That is, you win \(X\) kr.
+    \end{mdframed}
+	The formula for the expected value from Def 3.11 is:
+	\begin{equation}
+	    E(X) = \sum_{x_k \in R_X} x_k \cdot P_X(x_k)
+	\end{equation}
+	For this little case our range is \(R_X = \{1, 2, 3, 4, 5, 6\}\) and the probability is \(P_X(x_k) = \frac{1}{6}\) for all \(x_k \in R_X\) since we are using a die.\\
+	This gives us:
+	\begin{equation*}
+		 E(X) = \sum_{x_k \in R_X} x_k \cdot P_X(x_k) = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6}
+	\end{equation*}
+	This simplifies to:
+	\begin{equation*}
+	    E(X) = \frac{1 + 2 + 3 + 4 + 5 + 6}{6} = \frac{21}{6} = \underbar{3.5}
+	\end{equation*}
+\vspace{2cm}
+	
+	\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!20]
+		(b) Interpret strategy \(W\) in relation to subquestion (a).
+	\end{mdframed}
+	\textcolor{red}{Strategy (a) takes the first outcome from a single die roll, which just gives a uniform distribution over the die's (dies?) range. Strategy (b) introduces a conditional roll, if the first roll was less than four it rolls again and takes the outcome, this creates a bias towards higher outcomes compared to (a), which should give a higher expected value.}
+\vspace{2cm}
+\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!20]
+     (c) Find the range \(R_W\) and the PMF \(P_W\) for \(W\). Also, compute the expected payoff when using strategy \(W\).
+\end{mdframed}
+    Let's take it from the top jesus!\\
+	The range is the same as before in (a):
+	\[
+	R_W = \{1, 2, 3, 4, 5, 6\}
+	\]
+	now for the PMF.\\
+	The probability of getting a 1, 2 or 3 is rolling 1, 2 or 3 twice in a row.\\
+	The first roll is \(X\) and the second roll is \(Y\) and they are independent events.\\
+	\begin{equation*}
+	    P_W(w) = P(X < 4) \cdot P(Y = w) = \frac{1}{2} \cdot \frac{1}{6} = \frac{1}{12} \;\;\;\text{ for } w = 1, 2, 3
+	\end{equation*}
+	
+	And the probability of getting a 4, 5 or 6 is either getting them on the first role or getting a 1, 2 or 3 and then rolling a 4, 5 or 6.\\
+	\textcolor{red}{Note that the events $P(X = w) + P(X < 4)$ are disjoint so we can add the probabilities of multiple events using the 'Inclusion-Exclusion Principle' since their intersection is always zero according to chapter 1.2.2~\cite{STAT}.}
+	\begin{equation*}
+	    P_W(w) = P(X = w) + P(X < 4) \cdot P(Y = w) =  \frac{1}{6} + \frac{1}{2} \cdot \frac{1}{6} = \frac{1}{4} \;\;\;\text{ for } w = 4, 5, 6
+	\end{equation*}
+	
+	\begin{equation}
+		P_W(W = w) =  
+	\begin{cases}
+	\frac{1}{12}, & \text{if } w = 1\\[4pt]
+	\frac{1}{12}, & \text{if } w = 2\\[4pt]
+	\frac{1}{12}, & \text{if } w = 3\\[4pt]
+	\frac{1}{4}, & \text{if } w = 4\\[4pt]
+	\frac{1}{4}, & \text{if } w = 5\\[4pt]
+	\frac{1}{4}, & \text{if } w = 6
+	\end{cases}
+	\end{equation}
+	We can do a sanity check with \textcolor{red}{axiom 2 of probability from chapter 1.3.2~\cite{STAT} to make sure our PMF is correct:}
+	\begin{equation*}
+	    \sum_{w_k \in R_W} P_W(w_k) = \frac{1}{12} + \frac{1}{12} + \frac{1}{12} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = 1
+	\end{equation*}
+	Now for the expected value of \(W\):\\
+	\begin{equation*}
+	    E(W) = \sum_{w_k \in R_W} w_k \cdot P_W(w_k) = 1 \cdot \frac{1}{12} + 2 \cdot \frac{1}{12} + 3 \cdot \frac{1}{12} + 4 \cdot \frac{1}{4} + 5 \cdot \frac{1}{4} + 6 \cdot \frac{1}{4}
+	\end{equation*}
+	This simplifies to:
+	\begin{equation*}
+	    E(W) = \frac{1 + 2 + 3}{12} + \frac{4 + 5 + 6}{4} = \frac{6}{12} + \frac{15}{4} = \frac{51}{12} = \underbar{4.25}
+	\end{equation*}
+	Which gives us a higher expected value than strategy (a) as expected.
+	\[
+	\underbar{E(W) = 4.25 $>$ E(X) = 3.5}
+	\]
+\end{document}

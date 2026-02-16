@@ -1,0 +1,306 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Numerical Linear Algebra}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+
+\section*{Noisy Data}
+The author are given a signal on the form
+\begin{equation}
+    y(x) = 12\sin(x) -4\cos(8x) \;\; \text{for } 0 \leq x \leq 12
+\end{equation}
+And are tasked with adding noise to it and then showing how to reduce said noise and explain the theory behind it.\\
+\subsubsection*{Disclaimer!}
+The code will not be shown throughout the report, but will be put in the appendix and referred to when necessary. This is because the author is using this change of format, in contrast to the last handin, as an exscuse to not do the actual handin.\\
+Do note that the code is commented in such a way that it will be referred to as sections, such as \textsc{Figure 1 line 42-45}.
+\subsection*{a - Plotting the Signal}
+The code used to define the signal is section \textsc{Signal line 4-9} in the Appendix, while plotting of the figure can be found in \textsc{Figure 1 line 42-45}.
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\textwidth]{Figure_1.png}
+        \caption{The signal without noise.}
+\end{figure}
+\subsection*{b - Adding Noise}
+The code defining the noise and the noisy signal can be found in section \textsc{Noise line 11-14} and plotting is in section \textsc{FIGURE 2.5 line 59-64}
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\textwidth]{noise.png}
+        \caption{The signal with noise compared to the clean signal.}
+\end{figure}
+
+\subsection*{c - Matrix A}
+The code section can be found in \textsc{MATRIX A line 19-24} and \textsc{Print Matrix A line 86-89}.
+\begin{lstlisting}[language=Python]
+Top Left Corner of Matrix A:
+[[0.33 0.33 0.   0.   0.  ]
+ [0.33 0.33 0.33 0.   0.  ]
+ [0.   0.33 0.33 0.33 0.  ]
+ [0.   0.   0.33 0.33 0.33]
+ [0.   0.   0.   0.33 0.33]]
+\end{lstlisting}
+\subsection*{d - Reducing Noise with Matrix A}
+section \textsc{Figure 2 line 47-57}.
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Figure_2.png}
+        \caption{The signal with noise and the reduced noise with matrix A compared to clean signal.}
+\end{figure}
+\noindent The reason this works is that by multiplying the noisy signal with matrix A, we are in a sense taking the average of each point with its neighbors, this essentially smooths out small random fluctuations in the signal AKA 'noise', while still keeping the structure semi-intact.
+
+\subsection*{e}
+For this section we look at the code in section \textsc{MATRIX B line 26-32} and \textsc{Figure 3 line 67-77}.
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Figure_3.png}
+        \caption{The reduced noise with matrix A and B, compared with the clean signal from Figure 1.}
+\end{figure}
+
+This next figures is covered by section \textsc{FIGURE 4 line 78-84}
+\begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{Figure_4.png}
+        \caption{The reduced noise with matrix B for two different noise realizations.}
+\end{figure}
+
+
+
+
+%put code in the appendix and refer to it here
+\section*{Appendix}
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Signal
+n = 200
+x = np.linspace(0.0, 12.0, n)
+s_rad = np.sin(x) # rad for radians
+c_rad = np.cos(8*x)
+y = 12*s_rad - 4*c_rad 
+
+# Noise
+rng = np.random.default_rng()
+noise = rng.standard_normal(n)
+y_noisy = y + noise # adding noise
+
+
+
+
+# MATRIX A
+a = np.diag(1/3*np.ones(n), 0)
+b = np.diag(1/3*np.ones(n-1), 1)
+c = np.diag(1/3*np.ones(n-1), -1)
+A = a + b + c
+Ay_noisy = A @ y_noisy
+
+#MATRIX B
+d = np.diag(6/16*np.ones(n), 0)
+e = np.diag(4/16*np.ones(n-1), 1)
+f = np.diag(4/16*np.ones(n-1), -1)
+g = np.diag(1/16*np.ones(n-2), 2)
+h = np.diag(1/16*np.ones(n-2), -2)
+B = d + e + f + g + h
+
+By_noisy = B @ y_noisy
+
+# New random y_noise
+noise2 = rng.standard_normal(n)
+y_noisy2 = y + noise2
+By_noisy2 = B @ y_noisy2 
+
+
+# FIGURE 1 - only signal
+fig1, ax1 = plt.subplots() 
+ax1.plot(x, y)
+ax1.set_title('Signal without noise')
+
+# FIGURE 2 - comparing signal with noise to reduced noise (with A)
+fig2, (ax2, ax3) = plt.subplots(1, 2)
+ax2.plot(x, y_noisy, alpha= 0.7, label='Signal with Noise')
+ax2.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
+ax2.set_title('Signal with random noise')
+ax2.legend(loc='lower left')
+
+ax3.plot(x, Ay_noisy, alpha= 0.7, label='Reduced noise')
+ax3.set_title('Reduced Noise with Matrix A')
+ax3.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
+ax3.legend(loc='lower left')
+
+# Figure 2.5 - Only Noise
+fig21, ax2 = plt.subplots()
+ax2.plot(x, y_noisy, alpha= 0.7, label='Signal with Noise')
+ax2.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
+ax2.set_title('Signal with random noise')
+ax2.legend(loc='lower left')
+
+# FIGURE 3 - 
+fig3, (ax5, ax4) = plt.subplots(1, 2)
+ax5.plot(x, Ay_noisy, alpha=0.7, label='Matrix A')
+ax5.set_title('Reduced Noise with Matrix A')
+ax5.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
+ax5.legend(loc='lower left')
+
+ax4.plot(x, By_noisy, alpha=0.7, label='Matrix B')
+ax4.set_title('Reduced Noise with Matrix B')
+ax4.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
+ax4.legend(loc='lower left')
+
+# FIGURE 4
+fig4, (ax6, ax7) = plt.subplots(1, 2)
+ax6.plot(x, By_noisy) 
+ax6.set_title('Matrix B (Noise 1)')
+
+ax7.plot(x, By_noisy2)
+ax7.set_title('Matrix B (Noise 2)')
+
+#Print Matrix A
+np.set_printoptions(precision=2)
+print('Top Left Corner of Matrix A:')
+print(A[:5, :5])
+
+plt.tight_layout() 
+plt.show()
+\end{lstlisting}
+
+\printbibliography
+\end{document}

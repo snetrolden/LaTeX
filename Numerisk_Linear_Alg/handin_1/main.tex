@@ -1,0 +1,273 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Numerical Linear Algebra}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries Handin 1 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+
+\section*{Rotation and bending of lines... The Handin *Dramatic intro music*}
+
+\subsection*{Exercise a - c}
+The following code combines exercise (a) and (c). Note that (b) is addressed after the figure.\\\\
+The reasoning for (c) is that the rotation of a vector by $80^\circ$ from an origin point C is the same a bending the line at point C by $80^\circ$, which is demonstrated in the figure below.\\
+The recipe given for the rotation is:
+\begin{equation}
+    \text{bend}_C(S) = [\;a\; |\; b\; |\; c\; |\; R_Cd\;]
+\end{equation}
+\begin{lstlisting}[language=Python, caption=Python code for making handin figure with matplotlip.]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Vectors (Horizontal)
+zero = np.array([0, 0])
+a = np.array([2, 5])
+b = np.array([1.5, 0.2])
+c = np.array([0.3, -1])
+d = np.array([-0.1, -0.2])
+
+# Rotation shenanigangs
+theta = 80
+rotation = np.array([[np.cos(theta),-np.sin(theta)],
+                     [np.sin(theta),np.cos(theta)]])
+dRot = rotation @ d
+
+#coords, just sum the vectors to get the coords
+figBefore = np.array([zero, a, a+b, a+b+c, a+b+c+d])
+figAfter = np.array([zero, a, a+b, a+b+c, a+b+c+dRot])
+
+fig, (ax1, ax2) = plt.subplots(1,2)
+ax1.set_aspect('equal')
+ax1.plot(figBefore[:,0], figBefore[:,1]) 
+ax2.set_aspect('equal')
+ax2.plot(figAfter[:,0], figAfter[:,1])
+plt.show()
+\end{lstlisting}
+\begin{figbox}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{image2.png}
+        \caption{Before and after rotating vector $\vec{d}$ by $80^\circ$ around point C}
+    \end{figure}
+\end{figbox}
+
+For (b), the vector $\vec{OP}$ is given as the sum of the vectors $\vec{OA}$, $\vec{AB}$, $\vec{BC}$, and $\vec{CP}$ which we designate $a$, $b$, $c$, and $d$ respectively.\\
+We determine the vectors as the difference between the coordinates of the points.
+\begin{align*}
+    \vec{OP} &= a + b + c + d \\
+    &= \begin{pmatrix}2 \\ 5\end{pmatrix} + \begin{pmatrix}1.5 \\ 0.2\end{pmatrix} + \begin{pmatrix}0.3 \\ -1\end{pmatrix} + \begin{pmatrix}-0.1 \\ -0.2\end{pmatrix} \\
+    &= \begin{pmatrix}2 + 1.5 + 0.3 - 0.1 \\ 5 + 0.2 - 1 - 0.2\end{pmatrix} \\
+    &= \begin{pmatrix}3.7 \\ 4\end{pmatrix}
+\end{align*}
+
+\subsection*{Exercise d}
+An analogous recipe for only bending $A$.\\
+Since the bend is around $A$, any subsequent vector will be affected, which is reflected in the recipe below.
+\begin{equation}
+    \text{bend}_A(S) = [\;a \; |\; R_Ab \; |\; R_Ac \; |\; R_Ad\;]
+\end{equation}
+The following code demonstrates the bending of vector $\vec{b}$ by $80^\circ$ around point A.\\
+This code is an extension of the previous code hence the ommision of vector/matrix definitions and misc. code.
+\begin{lstlisting}[language=Python, caption=Python code for bending vector b by $80^\circ$ around point A.]
+bRot = rotation @ b
+
+figD = np.array([zero, a, a+bRot, a+bRot+c, a+bRot+c+d])
+
+ax3.set_aspect('equal')
+ax3.plot(figD[:,0], figD[:,1])
+plt.show()
+\end{lstlisting}
+The figure below demonstrates how the the rotation of b effects the subsequent vectors c and d.
+\begin{figbox}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.3\textwidth]{image1.png}
+        \caption{Bending vector $\vec{b}$ by $80^\circ$ around point A}
+    \end{figure}
+\end{figbox}
+Effect is now shown and argued for \#ToddlerArgument.
+\subsection*{Exercise e}
+
+
+\subsubsection*{Algebraic proof based on the recipes}
+For the algabraic proof we apply the rotation recipes twice in different order.\\
+\begin{equation}
+    \text{bend}_A(\text{bend}_C(S)) = [\;a \; |\; R_Ab \; |\; R_Ac \; |\; R_A(R_Cd)\;]
+\end{equation}
+\begin{equation}
+    \text{bend}_C(\text{bend}_A(S)) = [\;a \; |\; R_Ab \; |\; R_Ac \; |\; R_C(R_Ad)\;]
+\end{equation}
+In the first week of theoretical exercises, we showed that a rotation followed by another rotation is just a single rotation of the vector by the sum of the angles, and the order of the rotations did not matter. Based on that we conclude that $R_A(R_Cd) = R_C(R_Ad)$. This is also further reinforced by the fact that matrices are associative $A(BC)=B(AC)$.
+\subsubsection*{Proof by numbers}
+
+\begin{lstlisting}[language=Python, caption=Python showing non-commutativity numerically]    
+# Rotations with theta = 80 (uses earlier defined rotations and angles)
+figE1 = np.array([zero, a, a+bRot, a+bRot+c, (a+c+dRot)+bRot])
+figE2 = np.array([zero, a, a+bRot, a+bRot+c, (a+bRot+c)+dRot])
+
+# Rotation with theta = 40
+theta2 = 40
+rotation2 = np.array([[np.cos(theta2),-np.sin(theta2)],
+                     [np.sin(theta2),np.cos(theta2)]])
+bRot = rotation2 @ b
+dRot = rotation2 @ d
+figE3 = np.array([zero, a, a+bRot, a+bRot+c, (a+c+dRot)+bRot])
+figE4 = np.array([zero, a, a+bRot, a+bRot+c, (a+bRot+c)+dRot])
+
+# approximate equality check, since difference could be too small for python, and might make a rounding error.
+one = np.allclose(figE3, figE4)
+two = np.allclose(figE1, figE2)
+print(one)
+print(two)
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Output of above code in Listing 3]
+True
+True
+\end{lstlisting}
+The numerical proof reinforced the algebraic proof, and we can conclude that the order of the rotations does not matter, and that the two resulting figures are close enough to be equal, which is what we expected from the algebraic proof.\\\\
+Thanks for coming to my TED talk.\\
+please clap.
+
+%put code in the appendix and refer to it here
+\section*{Appendix}
+Clearly a misguided appendixed left redundant after its creator realized that the code was not that long and could be easily included in the main text without a kerfuffle.\\
+\printbibliography
+\end{document}

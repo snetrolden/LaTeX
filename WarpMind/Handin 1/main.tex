@@ -1,0 +1,136 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+\newcommand{\p}{\partial}
+\newenvironment{rowequmat}[1]{\left(\array{@{}#1@{}}}{\endarray\right)}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Human-Computer Interaction}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	
+	{\huge\bfseries WarpMind Report I }\\[0.4cm] % Title of your document
+	
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\section*{Investigating the enemy competition (Part A)}
+
+\includegraphics[width=1\textwidth]{First_screenshot.png}
+The Interactive System we have chosen is the AI-system known as 'DeepSeek'.\\
+Its User-Interface is a chat-like interface where user can type in questions and prompts to recieve a generated output AKA feedback.\\
+\\
+The interface uses Icon-Based Controls to navigate and interact with the system. The icons in the top left corner (A) are window management controls for switching between different chat instances and the + symbol is used to create a new chat instance. These icons are part of the command interface elements.\\
+The big dark-grey area in the middle of the screen functions as the system output and has a little "How can i help you?" (B) which prompts the user to type a question.\\
+The smaller light-grey box is the input field where user typer their questions, is has some text that functions as an affordance (Above D), to suggest possible actions.\\
+It also has some command buttons and widgets (D and C) to upload attachments and affect the AI's behavior.\\\\
+These things follow the GUI layout patterns, controls at the outer edges an the main content in the middle.\\
+The design of having minimal buttons and neutral colores makes for a low cognitive load for users.\\
+
+
+
+
+
+
+
+\section*{Reproducing Chosen Interface (Part B)}
+For the original interface see above (Part A).\\\\
+\includegraphics[width=1\textwidth]{remake.png}\\
+My remake of the interface from DeepSeek has the basic layout but without much of its functions.\\
+I went into this thinking getting basicc layout and colores right would be the hardest part, but after getting there the hardest part was getting the small details right, like getting the size right for the icons and boxes correctly.\\
+I also used more time than i expected to get where i wanted to be, especially when choosing the icons and logo, since i didn't want to import any packages.\\
+I definetely underestimated how much CSS is used and how many functions CSS has, but it was fun too struggle on what should be 'easy frontend' stuff.\\\\
+Link to my Part B interface, based on DeepSeek (I like whales OwO)\\
+https://warp.cs.au.dk/empty-ladybug-62
+
+\section*{Intergrating The WarpMind (Part C)}
+Intergrating the WarpMind into the DeepSeek interface introduced a few challenges.\\
+Like how to update the sendButton in relation to the textArea using javascript and controlling the visibility of the Logo and the conversation box.\\\\
+Although the most interesting part was to figure out the example code of using integrating the WarpMind, like how it used arrays to push messages to OpenAI and how to handle the responses.\\\\
+If i had to do this over again i would have more focus on functionality with javascript before trying to make a faithful remake of the original interface using CSS.\\\\
+This is the link for my Part C interface, based on DeepSeek with WarpMind intergrated\\
+https://warp.cs.au.dk/loud-lizard-57
+
+
+
+\end{document}

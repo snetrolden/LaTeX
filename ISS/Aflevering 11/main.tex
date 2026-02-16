@@ -1,0 +1,197 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+\usepackage{logicproof}
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Introduction to probability and statistics}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+	\center	
+	{\huge\bfseries Handin 11 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\	
+			Søren M. \textsc{Damsgaard}\\
+                % Your name
+		\end{flushleft}
+	\end{minipage}
+~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Student number}\\
+			\textbf{202309814}\\
+                % Studienummer\
+			
+		\end{flushright}
+	\end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today}
+
+\vfill\vfill
+	\includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+
+\vfill
+\end{titlepage}
+%%%%%     CHAPTERS     %%%%%
+\hspace{0.02cm}
+
+\begin{bluebox}
+In this exercise, we assume that the lifetime (measured in years) of phones follows an exponential distribution, and that we have observed the lifetimes of 10 phones.  
+We are interested in testing the null hypothesis that the mean lifetime $\mu$ of phones is 2 years, against the alternative hypothesis that the mean lifetime is strictly less than 2 years.\\
+\textit{Hint:} Use Theorem B from weekly sheet 8.
+\end{bluebox}
+\subsubsection*{
+Formulate the model described above and the corresponding hypotheses mathematically, and relate $\mu$ to the parameter of the exponential distribution.  
+}
+We have 10 independant observations $X_1, X_2, \ldots, X_{10}$ from an exponential distribution with parameter $\lambda > 0$. The probability density function of an exponential distribution is given by
+\[
+f(x; \lambda) = \lambda e^{-\lambda x}, \quad x > 0.
+\]
+The mean of an exponential distribution is given by $\mu = \frac{1}{\lambda}$\\
+With this we set up our hypotheses:
+\[H_0: \mu = 2 \quad \text{vs} \quad H_1: \mu < 2\]
+or in terms of $\lambda$: (Please make a note if intermediate steps are needed)
+\[H_0: \lambda = \frac{1}{2} \quad \text{vs} \quad H_1: \lambda > \frac{1}{2}\]
+\begin{bluebox}
+Let $W$ denote the sample mean of our 10 observations, and let $c > 0$ be a positive number. We will now construct an exact (i.e., non-asymptotic) test for the null hypothesis as follows:  
+Accept the null hypothesis if $W \geq c$, and otherwise reject it.
+\end{bluebox}
+\subsubsection*{
+Find the value of $c$ such that the test has a significance level of $\alpha = 0.05$. 
+}
+Re-iterating what the problem states, we have the test:
+\[\text{Accept } H_0 \text{ if } W \geq c, \text{ else reject } H_0\]
+For this we need to find $W$ to isolate $c$ and express it in a way we can work with.\\
+We start by finding the distribution of $W$.\\
+By definition we define $W = \bar{X}$:
+\[
+W = \frac{1}{n}\sum_{i=1}^{n} X_i = \frac{1}{10}\sum_{i=1}^{10} X_i
+\]
+And since it's a sum of exponential dsitribution, we can use Theorem B from 'Ugeseddel 8', which essentially states:
+\[
+X \sim \mathrm{exponential}(\lambda) \implies \sum_{i=1}^{n} X_i \sim \mathrm{gamma}(n, \lambda)
+\]
+We can use that to further define $W$
+\[
+W = \frac{1}{10} S \quad \text{for } S \sim \mathrm{gamma}(10, \lambda)
+\]
+Here it's important to remember the rules for scaling a gamma distribution, which leaves us with:
+\[
+W \sim \mathrm{gamma}(10, 10 \lambda)
+\]
+Now, for a significance level of $\alpha = 0.05$ we have:
+\[P(\text{Reject } H_0 | H_0 \text{ true}) = P(W < c | \lambda = \frac{1}{2}) = 0.05
+\]
+Which reminds us of the definition of the CDF $P(X \leq x)$, but it can also be written as:
+\[
+F_X(x) = P(X < x) - P(X = x) 
+\]
+since $P(X = x) = 0$ for continuous distributions, we have:
+\[
+F_W(c) = P(W < c) = 0.05
+\]
+With this we can find $c$ using the inverse CDF in R using the command:
+\[
+\text{qgamma(0.05, shape = 10, rate = 5)}
+\]
+Which gives us:
+\[c \approx 1.085\]
+This gives us a more complete test:
+\[\text{Accept } H_0 \text{ if } W \geq 1.085, \text{ else reject } H_0\]
+
+\subsubsection*{
+Now assume that we have observed the lifetimes of 1000 phones. Find the value of $c$ such that the test again has a significance level of $\alpha = 0.05$, and compare the result with the one obtained in previous question
+}
+This part here is interesting in that we can use the same approach as before but with different parameters.\\
+So we have:
+\[
+\text{qgamma(0.05, shape = 1000, rate = 500)}
+\]
+Which gives us:
+\[
+c \approx 1.897
+\]
+Something important to note here is that, per the 'Weak Law of Large Nummbers' our sample mean will converge to the true mean as $n$ approaches infinity.\\
+So with a larger $n$ we would see and expect $c$ to be closer to the true mean of 2, which is the trend we see when comparing the two c values. 
+\printbibliography% This prints the bibliography
+\end{document}
