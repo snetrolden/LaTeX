@@ -160,7 +160,7 @@ The code used to define the signal is section \textsc{Signal line 4-9} in the Ap
         \caption{The signal without noise.}
 \end{figure}
 \subsection*{b - Adding Noise}
-The code defining the noise and the noisy signal can be found in section \textsc{Noise line 11-14} and plotting is in section \textsc{FIGURE 2.5 line 59-64}
+The code defining the noise and the noisy signal can be found in section \textsc{Noise line 11-14} and plotting is in section \textsc{FIGURE 2 line 59-64}
 \begin{figure}[H]
         \centering
         \includegraphics[width=0.6\textwidth]{noise.png}
@@ -178,7 +178,7 @@ Top Left Corner of Matrix A:
  [0.   0.   0.   0.33 0.33]]
 \end{lstlisting}
 \subsection*{d - Reducing Noise with Matrix A}
-section \textsc{Figure 2 line 47-57}.
+section \textsc{Figure 3 line 47-57}.
 \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{Figure_2.png}
@@ -187,21 +187,21 @@ section \textsc{Figure 2 line 47-57}.
 \noindent The reason this works is that by multiplying the noisy signal with matrix A, we are in a sense taking the average of each point with its neighbors, this essentially smooths out small random fluctuations in the signal AKA 'noise', while still keeping the structure semi-intact.
 
 \subsection*{e}
-For this section we look at the code in section \textsc{MATRIX B line 26-32} and \textsc{Figure 3 line 67-77}.
+For this section we look at the code in section \textsc{MATRIX B line 26-32} and \textsc{Figure 4 line 66-77}.
 \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{Figure_3.png}
         \caption{The reduced noise with matrix A and B, compared with the clean signal from Figure 1.}
 \end{figure}
+It is a bit unclear wether Matrix B is a better noise reducer than Matrix A or not, since it appears to make a better reduction in some areas but worse in others. It's clear that the reduction appears to be more aggressive, which is expected since Matrix B takes the average of more points and weighs them differently, which results in a better reduction  of noise but also reduction of the actual signal, which isn't what we want.\\\\
 
-This next figures is covered by section \textsc{FIGURE 4 line 78-84}
+This next figures is covered by section \textsc{FIGURE 5 line 78-84}
 \begin{figure}[H]
         \centering
         \includegraphics[width=0.8\textwidth]{Figure_4.png}
-        \caption{The reduced noise with matrix B for two different noise realizations.}
+        \caption{The reduced noise with matrix B for two different noise inputs on the Signal.}
 \end{figure}
-
-
+The above comparison shows that the noise reduction is't deterministic, since noise is random, and reductions will differ based on the noise, but it does appear to reduce noise in both cases which, in my undeniable expertise, verifies that Matrix B can be used to reduce abitrary noise. 
 
 
 %put code in the appendix and refer to it here
@@ -254,7 +254,7 @@ fig1, ax1 = plt.subplots()
 ax1.plot(x, y)
 ax1.set_title('Signal without noise')
 
-# FIGURE 2 - comparing signal with noise to reduced noise (with A)
+# FIGURE 3 - comparing signal with noise to reduced noise (with A)
 fig2, (ax2, ax3) = plt.subplots(1, 2)
 ax2.plot(x, y_noisy, alpha= 0.7, label='Signal with Noise')
 ax2.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
@@ -266,14 +266,14 @@ ax3.set_title('Reduced Noise with Matrix A')
 ax3.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
 ax3.legend(loc='lower left')
 
-# Figure 2.5 - Only Noise
+# Figure 2 - Only Noise
 fig21, ax2 = plt.subplots()
 ax2.plot(x, y_noisy, alpha= 0.7, label='Signal with Noise')
 ax2.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
 ax2.set_title('Signal with random noise')
 ax2.legend(loc='lower left')
 
-# FIGURE 3 - 
+# FIGURE 4 - 
 fig3, (ax5, ax4) = plt.subplots(1, 2)
 ax5.plot(x, Ay_noisy, alpha=0.7, label='Matrix A')
 ax5.set_title('Reduced Noise with Matrix A')
@@ -285,7 +285,7 @@ ax4.set_title('Reduced Noise with Matrix B')
 ax4.plot(x,y, color='black', label='Clean', linestyle='--', linewidth=0.7)
 ax4.legend(loc='lower left')
 
-# FIGURE 4
+# FIGURE 5
 fig4, (ax6, ax7) = plt.subplots(1, 2)
 ax6.plot(x, By_noisy) 
 ax6.set_title('Matrix B (Noise 1)')

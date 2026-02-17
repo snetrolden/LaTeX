@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1770636492.25297 "main.bcf" "main.bbl" "main" 1771252013.09833 0
-  "main.bcf" 1771252012 108551 70da8deeb7263703667d6229a7ffeac6 "pdflatex"
+["biber main"] 1770636492.25297 "main.bcf" "main.bbl" "main" 1771325351.53454 0
+  "main.bcf" 1771325350 108551 70da8deeb7263703667d6229a7ffeac6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1771252007.48089 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_2/main.tex" "main.pdf" "main" 1771252013.09952 0
+["pdflatex"] 1771325344.56973 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_2/main.tex" "main.pdf" "main" 1771325351.53568 0
   "Aarhus_University_seal.png" 1756119290 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761583268 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1000.pk" 1770300520 9492 6e48b0933163860cee756c1c8ab905e0 ""
@@ -280,12 +280,12 @@
   "Figure_2.png" 1771249049 71758 7b0a46c1c0e110c4355e9e87a4f1dce3 ""
   "Figure_3.png" 1771249043 68259 53163203c614758f7dc8e062670c5258 ""
   "Figure_4.png" 1771249035 42555 26fb1a36aaa0617389d69531f14b79d7 ""
-  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_2/main.tex" 1771252000 9110 34ae5301a88a50d8fa329f4e7885d265 ""
-  "main.aux" 1771252012 1392 97b203097e542b9ae95535f27ac58ed4 "pdflatex"
+  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_2/main.tex" 1771325343 9836 4a6babb4eaf7a09881aa3c1a8972754e ""
+  "main.aux" 1771325350 1400 a3dfb14f27063bf6ee780feefd62fcbd "pdflatex"
   "main.bbl" 1770636511 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.out" 1771252011 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1771252012 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1771252000 9110 34ae5301a88a50d8fa329f4e7885d265 ""
+  "main.out" 1771325348 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1771325350 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1771325343 9836 4a6babb4eaf7a09881aa3c1a8972754e ""
   "noise.png" 1771250241 49204 3b78ead227e94a06823af4ab0962e5b0 ""
   (generated)
   "main.aux"

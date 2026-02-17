@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  16 FEB 2026 15:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  17 FEB 2026 11:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1380,23 +1380,34 @@ Package pdftex.def Info: Figure_3.png  used on input line 193.
 
 
 [3 <./Figure_2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
 <Figure_4.png, id=60, 462.528pt x 346.896pt>
 File: Figure_4.png Graphic file (type png)
 <use Figure_4.png>
-Package pdftex.def Info: Figure_4.png  used on input line 200.
+Package pdftex.def Info: Figure_4.png  used on input line 201.
 (pdftex.def)             Requested size: 375.80544pt x 281.86818pt.
 
 
-[4 <./Figure_3.png> <./Figure_4.png>]
+[4 <./Figure_3.png>]
 
-[5]
+[5 <./Figure_4.png>]
+
+[6]
 
 LaTeX Warning: Empty bibliography on input line 305.
 
 
 
-[6]
-runsystem(latexminted cleantemp  --timestamp 20260216152647 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+[7]
+runsystem(latexminted cleantemp  --timestamp 20260217114905 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1412,17 +1423,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53233 strings out of 468134
- 1247957 string characters out of 5428804
- 2465026 words of memory out of 5000000
+ 53234 strings out of 468134
+ 1247963 string characters out of 5428804
+ 2558026 words of memory out of 5000000
  81007 multiletter control sequences out of 15000+600000
  637236 words of font info for 78 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,7n,101p,792b,2683s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Bilvagist\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (7 pages, 537593 bytes).
+Output written on main.pdf (8 pages, 540034 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 121 named destinations out of 1000 (max. 500000)
+ 250 PDF objects out of 1000 (max. 8388607)
+ 122 named destinations out of 1000 (max. 500000)
  43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
