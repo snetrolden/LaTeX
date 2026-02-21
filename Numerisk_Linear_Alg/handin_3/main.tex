@@ -108,7 +108,7 @@
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+    {\huge\bfseries Handin 3 }\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -143,12 +143,75 @@
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
 
-\section*{}
+\section*{Polynomials for days!}
+ 
+\subsection*{(a) Plotting like a Caveman}
+
+\subsection*{(b) System of equations, but make it polynomial}
+
+\subsection*{(c) Vandermonde, Vandermonde, Vandermonde}
+
+\subsection*{(d) Too many polynumials, not enough time}
+
+\subsection*{(e) Sherlock Holmes and the One Solution}
+
+\subsection*{(f) Math Tariffs}
+
+\subsection*{(g) Judicial Bias}
+
+
 
 
 
 %put code in the appendix and refer to it here
 \section*{Appendix}
-Clearly a misguided appendixed left redundant after its creator realized that the code was not that long and could be easily included in the main text without a kerfuffle.\\
+\begin{lstlisting}[language=Python, caption=Python code for handin 3, label=lst:code]
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# a
+time = np.array([2.0, 6.0, 9.0, 11.0, 12.0])
+temp = np.array([25.0, 35.0, 45.0, 65.0, 70.0])
+
+figA, drone = plt.subplots()
+drone.plot(time, temp, 'o-')
+drone.set_xlabel('Time(min)')
+drone.set_ylabel('Temepratur(◦C)')
+drone.set_title('Temeperatur of drone under operation #Ugly')
+
+
+
+# b 
+# Do this part on paper
+
+# c - polynomial interpolation
+
+a = np.vander(time, len(time)) # The lenght is equal to 5 which corresponds to the exercise, which gives us 4 degrees (0,1,2,3,4)
+
+# Augment and solve, This gives us the coefficients [a,b,c] see page 214 in notes
+coes = np.linalg.solve(a, temp)
+
+t = np.linspace(2.0, 12.0, 100)
+
+# This gives us p(x)
+y_vals = np.vander(t, len(time)) @ coes
+
+
+figC, vander = plt.subplots()
+vander.plot(time, temp, 'o', label = 'Data pointies')
+vander.plot(t, y_vals, label = '4 Degrees of Poly' )
+vander.set_xlabel('Time(min)')
+vander.set_ylabel('Temepratur(◦C)')
+
+
+
+# d
+# setup a a system of equaitons for both p_1 and p_2 and for checking the slope, take the derivative of them both,
+#subtract the derivates and set them to 0
+
+
+plt.show()
+\end{lstlisting}
 \printbibliography
 \end{document}
