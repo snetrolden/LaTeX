@@ -150,7 +150,7 @@
 \hspace{0.02cm}
 
 \section*{Polynomials for days!}
-As a postface, epilogue or early sequel to this piece of paper, the Author has become increasingly aware that making things pretty witty unicorn glitty, while keeping a formal tone, is consuming a lot of time, and is contrived for any lack of formality the reader might encounter. The Author urges the reader to use the following link if any discomfort arises in reading the paper. \href{https://www.youtube.com/watch?v=5wb5HWVh6Fs&list=RD5wb5HWVh6Fs&start_radio=1}{Emergency Witty Unicorn Hotline}
+As a postface, epilogue or early sequel to this piece of paper, the Author has become increasingly aware that making things pretty witty unicorn glitty, while keeping a formal tone, is consuming a lot of time, and is contrite for any lack of formality the reader might encounter. The Author urges the reader to use the following link if any discomfort arises in reading the paper. \href{https://www.youtube.com/watch?v=5wb5HWVh6Fs&list=RD5wb5HWVh6Fs&start_radio=1}{Emergency Witty Unicorn Hotline}
  
 \subsection*{(a) Plotting like a Caveman}
 Author goes plot plot with python
@@ -291,6 +291,8 @@ With this it is now possible to solve it and plot it, see Appendix \textsc{Line 
     \label{fig:d}
 \end{figure}
 \subsection*{(g) Judicial Bias}
+Comparing the plots from (b), (c) and (f) it's apparent from the get-go that (c) is arguably the worst fit, since forcing a 4 degree polynomial through all the points seems make the polynomial swing/oscillate beteween some of the points. Comparatively to the other two, (b) and (f) seems to fit what we expect from the data, a steady increase in temeprature.\\
+Between (b) and (f), the Author thinks (f) is a better fit since it fits all the data points while keeping the trend of a steady increase between the points, while (b) only accounts for the last three data points.
 
 
 
@@ -317,7 +319,7 @@ A[1,:] -= A[0,:]      # R_2 -> R_2 - R_1
 A[2,:] -= A[0,:]      # R_3 -> R_3 - R_1
 A[1,:] = (1/2)*A[1,:] # R_2 -> 1/2*R_2
 A[2,:] -= 3*A[1,:]    # R_3 -> R_3 - 3R_2
-tB = np.linspace(9.0, 12.0, 100)
+tB = np.linspace(2.0, 12.0, 100)
 
 y_valsB = (-210)+(130/3)*tB -(5/3)*tB**2 # 't' is the x values
 

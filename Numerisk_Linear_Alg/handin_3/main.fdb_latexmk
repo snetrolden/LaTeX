@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1771769968.61445 "main.bcf" "main.bbl" "main" 1771933151.81368 0
-  "main.bcf" 1771933150 108148 b2aaa3c1b48a63ed75757efc72323e63 "pdflatex"
+["biber main"] 1771769968.61445 "main.bcf" "main.bbl" "main" 1771934942.38154 0
+  "main.bcf" 1771934941 108148 b2aaa3c1b48a63ed75757efc72323e63 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1771933144.39852 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_3/main.tex" "main.pdf" "main" 1771933151.81524 0
+["pdflatex"] 1771934935.81493 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_3/main.tex" "main.pdf" "main" 1771934942.38345 0
   "Aarhus_University_seal.png" 1756119290 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761583268 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1000.pk" 1770300520 9492 6e48b0933163860cee756c1c8ab905e0 ""
@@ -280,15 +280,15 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
   "Figure_1.png" 1771926910 22569 12a91361680f3628180109b627253fe5 ""
-  "Figure_2.png" 1771926920 24005 152edc87346a20e08033400fbf89c9bc ""
+  "Figure_2.png" 1771933751 29315 32ce9d47ac3ceec8f86a3e67f4d41c41 ""
   "Figure_3.png" 1771926927 26247 647147dc00b785746d690979381e1553 ""
   "Figure_4.png" 1771926932 26514 075c71da0abdc77c3574f8f842850cb7 ""
-  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_3/main.tex" 1771933142 13828 cd67ca1e0353d5478a3e60309c5564ed ""
-  "main.aux" 1771933150 2110 cb84409235fbd39f3f748cf8b1509a0e "pdflatex"
+  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_3/main.tex" 1771934929 14402 523ad76a8f46ce39de1c23c12b002366 ""
+  "main.aux" 1771934941 2110 48f810b8c4f280419589864c052e9663 "pdflatex"
   "main.bbl" 1771769993 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.out" 1771933149 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1771933150 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1771933142 13828 cd67ca1e0353d5478a3e60309c5564ed ""
+  "main.out" 1771934939 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1771934941 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1771934929 14402 523ad76a8f46ce39de1c23c12b002366 ""
   (generated)
   "main.aux"
   "main.bcf"
