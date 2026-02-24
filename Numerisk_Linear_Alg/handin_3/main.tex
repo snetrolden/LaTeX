@@ -74,6 +74,14 @@
 
 \lstset{style=mystyle}
 
+% For pmatrix and augmented matrices
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
 
 
 
@@ -148,14 +156,94 @@
 \subsection*{(a) Plotting like a Caveman}
 
 \subsection*{(b) System of equations, but make it polynomial}
+Settign up system of equation for $p_1$, $p_2$ and $p_3$, going through the last three data points:
+\begin{align}
+    &p_1(9) = a_1 + b_1 \cdot 9 + c_1 \cdot 9^2 = 45 \\
+    &p_1(11) = a_1 + b_1 \cdot 11 + c_1 \cdot 11^2 = 65 \\
+    &p_1(12) = a_1 + b_1 \cdot 12 + c_1 \cdot 12^2 = 70
+\end{align}
+This give the following augmened matrix
+\[
+\begin{pmatrix}
+\begin{array}{ccc|c}
+1 & 9 & 81 & 45 \\
+1 & 11 & 121 & 65 \\
+1 & 12 & 144 & 70 \\
+\end{array}
+\end{pmatrix}
+\]
+Now to reduce it to something useful, by doing to following operations:
+\begin{align*}
+    &R_2 \to R_2 - R_1 \\
+    &R_3 \to R_3 - R_1 \\
+    &R_2 \to \frac{1}{2} R_2 \\
+    &R_3 \to R_3 - 3R_2
+\end{align*}
+This gives us the following matrix:
+\[
+\begin{pmatrix}
+\begin{array}{ccc|c}
+1 & 9 & 81 & 45 \\
+0 & 1 & 20 & 10 \\
+0 & 0 & 3 & -5 \\
+\end{array}
+\end{pmatrix}
+\]
+With this we can easily find $a_1$, $b_1$ and $c_1$ by back substitution, which gives us $a_1 = -210$, $b_1 = 43.3$ and $c_1 = -\frac{5}{3}$.
+
+
 
 \subsection*{(c) Vandermonde, Vandermonde, Vandermonde}
 
+
 \subsection*{(d) Too many polynumials, not enough time}
+Setting up the system of equations for a new set of $p_1$ and $p_2$:
+
+\begin{align}
+    &p_1(2) = a_1 + b_1 \cdot 2 + c_1 \cdot 2^2 + d_1 \cdot 2^3 = 25 \\
+    &p_1(6) = a_1 + b_1 \cdot 6 + c_1 \cdot 6^2 + d_1 \cdot 6^3 = 35 \\
+    &p_1(9) = a_1 + b_1 \cdot 9 + c_1 \cdot 9^2 + d_1 \cdot 9^3 = 45 
+\end{align}
+
+\begin{align}
+    &p_2(9) = a_2 + b_2 \cdot 9 + c_2 \cdot 9^2 + d_2 \cdot 9^3 = 45 \\
+    &p_2(11) = a_2 + b_2 \cdot 11 + c_2 \cdot 11^2 + d_2 \cdot 11^3 = 65 \\
+    &p_2(12) = a_2 + b_2 \cdot 12 + c_2 \cdot 12^2 + d_2 \cdot 12^3 = 70 
+\end{align}
+
+To find where $p_1'(9) = p_2'(9)$, find the derivates then set them equal to each other and then group them on the left side.
+\begin{align*}
+    &p_1'(9) = b_1 + 2c_1 \cdot 9 + 3d_1 \cdot 9^2 \\
+    &p_2'(9) = b_2 + 2c_2 \cdot 9 + 3d_2 \cdot 9^2 \\
+    &b_1 + 2c_1 \cdot 9 + 3d_1 \cdot 9^2 = b_2 + 2c_2 \cdot 9 + 3d_2 \cdot 9^2\\
+    &b_1 + 2c_1 \cdot 9 + 3d_1 \cdot 9^2 - b_2 - 2c_2 \cdot 9 - 3d_2 \cdot 9^2 = 0
+\end{align*}
+Then the system can be erected for $[a_1, b_1, c_1, d_1, a_2, b_2, c_2, d_2]$
+\[
+\begin{pmatrix}
+\begin{array}{cccccccc|c}
+1 & 2 & 4 & 8 & 0 & 0 & 0 & 0 & 25 \\
+1 & 6 & 36 & 216 & 0 & 0 & 0 & 0 & 35 \\
+1 & 9 & 81 & 729 & 0 & 0 & 0 & 0 & 45 \\
+0 & 0 & 0 & 0 & 1 & 9 & 81 & 729 & 45 \\
+0 & 0 & 0 & 0 & 1 & 11 & 121 & 1331 & 65 \\
+0 & 0 & 0 & 0 & 1 & 12 & 144 & 1728 & 70 \\
+0 & 1 & 18 & 243 & 0 & -1 & -18 & -243 & 0 \\
+\end{array} 
+\end{pmatrix} 
+\]
+
 
 \subsection*{(e) Sherlock Holmes and the One Solution}
-
+The above systems is consistent, since no equation contradicts another. Altough it is not unique since there are 7 equations with 8 unknowns, which means the system is underdetermined and has infinitely many solutions.
 \subsection*{(f) Math Tariffs}
+The assignment recommends imposing the condition $p_1'(0.0) = 0$, which will be used.\\
+This conditions impies the slope at $t = 0$ is 0, which means the drone starts with no heat increase, which is a resonable assumption for a drone that hasn't started flying yet.\\
+If we look at the derivative of $p_1$ and set $x = 0$ we get:
+\begin{equation}
+    p_1'(0) = b_1 + 2c_1 \cdot 0 + 3d_1 \cdot 0^2 = b_1
+\end{equation}
+This means that $b_1$ must be 0, which reduces the number of unknowns from 8 to 7. This means that the system of equations now have and equal number of equations and uknowns making it unique. Note that consistency of the system was argued for in the previous section.
 
 \subsection*{(g) Judicial Bias}
 
@@ -170,48 +258,107 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# a
+# ...................a
 time = np.array([2.0, 6.0, 9.0, 11.0, 12.0])
 temp = np.array([25.0, 35.0, 45.0, 65.0, 70.0])
 
-figA, drone = plt.subplots()
-drone.plot(time, temp, 'o-')
-drone.set_xlabel('Time(min)')
-drone.set_ylabel('Temepratur(◦C)')
-drone.set_title('Temeperatur of drone under operation #Ugly')
+# -------------------b 
+# System of equations
+A = np.array([[1,9,81, 45],
+                [1,11,121, 65],
+                [1,12,144, 70]])
+# Row operations
+A[1,:] -= A[0,:]      # R_2 -> R_2 - R_1
+A[2,:] -= A[0,:]      # R_3 -> R_3 - R_1
+A[1,:] = (1/2)*A[1,:] # R_2 -> 1/2*R_2
+A[2,:] -= 3*A[1,:]    # R_3 -> R_3 - 3R_2
+tB = np.linspace(2.0, 12.0, 100)
+
+y_valsB = (-210)+43.3*tB -(5/3)*tB**2 # 't' is the x values
 
 
 
-# b 
-# Do this part on paper
-
-# c - polynomial interpolation
+# ----------c - polynomial interpolation
 
 a = np.vander(time, len(time)) # The lenght is equal to 5 which corresponds to the exercise, which gives us 4 degrees (0,1,2,3,4)
 
 # Augment and solve, This gives us the coefficients [a,b,c] see page 214 in notes
-coes = np.linalg.solve(a, temp)
+coefficientsC = np.linalg.solve(a, temp)
 
-t = np.linspace(2.0, 12.0, 100)
+# give it some more 'doug' to work with
+tC = np.linspace(2.0, 12.0, 100)
 
 # This gives us p(x)
-y_vals = np.vander(t, len(time)) @ coes
-
-
-figC, vander = plt.subplots()
-vander.plot(time, temp, 'o', label = 'Data pointies')
-vander.plot(t, y_vals, label = '4 Degrees of Poly' )
-vander.set_xlabel('Time(min)')
-vander.set_ylabel('Temepratur(◦C)')
+y_valsC = np.vander(tC, len(time)) @ coefficientsC
 
 
 
-# d
+# -----------d One solution to rule them all
 # setup a a system of equaitons for both p_1 and p_2 and for checking the slope, take the derivative of them both,
 #subtract the derivates and set them to 0
+
+# -----------e ALAKAZAM!
+# time to construct big ass, bitch ass, matrix...fml
+iCri_X = np.zeros((8,8))
+iCri_Res = np.array([25,35,45,45,65,70,0,0])
+
+iCri_X[0,:] =[1,2,4,8,0,0,0,0]
+iCri_X[1,:] =[1,6,36,216,0,0,0,0]
+iCri_X[2,:] =[1,9,81,729,0,0,0,0]
+iCri_X[3,:] =[0,0,0,0,1,9,81,729]
+iCri_X[4,:] =[0,0,0,0,1,11,121,1331]
+iCri_X[5,:] =[0,0,0,0,1,12,144,1728]
+iCri_X[6,:] =[0,1,18,243,0,-1,-18,-243]
+iCri_X[7,1] =1 # The constraint b_1 = 0
+#No need to vander before solve since our shiz is already a polynomial matrix
+coefficients = np.linalg.solve(iCri_X, iCri_Res)
+
+# splitting since we need to differenciate between p_1 and p_2 
+t1 = np.linspace(2,9,50) # p_1
+t2 = np.linspace(9,12,50) # p_2
+
+
+y1 = np.vander(t1, 4, increasing=True) @ coefficients[:4]
+y2 = np.vander(t2, 4, increasing=True) @ coefficients[4:]
+
+
+#-------------PLotting-------------#
+# Exercise a
+figA, drone = plt.subplots()
+drone.plot(time, temp, 'o-')
+drone.set_xlabel('Time(min)')
+drone.set_ylabel('Temepratur(C)')
+drone.set_title('Temeperatur of drone over time #Ugly')
+
+# Exercise b
+figb, b = plt.subplots()
+b.plot(time, temp, 'o', label = 'Data pointies' )
+b.plot(tB,y_valsB, label = 'The last 3 poly points' ) 
+b.set_xlabel('Time(min)')
+b.set_ylabel('Temepratur(C)')
+b.set_title('Polynomial passing through the last 3 data points')
+
+# Exercise c
+figB, vander = plt.subplots()
+vander.plot(time, temp, 'o', label = 'Data pointies')
+vander.plot(tC, y_valsC, label = '4 Degrees of Poly' )
+vander.set_xlabel('Time(min)')
+vander.set_ylabel('Temepratur(C)')
+vander.set_title('High Polynomials')
+
+
+# Exercise f
+figC, big = plt.subplots()
+big.plot(t1, y1, label='p1(x)')
+big.plot(t2, y2, label='p2(x)')
+big.plot(time, temp, 'o', label = 'Data pointies')
+big.set_xlabel('Time(min)')
+big.set_ylabel('Temepratur(C)')
+big.set_title('Splicing polynomials and fitting them together ')
+
+
 
 
 plt.show()
 \end{lstlisting}
-\printbibliography
 \end{document}
