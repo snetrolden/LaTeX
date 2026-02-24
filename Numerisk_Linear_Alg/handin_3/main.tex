@@ -30,7 +30,6 @@
 \usepackage{gensymb}
 \usepackage{float}
 \usepackage[shortlabels]{enumitem}
-\usepackage{enumitem}
 \setlistdepth{9}
 \usepackage{biblatex} %Imports biblatex package
 \addbibresource{references.bib}
@@ -44,7 +43,6 @@
 \usepackage[labelfont=bf, font=small]{caption}
 \usepackage{upgreek}
 \usepackage{tikz}
-\usepackage{xcolor}
 \usepackage{listings}
 
 % style sheet for code
@@ -152,17 +150,25 @@
 \hspace{0.02cm}
 
 \section*{Polynomials for days!}
+As a postface, epilogue or early sequel to this piece of paper, the Author has become increasingly aware that making things pretty witty unicorn glitty, while keeping a formal tone, is consuming a lot of time, and is contrived for any lack of formality the reader might encounter. The Author urges the reader to use the following link if any discomfort arises in reading the paper. \href{https://www.youtube.com/watch?v=5wb5HWVh6Fs&list=RD5wb5HWVh6Fs&start_radio=1}{Emergency Witty Unicorn Hotline}
  
 \subsection*{(a) Plotting like a Caveman}
-
+Author goes plot plot with python
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_1.png}
+    \caption{Plot of the data points}
+    \label{fig:a}
+\end{figure}
+The code for the plot can be found in the appendix, \textsc{Line 5-7 and 70-75}
 \subsection*{(b) System of equations, but make it polynomial}
-Settign up system of equation for $p_1$, $p_2$ and $p_3$, going through the last three data points:
-\begin{align}
+Setting up system of equation for $p_1$, $p_2$ and $p_3$, going through the last three data points:
+\begin{align*}
     &p_1(9) = a_1 + b_1 \cdot 9 + c_1 \cdot 9^2 = 45 \\
     &p_1(11) = a_1 + b_1 \cdot 11 + c_1 \cdot 11^2 = 65 \\
     &p_1(12) = a_1 + b_1 \cdot 12 + c_1 \cdot 12^2 = 70
-\end{align}
-This give the following augmened matrix
+\end{align*}
+This give the following augmented matrix
 \[
 \begin{pmatrix}
 \begin{array}{ccc|c}
@@ -172,7 +178,7 @@ This give the following augmened matrix
 \end{array}
 \end{pmatrix}
 \]
-Now to reduce it to something useful, by doing to following operations:
+Now to reduce it to something useful, by doing the following operations:
 \begin{align*}
     &R_2 \to R_2 - R_1 \\
     &R_3 \to R_3 - R_1 \\
@@ -189,27 +195,44 @@ This gives us the following matrix:
 \end{array}
 \end{pmatrix}
 \]
-With this we can easily find $a_1$, $b_1$ and $c_1$ by back substitution, which gives us $a_1 = -210$, $b_1 = 43.3$ and $c_1 = -\frac{5}{3}$.
+With this we can easily find $a_1$, $b_1$ and $c_1$ by back substitution, which gives us $a_1 = -210$, $b_1 = 43.3$ and $c_1 = -\frac{5}{3}$. The code for this can be found in the appendix, \textsc{Line 10-18}.\\
+And then we plot!
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_2.png}
+    \caption{Plot of the polynomial running through the last three data points}
+    \label{fig:b}
+\end{figure}
+the code for the plot can be found in the appendix, \textsc{Line 19-21 and 76-83}
 
 
 
 \subsection*{(c) Vandermonde, Vandermonde, Vandermonde}
-
+Okay here the Author gets a bit unsure, since the use of the Vandermonde matrix is used but isn't explained throughly until chapter 16 in the notes, which hasn't been covered yet.\\
+The Vandermonde matrix essentially takes the x values and creates a matrix where each row $i$ is the x values raised to the power of $i$, augment this with the y values and solve for the coefficients via \textsc{np.vander()} and \textsc{np.linalg.solve()} respectively, see Appendix \textsc{Line 25-36}.\\
+This should give the y values that allows the plotting of the polynomial of 4 degrees through all points, which is shown below. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_3.png}
+    \caption{Plot of the polynomial of 4 degrees through all points}
+    \label{fig:c}
+\end{figure}
+For plotting see Appendix \textsc{Line 84-91}
 
 \subsection*{(d) Too many polynumials, not enough time}
 Setting up the system of equations for a new set of $p_1$ and $p_2$:
 
-\begin{align}
+\begin{align*}
     &p_1(2) = a_1 + b_1 \cdot 2 + c_1 \cdot 2^2 + d_1 \cdot 2^3 = 25 \\
     &p_1(6) = a_1 + b_1 \cdot 6 + c_1 \cdot 6^2 + d_1 \cdot 6^3 = 35 \\
     &p_1(9) = a_1 + b_1 \cdot 9 + c_1 \cdot 9^2 + d_1 \cdot 9^3 = 45 
-\end{align}
+\end{align*}
 
-\begin{align}
+\begin{align*}
     &p_2(9) = a_2 + b_2 \cdot 9 + c_2 \cdot 9^2 + d_2 \cdot 9^3 = 45 \\
     &p_2(11) = a_2 + b_2 \cdot 11 + c_2 \cdot 11^2 + d_2 \cdot 11^3 = 65 \\
     &p_2(12) = a_2 + b_2 \cdot 12 + c_2 \cdot 12^2 + d_2 \cdot 12^3 = 70 
-\end{align}
+\end{align*}
 
 To find where $p_1'(9) = p_2'(9)$, find the derivates then set them equal to each other and then group them on the left side.
 \begin{align*}
@@ -235,16 +258,38 @@ Then the system can be erected for $[a_1, b_1, c_1, d_1, a_2, b_2, c_2, d_2]$
 
 
 \subsection*{(e) Sherlock Holmes and the One Solution}
-The above systems is consistent, since no equation contradicts another. Altough it is not unique since there are 7 equations with 8 unknowns, which means the system is underdetermined and has infinitely many solutions.
+The above systems in (d) is consistent, since no equation contradicts another. Altough it is not unique since there are 7 equations with 8 unknowns, which means the system is underdetermined and has infinitely many solutions.\\
+The Author does not want to argue for consistency, since it makes the Author sad.
 \subsection*{(f) Math Tariffs}
 The assignment recommends imposing the condition $p_1'(0.0) = 0$, which will be used.\\
-This conditions impies the slope at $t = 0$ is 0, which means the drone starts with no heat increase, which is a resonable assumption for a drone that hasn't started flying yet.\\
+This conditions implies the slope at $t = 0$ is 0, which means the drone starts with no heat increase, which is a resonable assumption for a drone that hasn't started flying yet.\\
 If we look at the derivative of $p_1$ and set $x = 0$ we get:
 \begin{equation}
     p_1'(0) = b_1 + 2c_1 \cdot 0 + 3d_1 \cdot 0^2 = b_1
 \end{equation}
-This means that $b_1$ must be 0, which reduces the number of unknowns from 8 to 7. This means that the system of equations now have and equal number of equations and uknowns making it unique. Note that consistency of the system was argued for in the previous section.
-
+This means that $b_1$ must be 0, which reduces the number of unknowns from 8 to 7. This means that the system of equations now have and equal number of equations and unknowns making it unique, according to chapter 6.4 in the notes. Note that consistency of the system was argued for in the previous section.
+The resulting augmented matrix is the same as the one in (d) but with an extra row for the new conditon, see Appendix \textsc{Line 44-56} for the code:
+\[
+\begin{pmatrix}
+\begin{array}{cccccccc|c}
+1 & 2 & 4 & 8 & 0 & 0 & 0 & 0 & 25 \\
+1 & 6 & 36 & 216 & 0 & 0 & 0 & 0 & 35 \\
+1 & 9 & 81 & 729 & 0 & 0 & 0 & 0 & 45 \\
+0 & 0 & 0 & 0 & 1 & 9 & 81 & 729 & 45 \\
+0 & 0 & 0 & 0 & 1 & 11 & 121 & 1331 & 65 \\
+0 & 0 & 0 & 0 & 1 & 12 & 144 & 1728 & 70 \\
+0 & 1 & 18 & 243 & 0 & -1 & -18 & -243 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array} 
+\end{pmatrix} 
+\]
+With this it is now possible to solve it and plot it, see Appendix \textsc{Line 57-66 and 94-102} for the code and plotting of Figure 4 respectively.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_4.png}
+    \caption{Plot of the spliced polynomials with the new condition}
+    \label{fig:d}
+\end{figure}
 \subsection*{(g) Judicial Bias}
 
 
@@ -272,9 +317,9 @@ A[1,:] -= A[0,:]      # R_2 -> R_2 - R_1
 A[2,:] -= A[0,:]      # R_3 -> R_3 - R_1
 A[1,:] = (1/2)*A[1,:] # R_2 -> 1/2*R_2
 A[2,:] -= 3*A[1,:]    # R_3 -> R_3 - 3R_2
-tB = np.linspace(2.0, 12.0, 100)
+tB = np.linspace(9.0, 12.0, 100)
 
-y_valsB = (-210)+43.3*tB -(5/3)*tB**2 # 't' is the x values
+y_valsB = (-210)+(130/3)*tB -(5/3)*tB**2 # 't' is the x values
 
 
 
@@ -297,7 +342,7 @@ y_valsC = np.vander(tC, len(time)) @ coefficientsC
 # setup a a system of equaitons for both p_1 and p_2 and for checking the slope, take the derivative of them both,
 #subtract the derivates and set them to 0
 
-# -----------e ALAKAZAM!
+# -----------f ALAKAZAM!
 # time to construct big ass, bitch ass, matrix...fml
 iCri_X = np.zeros((8,8))
 iCri_Res = np.array([25,35,45,45,65,70,0,0])
@@ -329,22 +374,22 @@ drone.plot(time, temp, 'o-')
 drone.set_xlabel('Time(min)')
 drone.set_ylabel('Temepratur(C)')
 drone.set_title('Temeperatur of drone over time #Ugly')
-
 # Exercise b
 figb, b = plt.subplots()
 b.plot(time, temp, 'o', label = 'Data pointies' )
-b.plot(tB,y_valsB, label = 'The last 3 poly points' ) 
+b.plot(tB,y_valsB, label = 'Polynomial running through the last 3 points' ) 
 b.set_xlabel('Time(min)')
 b.set_ylabel('Temepratur(C)')
 b.set_title('Polynomial passing through the last 3 data points')
-
+b.legend()
 # Exercise c
 figB, vander = plt.subplots()
 vander.plot(time, temp, 'o', label = 'Data pointies')
-vander.plot(tC, y_valsC, label = '4 Degrees of Poly' )
+vander.plot(tC, y_valsC, label = 'Polynomial of 4 degrees through all points' )
 vander.set_xlabel('Time(min)')
 vander.set_ylabel('Temepratur(C)')
 vander.set_title('High Polynomials')
+vander.legend()
 
 
 # Exercise f
@@ -355,7 +400,7 @@ big.plot(time, temp, 'o', label = 'Data pointies')
 big.set_xlabel('Time(min)')
 big.set_ylabel('Temepratur(C)')
 big.set_title('Splicing polynomials and fitting them together ')
-
+big.legend()
 
 
 
