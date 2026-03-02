@@ -1,0 +1,200 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Distributed Systems and Security}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+            Alexander\\
+            Thor \textsc{behrmann}
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+            \textbf{202408929}\\
+            \textbf{202410271}
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+\section*{Flooding and Ledgers}
+In this stage of evolution in our peer-to-peer network we have introduced Flooding and a Ledger system.\\
+The design is mainly the same with the exception of the following:
+\begin{itemize}
+    \item \textbf{Join Protocol:} This protocal is responsible for dynamically connecting all peers in the network when they join. Any joining peers sends a \textsc{GetPeers} message which create a two-way connection with the corresponding peer, which also sends a \textsc{PeerList} message back, which contains its address book for all peers it knows. The joining node then connects to any unknown nodes/address in the list, then floods the network with a \textsc{Join} message, updating all local address books.
+    \item \textbf{Flooding:} To dissemniate transactions and any announcements we use dedouplicating for the flooding by assigning every message a global unqiue \textsc{MsgID}. All peers maintian a local \textsc{seenMsgs} map/list, keeping track of recieved messages and forwards them or ignoring any messages it has already seen, preventing infinite loops (broadcast storms)
+    \item \textbf{Ledger:} The network now has a ledger containing the state of all accounts. Each peer has a local copy of this ledger which updates when a unique non-duplicate transaction is recieved. This version holds no bias towards overdrafts and executes any transactions delivered even if the accounts goes negative. Because the flooding mechanisme ensure every peer eventually receives every transactions once, the local ledger eventually converges to the same state, hence eventual consistencey. Note that this is not a perfect implementation which is explained later in the report.
+\end{itemize}
+\section*{How to run code}
+When code is unzipped, go into the terminal and make sure you are in the directory below
+\begin{lstlisting}
+    .\Handin_2
+\end{lstlisting}
+and to run the code use the following commands in the terminal
+\begin{lstlisting}
+    go build .
+    go run .
+\end{lstlisting}
+this builds and runs all necessary files, including \textsc{main.go} which is supposed to be \textsc{handin.go} (according to the exercise), but we prefere to to keep it as is, if this is pure blasphemy, please comment.
+\section*{Testing}
+besides reusing the automatic test from the previous handin, we haven't made any automatic testing yet for this version, but we have implemented some small checks in the \textsc{main.go} file by comparing the maps \textsc{p.ledger.Account} across the peers and also the size of the \textsc{p.peers} map to confirm eventual consistency in Ledgers and Flooding.\\
+Automatic testing for this version is currently on the Backlog.\\\\
+A lot of testing has been (proudly?) made while coding using print statements which has been commented out in this version.
+
+
+
+\section*{Deduplicating Flooding}
+We actually partly achieve Eventual Consistency, but only if the network is fully formed before any transaction are made, if a new peer joins after the transactions are made, Eventual Consistency fails hard.\\\\
+\noindent The reason it works is because we use the \textsc{seenMsgs} map which is forwarded once to every neighbor. In a fully connected network this guarantees every peer will eventually recieve the transactions and update its ledger, which leads to identical ledgers.\\
+But if a peer joins late, after transactions are completed, it will recieve the \textsc{seenMsgs} map but it won't update its ledger, syncing it with the other peers ledger. The new Peers ledger will be empty until further transactions are made, which means eventual consistency will never be achieve after this point.\\
+\section*{Negative Account}
+We don't believe it would the network would achieve eventual consistency if overdrafts are rejected.\\
+In peer-to-peer networks messsages arrive at differetn times and often out of order. If we reject overdrafts the ledgers would ruin any chance of consistency.\\
+Imagine this scenario: If we had a network consisting og Søren, Alex and Thor, where Søren had $100 kr.$ in everyones ledgers. If Søren wants to send $100 kr.$ to both Alex and Thor, then peer A and peer B creates a transactiosn each simultaneously. Depending on which peer first receives the transaction we get two scenario where, Thor has $100 kr.$ and Alex has $0 kr.$ OR Thor has $0 kr.$ and Alex has $100 kr.$ in all ledgers.\\
+Because peers process messages in differetn order and reject overdrafts, the ledgers will never converge, breaking eventual consistency.
+
+\section*{Backlog}
+\begin{itemize}
+    \item Automatic testing for transaction and eventual consistency
+    \item Update ledger for new peers after transaction has been executed
+    \item Pray TA won't get mad for not using his solution in previous feedback
+    \item More colorful/fun report (memes?)
+    \item Use of more technical terms.
+    \item Fix documentation and useless comments
+\end{itemize}
+
+\section*{AI usage}
+We used AI to help make part of \textsc{main.go} in this assignment since nobody had a good idea on how to send so many transactions to the peers, specifically the \textsc{sendTransactions(p *Peer)} function\\
+AI was also used in solving an issue with handling the unique IDs when sending the maps via \textsc{getPeerList(addr string)} in \textsc{peer.go}
+
+\printbibliography
+\end{document}

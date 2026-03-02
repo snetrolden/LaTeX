@@ -1,0 +1,172 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+
+
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus university}\\[1.5cm]
+\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\large Distributed Systems and Security}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries Exercise 6.1 }\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+            Alexander\\
+            Thor \textsc{behrmann}
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+            \textbf{202408929}\\
+            \textbf{202410271}
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+
+\section*{To Encrypt and then Sign  or to Sign an then Encrypt...That is the Question}
+The task is to argue which protocol doesn't satisfy the following safety policies:
+\begin{itemize}
+    \item When a request for information arrives, The database D should be able to determine which user sent
+the request.
+    \item A user should not be able to get get information about which data other users asked for.
+\end{itemize}
+The protocols that are given in the exercise are:
+
+\begin{align}
+&E_{pk_D}(R),\: S_{sk_A}(E_{pk_D}(R)), \: A   &\text{Encrypt then Sign}\\
+&E_{pk_D}(R, S_{sk_A}(R)), \: A                &\text{Sign then Encrypt}
+\end{align}
+It's assumed reader knows the syntax of the protocols.\\\\
+\noindent For a fast conclusion look to the protocol (1). This protocols tells the user to encrypt a request and then add their signature before sending it to the Database. It's assumed that attacks on the network traffic is possible, this means a datapack constructed from protocol (1) can be picked up by an attacker, likely another user, and be manipulated.\\
+If such an attack occured it would be possible to removed the current signature $S_{sk_A}$ and replace it with a new signature $S_{sk_B}$ and send it to the Database, which would recognise the attacking users signature and return the request $E_{pk_B}$ with the attacking users private key instead of the intended $E_{pk_A}$.\\
+This a clear break on the security policies in that the attacking user accessed another users request. Compare to protocol(2) where the signature is encryptd, anoher user can't manipulate the ciphertext in such a way to trick the database without destroying the datapacket.\\\\
+\noindent This tells us that in general, when it comes to authenticity and digital signatures, \textit{A digital signature commits the signer to exactly what was signed and nothing else} so in the case of protocol (1) The signature only commits to the ciphertext and not the actual request, which doesn't prove the signer owns/made the encrypted plaintext.\\
+So apply Singature to the planetext...always!
+
+
+\printbibliography
+\end{document}
