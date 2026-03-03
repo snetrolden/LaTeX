@@ -165,7 +165,7 @@ It's assumed reader knows the syntax of the protocols.\\\\
 If such an attack occured it would be possible to removed the current signature $S_{sk_A}$ and replace it with a new signature $S_{sk_B}$ and send it to the Database, which would recognise the attacking users signature and return the request $E_{pk_B}$ with the attacking users private key instead of the intended $E_{pk_A}$.\\
 This a clear break on the security policies in that the attacking user accessed another users request. Compare to protocol(2) where the signature is encryptd, anoher user can't manipulate the ciphertext in such a way to trick the database without destroying the datapacket.\\\\
 \noindent This tells us that in general, when it comes to authenticity and digital signatures, \textit{A digital signature commits the signer to exactly what was signed and nothing else} so in the case of protocol (1) The signature only commits to the ciphertext and not the actual request, which doesn't prove the signer owns/made the encrypted plaintext.\\
-So apply Singature to the planetext...always!
+So apply Singature to the plaintext...always!
 
 
 \printbibliography
