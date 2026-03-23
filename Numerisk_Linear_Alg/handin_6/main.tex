@@ -145,17 +145,115 @@
 
 \section*{Math done by a human}
 Consider the space of differentiable functions $f:[0,\pi] \to \mathbb{R}$ with the $L^2$ inner product
-\begin{equation*}
+\begin{equation} \label{l2}
     \langle f,g \rangle = \int_{0}^{\pi} f(x)g(x) \, dx.
-\end{equation*}
+\end{equation}
 \subsection*{Showing Orthogonality}
-For the given collection of functions
+For the given collection of functions defined on $x \in [0,\pi]$
+\begin{equation} \label{col}
+    \sin(x),\sin(2x),\hdots ,\sin(kx), \quad \text{For every integer } k > 0
+\end{equation}
+
+\noindent Using equation\eqref{l2} and applying the collection\eqref{col}, it's possible to express the inner product of collection as such:
+\begin{equation}
+    \int_{0}^{\pi} \sin(nx)\sin(mx) \, dx \quad \text{for }m \neq n 
+\end{equation}
+note the $m\neq n$ is used since $ \langle f,f \rangle$ is the norm.\\
+This integral can be made simpler by using the trigonometric identity 9.15~\cite{NUMLA}.
+\begin{equation*}
+     \int_{0}^{\pi} \frac{1}{2}[\cos((n-m)x)-\cos((n+m)x)] \, dx \quad \text{for }m \neq n 
+\end{equation*}
+then using the integral rules, by taking the constants out and splitting the integral.
+\begin{equation} \label{changed}
+    \frac{1}{2}[
+        \int_{0}^{\pi} \cos((n-m)x) \, dx - \int_{0}^{\pi} \cos((n+m)x) \, dx
+    ]
+\end{equation}
+ from here each integral can be evaluated, starting with the first one.\\
+ Considering the first integral from equation\eqref{changed}, $\cos((n-m)x)$ can be seen as a composite function on the form $f(g(x))$, where $f(u) = \cos(u)$ and $g(x) = (n-m)x$.\\
+ This means the integral can be evaluated by substitution. Let $u = (n-m)x$ and $du = (n-m)dx$, then express $dx$.
+ \begin{align*}
+    &du = (n-m)dx \\
+    &dx = \frac{1}{(n-m)}du
+ \end{align*}
+Note the limits also change to accomodate $u$, this is done by putting the value of the limits into $g(x)$, which gives.
+\begin{align*}
+    &g(\pi) = (n-m)(\pi) = \pi(n-m) \\
+    &g(0) = (n-m)(0) = 0
+\end{align*}
+then substitute the above finding into the respective integral that was chosen.
+\begin{equation*}
+    \int_{0}^{\pi} \cos((n-m)x) \, dx \to \int_{0}^{\pi(n-m)} \cos(u) \frac{1}{(n-m)} \, du
+\end{equation*}
+remember to take the constant out:
+\begin{equation} \label{single}
+    \frac{1}{(n-m)} \int_{0}^{\pi(n-m)} \cos(u) \, du
+\end{equation}
+now to integrate and evaluate \eqref{single}.
+\begin{align*}
+    &\frac{1}{(n-m)} [\sin(u)]_{0}^{\pi(n-m)}  \\
+ =\, &\frac{1}{(n-m)}(\sin((n-m)\pi) - \sin(0)) \\
+ = \, & \frac{1}{(n-m)}(0-0) \\
+ = \, & 0
+\end{align*}
+The reason for this is that $n,m\in k$ (integers) and $\sin(\pi) = 0$. Since any whole multiplier of $\pi$ is either a half (odd number) or whole (even number) rotation which, in Mr.$\sin()$ eyes, is still $0$.\\
+It's assumed $\sin(0)$ needs no explanation.\\\\
+With all that in order, the same can be shown for the second integral in equation\eqref{changed} resulting in:
+\begin{equation*}
+    \frac{1}{2}[0-0] = 0
+\end{equation*}
+which means the inner product of the collection\eqref{col} is $0$ meaning it's an orthogonal collection.
+\subsection*{Constant function $f(x)$}
+Given the constant funnction $f(x) \equiv 1$, how does that change the orthogonality when $k$ is 'even' or 'odd'?.\\
+Inserting the new $f(x)$ in equation\eqref{l2}.
+\begin{equation*}
+    \langle f,g \rangle = \int_{0}^{\pi} 1 \cdot g(x) \, dx.
+\end{equation*}
+this prevents the use of trigonominal identities resultig in evaluating $\cos()$ instead of $\sin()$ in the integral.\\
+By evaluating the integral via substitution, like in the previous integral.
+\begin{align*}
+    & \int_{0}^{k\pi} \sin(u) \frac{1}{k}\, du\\
+    & = \frac{1}{k} \int_{0}^{k\pi} \sin(u) \, du\\
+    & = \frac{1}{k}[-\cos(u)]_{0}^{k\pi} \\
+    & = \frac{1}{k}(-\cos(k\pi)-(-\cos(0)))
+\end{align*}
+Here is the clutch, $-\cos(0) = -1$ and depending on how many $\pi$ rotations, $-\cos(k\pi)$ is either $1$ or $-1$. For an odd k $-\cos(k\pi) = 1$ and for even $-\cos(k\pi) = -1$, which changes the result in step (4) above to either $0$ or some non-zero number $w \in [-1,0)$\\
+Note: The author knows the notation could be simplified, but it made more sense to be explicit in the moment of greatness.
+\subsection*{Projection}
+Determinign the projection onto $\sin(x)$ and $\sin(3x)$ using $f(x)\equiv 1$ yiels:
+\begin{equation} \label{proj1}
+    proj_{\sin(x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(x) \, dx}{\int_{0}^{\pi}\sin(x)\cdot\sin(x)\,dx}   
+\end{equation}
+\begin{equation} \label{proj3}
+    proj_{\sin(3x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(3x) \, dx}{\int_{0}^{\pi}\sin(3x)\cdot\sin(3x)\,dx}
+\end{equation}
+Using the results from the previous section, the numerator in\eqref{proj1} and\eqref{proj3} can be generalized to $\frac{2}{k}$ since both $\sin(x)$ and $\sin(3x)$ use odd $k$ values.\\
+Before inserting anything the denominator shall be evaluated, starting with equation\eqref{proj1}.
+\begin{equation*}
+    \int_{0}^{\pi}\sin(x)\cdot\sin(x)\,dx
+\end{equation*}
+The above integral can be simplified using the trigonometric identities 9.15~\cite{NUMLA} but for $\alpha = \beta$ and $\alpha = x$
 \[
-\sin(x),\sin(2x),\hdots ,\sin(kx), \quad \text{For every integer } k > 0
+2\sin^2(x) = -\cos(2x) + \cos(0) 
 \]
-
-
-
+isolate $\sin^2(x)$ to fit the case, remember $\cos(0) = 1$
+\begin{equation} \label{deno}
+    \sin^2(x) = \frac{1-\cos(2x)}{2}
+\end{equation}
+substituting that into the integral
+\begin{equation*}
+    \int_{0}^{\pi} \frac{1-\cos(2x)}{2}
+\end{equation*}
+extracting the constant and evaluating gets the following
+\begin{equation*}
+    \frac{1}{2}[x-\sin(2x)]_{0}^{\pi}
+\end{equation*}
+when evaluated
+\begin{equation*}
+    \frac{1}{2}((\pi-0)-(0-0)) = \frac{1}{2}\pi = \frac{\pi}{2}
+\end{equation*}
+It's important to note for this that the result from integrating equation\eqref{deno} using either $x$, as was just done, or $3x$ would yield the same resutl $\frac{\pi}{2}$ since $\sin(2x)$ and $\sin(6x)$ both equal $0$.
+%% Finish by inserting both in the proj equations and evaluate them.
 
 \printbibliography
 \end{document}
