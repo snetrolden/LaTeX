@@ -222,10 +222,10 @@ Note: The author knows the notation could be simplified, but it made more sense 
 \subsection*{Projection}
 Determinign the projection onto $\sin(x)$ and $\sin(3x)$ using $f(x)\equiv 1$ yiels:
 \begin{equation} \label{proj1}
-    proj_{\sin(x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(x) \, dx}{\int_{0}^{\pi}\sin(x)\cdot\sin(x)\,dx}   
+    proj_{\sin(x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(x) \, dx}{\int_{0}^{\pi}\sin(x)\cdot\sin(x)\,dx} \sin(x)   
 \end{equation}
 \begin{equation} \label{proj3}
-    proj_{\sin(3x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(3x) \, dx}{\int_{0}^{\pi}\sin(3x)\cdot\sin(3x)\,dx}
+    proj_{\sin(3x)}(1) = \frac{\int_{0}^{\pi} 1 \cdot \sin(3x) \, dx}{\int_{0}^{\pi}\sin(3x)\cdot\sin(3x)\,dx} \sin(3x)
 \end{equation}
 Using the results from the previous section, the numerator in\eqref{proj1} and\eqref{proj3} can be generalized to $\frac{2}{k}$ since both $\sin(x)$ and $\sin(3x)$ use odd $k$ values.\\
 Before inserting anything the denominator shall be evaluated, starting with equation\eqref{proj1}.
@@ -249,11 +249,19 @@ extracting the constant and evaluating gets the following
     \frac{1}{2}[x-\sin(2x)]_{0}^{\pi}
 \end{equation*}
 when evaluated
-\begin{equation*}
+\begin{equation} \label{dres}
     \frac{1}{2}((\pi-0)-(0-0)) = \frac{1}{2}\pi = \frac{\pi}{2}
-\end{equation*}
-It's important to note for this that the result from integrating equation\eqref{deno} using either $x$, as was just done, or $3x$ would yield the same resutl $\frac{\pi}{2}$ since $\sin(2x)$ and $\sin(6x)$ both equal $0$.
-%% Finish by inserting both in the proj equations and evaluate them.
+\end{equation}
+It's important to note for this, that the result from integrating equation\eqref{deno} using either $\sin^2(x)$, as was just done, or $\sin^2(3x)$ would yield the same result $\frac{\pi}{2}$ since $\sin(2x)$ and $\sin(6x)$ both equal $0$.\\
+By combining the findings for the denominator\eqref{dres} and the numerator(see start of section \textbf{Projection}), 
+the equations\eqref{proj1}\eqref{proj3} can be rewritten as:
+\begin{equation}
+    proj_{\sin(x)}(1) = \frac{2}{\frac{\pi}{2}} \sin(x) = \frac{4}{\pi} \sin(x)
+\end{equation}
+ \begin{equation}
+    proj_{\sin(3x)}(1) = \frac{\frac{2}{3}}{\frac{\pi}{2}} \sin(3x) = \frac{4}{3\pi} \sin(3x)
+\end{equation}
+%% Figure out how the projection is related to orthogonality
 
 \printbibliography
 \end{document}
