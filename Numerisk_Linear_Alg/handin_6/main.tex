@@ -170,18 +170,19 @@ then using the integral rules, by taking the constants out and splitting the int
     ]
 \end{equation}
  from here each integral can be evaluated, starting with the first one.\\
- Considering the first integral from equation\eqref{changed}, $\cos((n-m)x)$ can be seen as a composite function on the form $f(g(x))$, where $f(u) = \cos(u)$ and $g(x) = (n-m)x$.\\
- This means the integral can be evaluated by substitution. Let $u = (n-m)x$ and $du = (n-m)dx$, then express $dx$.
+ Considering the first integral from equation\eqref{changed}, $\cos((n-m)x)$, this can be seen as a composite function on the form $h(i(x))$, where $h(u) = \cos(u)$ and $i(x) = (n-m)x$.\\
+ This means the integral can be evaluated by substitution.\\ 
+ Let $u = (n-m)x$ and $du = (n-m)dx$, then express $dx$ as a product of $u$.
  \begin{align*}
     &du = (n-m)dx \\
     &dx = \frac{1}{(n-m)}du
  \end{align*}
-Note the limits also change to accomodate $u$, this is done by putting the value of the limits into $g(x)$, which gives.
+Note the limits $\int_{0}^{\pi}$ also change to accomodate $u$, this is done by putting the value of the limits into $i(x)$, which gives.
 \begin{align*}
-    &g(\pi) = (n-m)(\pi) = \pi(n-m) \\
-    &g(0) = (n-m)(0) = 0
+    &i(\pi) = (n-m)(\pi) = \pi(n-m) \\
+    &i(0) = (n-m)(0) = 0
 \end{align*}
-then substitute the above finding into the respective integral that was chosen.
+then substitute the new limits into the respective integral that was chosen.
 \begin{equation*}
     \int_{0}^{\pi} \cos((n-m)x) \, dx \to \int_{0}^{\pi(n-m)} \cos(u) \frac{1}{(n-m)} \, du
 \end{equation*}
@@ -217,8 +218,9 @@ By evaluating the integral via substitution, like in the previous integral.
     & = \frac{1}{k}[-\cos(u)]_{0}^{k\pi} \\
     & = \frac{1}{k}(-\cos(k\pi)-(-\cos(0)))
 \end{align*}
-Here is the clutch, $-\cos(0) = -1$ and depending on how many $\pi$ rotations, $-\cos(k\pi)$ is either $1$ or $-1$. For an odd k $-\cos(k\pi) = 1$ and for even $-\cos(k\pi) = -1$, which changes the result in step (4) above to either $0$ or some non-zero number $w \in [-1,0)$\\
-Note: The author knows the notation could be simplified, but it made more sense to be explicit in the moment of greatness.
+Here is the clutch, ($
+-\cos(0) = -1$) and depending on how many $\pi$ rotations, ($-\cos(k\pi)$) is either $1$ or $-1$. For an odd k ($-\cos(k\pi) = 1$) and for even ($-\cos(k\pi) = -1$), which changes the result in step (4) above to either $0$ (even) or some non-zero number $w \in [-1,0)$ (odd)\\
+Note: The author knows the notation could be simplified, but it made more sense to be explicit with the signs in the moment of greatness.
 \subsection*{Projection}
 Determinign the projection onto $\sin(x)$ and $\sin(3x)$ using $f(x)\equiv 1$ yiels:
 \begin{equation} \label{proj1}
@@ -255,13 +257,28 @@ when evaluated
 It's important to note for this, that the result from integrating equation\eqref{deno} using either $\sin^2(x)$, as was just done, or $\sin^2(3x)$ would yield the same result $\frac{\pi}{2}$ since $\sin(2x)$ and $\sin(6x)$ both equal $0$.\\
 By combining the findings for the denominator\eqref{dres} and the numerator(see start of section \textbf{Projection}), 
 the equations\eqref{proj1}\eqref{proj3} can be rewritten as:
-\begin{equation}
+\begin{equation} \label{c1}
     proj_{\sin(x)}(1) = \frac{2}{\frac{\pi}{2}} \sin(x) = \frac{4}{\pi} \sin(x)
 \end{equation}
- \begin{equation}
+ \begin{equation} \label{c3}
     proj_{\sin(3x)}(1) = \frac{\frac{2}{3}}{\frac{\pi}{2}} \sin(3x) = \frac{4}{3\pi} \sin(3x)
 \end{equation}
-%% Figure out how the projection is related to orthogonality
+these projections represents (mathematically) the place on the sine waves the looks like the line $f(x) \equiv 1$ the most. According to equation (13.3)~\cite{NUMLA} adding the projections together will
+result in a better approximation of line on the span.\\\\
+
+\noindent The given $g(x) = 1 + c_1 \sin(x) + c_3 \sin(3x)$ looks a bit like the (c) from proposition 13.10~\cite{NUMLA}, the residual vector.
+\begin{equation}
+    f(x) - ( proj_{\sin(x)}(1)+proj_{\sin(3x)}(1)) \perp w
+\end{equation}
+and remember $f(x) \equiv 1$, so the difference is that $g(x)$ adds the projected vector $P$ to the original vector $V$ (see cited proposition for notation) instead of subtracting it, which wouldn't make the resulting vector orthogonal to the defined span [$\sin(x),\sin(3x)$] (trust).\\
+So to make $g(x)$ orthogonal to the span, the sign has to be cancelled out, this can be done by 'reversing' the constants $c_1$ and $c_3$ from equation\eqref{c1}\eqref{c3}.
+\begin{equation}
+    \frac{3}{\pi}\sin(x) + \frac{4}{3\pi}\sin(3x) \to (-\frac{3}{\pi}\sin(x)) - \frac{3}{3\pi}\sin(3x)
+\end{equation}
+this should cancel out the '+' sign in $g(x)$ and make it orthogonal, which can be shown by evaluating the inner product $g(x),\sin(x)$.
+\begin{equation*}
+    1
+\end{equation*}
 
 \printbibliography
 \end{document}
