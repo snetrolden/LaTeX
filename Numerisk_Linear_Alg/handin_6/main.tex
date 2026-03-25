@@ -148,6 +148,13 @@ Consider the space of differentiable functions $f:[0,\pi] \to \mathbb{R}$ with t
 \begin{equation} \label{l2}
     \langle f,g \rangle = \int_{0}^{\pi} f(x)g(x) \, dx.
 \end{equation}
+
+
+
+
+
+
+
 \subsection*{Showing Orthogonality}
 For the given collection of functions defined on $x \in [0,\pi]$
 \begin{equation} \label{col}
@@ -216,11 +223,24 @@ By evaluating the integral via substitution, like in the previous integral.
     & \int_{0}^{k\pi} \sin(u) \frac{1}{k}\, du\\
     & = \frac{1}{k} \int_{0}^{k\pi} \sin(u) \, du\\
     & = \frac{1}{k}[-\cos(u)]_{0}^{k\pi} \\
-    & = \frac{1}{k}(-\cos(k\pi)-(-\cos(0)))
+    & = \frac{1}{k}(-\cos(k\pi)-(-\cos(0))) \\
+    & = \frac{1}{k} (\cos(0)-\cos(k\pi))\\
+    & = \frac{1}{k}(1 - \cos(k\pi))
 \end{align*}
-Here is the clutch, ($
--\cos(0) = -1$) and depending on how many $\pi$ rotations, ($-\cos(k\pi)$) is either $1$ or $-1$. For an odd k ($-\cos(k\pi) = 1$) and for even ($-\cos(k\pi) = -1$), which changes the result in step (4) above to either $0$ (even) or some non-zero number $w \in [-1,0)$ (odd)\\
-Note: The author knows the notation could be simplified, but it made more sense to be explicit with the signs in the moment of greatness.
+And now for the magic!
+$\frac{1}{k}(1 - \cos(k\pi)) =
+\begin{cases}
+    0 \quad \text{for an even } k   \\
+    \frac{2}{k} \quad \text{for an odd } k
+\end{cases}
+$
+which means if $k$ is odd it isn't orthogonal and if it's even it is orthogonal.\\
+So for $\sin(x),\,\sin(3x)$ isn't orthogonal and $\sin(2x),\, \sin(4x)$ is orthogonal.
+
+
+
+
+
 \subsection*{Projection}
 Determinign the projection onto $\sin(x)$ and $\sin(3x)$ using $f(x)\equiv 1$ yiels:
 \begin{equation} \label{proj1}
@@ -271,14 +291,32 @@ result in a better approximation of line on the span.\\\\
     f(x) - ( proj_{\sin(x)}(1)+proj_{\sin(3x)}(1)) \perp w
 \end{equation}
 and remember $f(x) \equiv 1$, so the difference is that $g(x)$ adds the projected vector $P$ to the original vector $V$ (see cited proposition for notation) instead of subtracting it, which wouldn't make the resulting vector orthogonal to the defined span [$\sin(x),\sin(3x)$] (trust).\\
-So to make $g(x)$ orthogonal to the span, the sign has to be cancelled out, this can be done by 'reversing' the constants $c_1$ and $c_3$ from equation\eqref{c1}\eqref{c3}.
+So to make $g(x)$ orthogonal to the span, the sign has to be cancelled out, this can be done by 'reversing' the constants $c_1$ and $c_3$ from equation\eqref{c1}\eqref{c3}, note the $\sin()$ isn't part of the constants.
 \begin{equation}
-    \frac{3}{\pi}\sin(x) + \frac{4}{3\pi}\sin(3x) \to (-\frac{3}{\pi}\sin(x)) - \frac{3}{3\pi}\sin(3x)
+    \frac{3}{\pi} + \frac{4}{3\pi} \to (-\frac{3}{\pi}) - \frac{3}{3\pi}
 \end{equation}
-this should cancel out the '+' sign in $g(x)$ and make it orthogonal, which can be shown by evaluating the inner product $g(x),\sin(x)$.
+this should cancel out the '+' sign in $g(x)$ and make it orthogonal, which can be shown by evaluating the inner product $\langle g(x),\sin(x) \rangle$.
 \begin{equation*}
-    1
+    \langle g(x),\sin(x) \rangle = \int_{0}^{\pi} (1 + c_1\sin(x) + c_3\sin(3x)) \cdot \sin(x) \, dx
 \end{equation*}
+Looking inside the integral, it can be simplifed to:
+\[
+(1 + c_1\sin(x) + c_3\sin(3x)) \cdot \sin(x) \to \sin(x) + c_1 \sin^2(x) + c_3\sin(3x)\sin(x)
+\]
+and from earlier proofs, we ascertain $\sin(x)\sin(3x) = 0$.
+\[
+\int_{0}^{\pi} \sin(x) + c_1\sin^2(x) \, dx 
+\]
+to furter simplify
+\[
+\int_{0}^{\pi} \sin(x) \, dx + c_1 \int_{0}^{\pi} \sin^2(x) \, dx
+\]
+and from equation\eqref{dres} $\int_{0}^{\pi} \sin^2(x) \, dx$ can be written as $\frac{\pi}{2}$.
+\[
+\int_{0}^{\pi} \sin(x) \, dx + c_1 \frac{\pi}{2}
+\]
+this can go even further beyond! looking back at the \textbf{Constant function} section, where if $\int_{0}^{\pi} \sin(x) \, dx = 1$ 
+
 
 \printbibliography
 \end{document}
