@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1774444614.73297 "main.bcf" "main.bbl" "main" 1774446979.15297 0
-  "main.bcf" 1774446978 108791 fb206a900fdd455b317b88c886715020 "pdflatex"
+["biber main"] 1774444614.73297 "main.bcf" "main.bbl" "main" 1774450528.08946 0
+  "main.bcf" 1774450527 108791 fb206a900fdd455b317b88c886715020 "pdflatex"
   "references.bib" 1774264052 508 6028552ae49c76f437c1e9661759cc2e ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1774446976.20507 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_6/main.tex" "main.pdf" "main" 1774446979.1537 0
+["pdflatex"] 1774450525.18018 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_6/main.tex" "main.pdf" "main" 1774450528.0904 0
   "Aarhus_University_seal.png" 1756119290 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761583268 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1756118801 13259231 1eb485ca69902bedad3cfafda64fdfc0 ""
@@ -271,12 +271,12 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_6/main.tex" 1774446971 12312 5b0cf628fe5ed09f64ea11236c9e24d7 ""
-  "main.aux" 1774446978 1891 735ea0e50c428863bf386f7db3a105be "pdflatex"
+  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_6/main.tex" 1774450524 12943 2dc5250f049a80dea0af782abdae3077 ""
+  "main.aux" 1774450527 2009 1a2c33b9100cb4c0c5c1c47fe49a0c59 "pdflatex"
   "main.bbl" 1774444617 1689 88de15c8be840b7e4f6959cface4ad93 "biber main"
-  "main.out" 1774446978 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1774446978 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1774446971 12312 5b0cf628fe5ed09f64ea11236c9e24d7 ""
+  "main.out" 1774450527 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1774450527 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1774450524 12943 2dc5250f049a80dea0af782abdae3077 ""
   (generated)
   "main.aux"
   "main.bcf"

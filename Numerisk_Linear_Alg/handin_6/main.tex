@@ -292,8 +292,8 @@ result in a better approximation of line on the span.\\\\
 \end{equation}
 and remember $f(x) \equiv 1$, so the difference is that $g(x)$ adds the projected vector $P$ to the original vector $V$ (see cited proposition for notation) instead of subtracting it, which wouldn't make the resulting vector orthogonal to the defined span [$\sin(x),\sin(3x)$] (trust).\\
 So to make $g(x)$ orthogonal to the span, the sign has to be cancelled out, this can be done by 'reversing' the constants $c_1$ and $c_3$ from equation\eqref{c1}\eqref{c3}, note the $\sin()$ isn't part of the constants.
-\begin{equation}
-    \frac{3}{\pi} + \frac{4}{3\pi} \to (-\frac{3}{\pi}) - \frac{3}{3\pi}
+\begin{equation} \label{reverse}
+    \frac{4}{\pi} + \frac{4}{3\pi} \to (-\frac{4}{\pi}) - \frac{4}{3\pi}
 \end{equation}
 this should cancel out the '+' sign in $g(x)$ and make it orthogonal, which can be shown by evaluating the inner product $\langle g(x),\sin(x) \rangle$.
 \begin{equation*}
@@ -315,7 +315,16 @@ and from equation\eqref{dres} $\int_{0}^{\pi} \sin^2(x) \, dx$ can be written as
 \[
 \int_{0}^{\pi} \sin(x) \, dx + c_1 \frac{\pi}{2}
 \]
-this can go even further beyond! looking back at the \textbf{Constant function} section, where if $\int_{0}^{\pi} \sin(x) \, dx = 1$ 
+this can go even further beyond! looking back at the \textbf{Constant function} section, where for $k = 1$ then $\int_{0}^{\pi} \sin(x) \, dx = 2$ 
+\[
+2 + c_1 \frac{\pi}{2}
+\]
+then inserting $c_1$ from equation\eqref{reverse}
+\[
+2 - \frac{4}{\pi} \cdot \frac{\pi}{2} = 2 - \frac{4\pi}{2\pi} = 0
+\]
+proving that $g(x)$ is orthogonal to $\sin(x)$ and $\sin(3x)$, when making $c_1$ and $c_3$ negative.\\
+To furher prove it's orthogonal for $\sin(2x)$ and $\sin(4x)$ to satisfy $k = 4$, note that $g(x)$ is a vector sum consisting of odd sine waves, and in the \textbf{Showing Orthogonality} section it was proved that odd sine waves are orthogonal to even sine waves, hence $g(x)$ must be orthogonal to all function in \eqref{col} for $k = 4$
 
 
 \printbibliography
