@@ -9,10 +9,10 @@
 \usepackage{mdframed} %For box around text
 \usepackage{hyperref} %For hyperlinks in the PDF
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,
-	urlcolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
 }
 \urlstyle{same}
 \usepackage{amsthm}
@@ -74,11 +74,6 @@
 
 \lstset{style=mystyle}
 
-
-
-
-
-
 \usepackage{lastpage}
 %%%%%     COMMANDS     %%%%%
 %%%% Blue box for subsection text (not figures) %%%%
@@ -91,9 +86,6 @@
   {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
   {\end{mdframed}}
 
-
-
-
 \begin{document}
 
 \begin{titlepage}
@@ -101,14 +93,14 @@
 
 \center
 
-\textsc{\LARGE Aarhus university}\\[1.5cm]
-\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Computer Science}\\[0.5cm]
 \textsc{\large Numerical Linear Algebra}\\[0.5cm]
     
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+    {\huge\bfseries Handin 7 }\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -143,12 +135,290 @@
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
 
-\section*{}
+\section*{Goofy ah title of finding solutions and evaluating their trust or something}
+The purpose of this clown show is to revisit heatmaps and how to ascertain the accuracy of a QR and SVD decomposition solution via their condition number but in Python!\\
+\subsection*{(a) - funny ah 'straight' equation}
+The illumination level of a square $y_j$ is a product of $\frac{x_i}{d^2_{ij}} = y_j$ for every lamp $x_i$, and to show a linear relation for them the following linear equation will be used
+\begin{equation} \label{linear}
+    Ax = y
+\end{equation}
+where $Ax$ must result in $\frac{x_i}{d^2_{ij}}$ which means equation \eqref{linear} will have the following values.
+\begin{equation}
+    \begin{pmatrix}
+        \frac{1}{d^2_{0,0}} &\hdots & \frac{1}{d^2_{0,11}}\\
+        \vdots & \ddots &\vdots\\
+        \frac{1}{d^2_{599,0}} & \hdots & \frac{1}{d^2_{599,11}}
+    \end{pmatrix}_{600 \times 12}
+    \begin{pmatrix}
+        x_0 \\
+        \vdots \\
+        x_{11}
+    \end{pmatrix}_{12 \times 1} 
+    =
+    \begin{pmatrix}
+        y_0 \\
+        \vdots \\
+         y_{599}
+    \end{pmatrix}_{600 \times 1}
+\end{equation}
+hence the Author states they are related linearly!\\
+In Python the coefficient matrix $A$ can be defined by defining the center of each lamp and using that to define $\frac{1}{d^2_{ij}}$ for each square represented by the matrix $A$.\\
+Note that some lines of code might be removed in these small snippets of code; it's usually because the lines are not relevant to the question.
+\begin{lstlisting}[language=Python]
+lamps = np.array([[2,3,3],[11,5,3.5],[15,2,4.5],[20,4,3.1],[4,13,3.7],[4,19,3],[12,12,4],[13,18,3.6],[16,16,3],[23,12,4],[25,16,3.6],[28,9,3.4]])
 
+# Center in each square j
+xCenter = np.arange(0.5,30,1)
+yCenter = np.arange(0.5,20,1)
+centers = np.array([[x,y,0] for x in xCenter for y in yCenter] ) # Takes the center for each 1 x 1 square in a 30(x) x 20(y) grid
 
+# ---- Create the A matrix ----
+A = np.zeros((600,12))
+for i in range(600):
+    for j in range(12):
+       d = np.sum((centers[i] - lamps[j])**2)
+       A[i,j] = 1 / d  
+\end{lstlisting}
+See Appendix for complete code
+
+\subsection*{(b) - plotting a (heat)et plan}
+% go straight python on this section
+The equation can't be plotted directly to a heatmap since the dimensions of $y_j$ are $600 \times 1$, so it has to be reshaped to look like the parking lot, which is done with the following Python code.
+\begin{lstlisting}[language=Python]
+strenght = np.zeros((12,1))
+for i in range(12):
+    strenght[i] = 20
+
+y = A @ strenght
+
+parkinglot = y.reshape(30,20)
+pain = parkinglot.T
+\end{lstlisting}
+The plotting of the heatmap can be found in the Appendix, since it's really not that interesting.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_1.png}
+    \caption{Heatmap of a parking lot with 12 lamps, of varying heights, each emitting a light of strength 20}
+\end{figure}
+
+\subsection*{(c-d) - QR and SVD on the case for the 1}
+To find a solution where each $y_j$ is approximately $1$, an appropriate vector $x$ has to be found.\\
+There are two methods that can do this: SVD-decomposition and QR-decomposition.\\
+Note that in both cases, when $x$ has been found, the vector $y$ is transformed into a matrix of the form $20 \times 30$ for the plotting.\\\\
+
+\subsubsection*{QR-Decomposition}
+NumPy supplies the function \textsc{np.linalg.lstsq} which goes through the math and returns the solution for $x$ in $Ax = y$.\\
+Although this was not the intended way to do it, like it was described in 17.3~\cite{NUMLA} for \textsc{np.linalg.qr}, reading the documentation of that led to the one used in this assignment.
+\begin{lstlisting}[language=Python]
+targetY = np.ones((600,1))
+QRresult = np.linalg.lstsq(A,targetY)
+QRstrength = QRresult[0] # extract the actual strenght values, since lstsq outputs a variety of things
+QRy = A @ QRstrength
+QRparkinglot = QRy.reshape(30,20)
+QRpain =QRparkinglot.T
+\end{lstlisting}
+In the heat plot for this and the next figure, the \textsc{cmap} is being limited to the maximum and minimum values of illumination level $y_j$; these values are shown in section (d).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_2.png}
+    \caption{Approximation for $y_j = 1$ via QR-decomposition with a visual margin corresponding to the max and min of the values.}
+    \label{fig:QR}
+\end{figure}
+
+\subsubsection*{SVD-decomposition}
+For the SVD, the process from 16.3~\cite{NUMLA} was followed.
+\begin{lstlisting}[language=Python]
+U, S, VT = np.linalg.svd(A, full_matrices=False) # got dimension error so we limit the matrix
+proj = U.T @ targetY
+invS = np.diag(1/S)
+b = invS @ proj
+SVDstrenght = VT.T @ b
+SVDy = A @ SVDstrenght
+SVDparkinglot = SVDy.reshape(30,20)
+SVDpain = SVDparkinglot.T
+\end{lstlisting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_3.png}
+    \caption{Approximation for $y_j = 1$ via QR-decomposition with a visual margin corresponding to the max and min of the values.}
+    \label{fig:SVD}
+\end{figure}
+\subsubsection*{Realism and comparison of QR and SVD}
+Even though QR and SVD are good at finding solutions, it's not guaranteed the solution is 'realistic'; for example, a negative $x_i$ would mean a lamp is somehow emitting darkness (edgy ah emo lamp stop that), so a sanity check is needed by checking $x_i > 0$.
+\begin{lstlisting}[language=Python] 
+print(f'QR realistic? {np.all(QRstrength > 0)}')
+print(f'SVD realistic? {np.all(SVDstrenght > 0)}')
+\end{lstlisting}
+So both QR and SVD are realistic, but are they the same in regards to output?\\
+If one looks back at the heat plots \ref{fig:QR} and \ref{fig:SVD}, one can visually ascertain that the difference in results is small, based on the limits set for the plots.\\
+These limits approximately represent the smallest and largest value down to one decimal $\{y \in [0.4, 1.4]\}$, the more specific values are:
+\begin{lstlisting}[language=Python]
+print(SVDpain.min(), SVDpain.max())
+print(QRpain.min(), QRpain.max())
+# Output is artificially inserted below for the assignment
+QRmin = 0.3587581821413017   QRmax = 1.366147099159025
+SVDmin = 0.3587581821413019  SVDmax = 1.3661470991590228
+\end{lstlisting}
+From this their likeness is shown and the maximal deviation is $1 - 0.3587 = 0.6413$, which tells us that the lamps can't provide an illumination of 1 evenly across the parking lot. 
+
+\subsection*{(e) - Interrogation for the instability of the results}
+Lastly, by looking at the condition number, it's possible to evaluate how accurate the computations of $x$ are. The condition number $\kappa$ is a multiplier of how big of an error can happen when computing $x$.
+Since $y$ is constant and $A$ varies, it can be hard to find exact values for $\kappa$, so an upper bound is needed; the formula from equation 17.5~\cite{NUMLA} is used.\\\\
+
+A lot of the code is taken directly from the examples given in chapter 17~\cite{NUMLA}.\\
+\begin{lstlisting}[language=Python]
+kappa_a = S[0] / S[-1] 
+proj_y = U @ (U.T @ targetY)
+cos_theta = np.linalg.norm(proj_y) / np.linalg.norm(targetY)
+x = VT.T @ (np.diag(1/S) @ (U.T @ targetY))
+eta = S[0] * np.linalg.norm(x) / np.linalg.norm(proj_y)
+\end{lstlisting}
+and the results are:
+\[
+\kappa(A) = 8.389261e+00 \qquad \cos(\theta) = 9.841725e-01 \text{ (10.21}^\circ) \qquad \eta = 1.153937e+00
+\]
+For finding the upper bound for $\kappa$:
+\begin{lstlisting}[language=Python]
+kond_x_a_max = (kappa_a
+    + (kappa_a**2 * np.sqrt(1-cos_theta**2)
+    / (eta * cos_theta)))
+
+machine_epsilon = np.finfo(float).eps
+estimatedPrecision = kond_x_a_max * machine_epsilon
+\end{lstlisting}
+With these results, we find an upper bound of $kond\_x\_a\_max \approx 19.37$. Multiplying this by the machine epsilon gives an $estimatedPrecision \approx 4.30 \times 10^{-15}$, suggesting that our results are accurate to about 15 decimal points.\\
+This also gives an answer as to how a change in $A$ affects $x$ since $kond\_x\_a\_max \approx 19.37$ is a multiplier of how a change in $A$ affects $x$. This means if $A$ changed by $1\%$, then $x$ would correspondingly change by a factor 19.37, resulting in a $19.37\%$ change.\\\\
+
+So in conclusion the approximation of QR and SVD in this case is quite good, based on their almost identical results that falls with the $estimatedPrecision$.  Even thouhg there is a deviation, it is based on the physical limitation of the lamps placements, so all in all the the solution found is a good fit.
+
+\printbibliography
 
 %put code in the appendix and refer to it here
 \section*{Appendix}
-Clearly a misguided appendixed left redundant after its creator realized that the code was not that long and could be easily included in the main text without a kerfuffle.\\
-\printbibliography
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Estimated coordinates for each lamp
+lamps = np.array([[2,3,3],[11,5,3.5],[15,2,4.5],[20,4,3.1],[4,13,3.7],[4,19,3],[12,12,4],[13,18,3.6],[16,16,3],[23,12,4],[25,16,3.6],[28,9,3.4]])
+lampsX = lamps[:,0]
+lampsY = lamps[:,1]
+# Center in each square j
+xCenter = np.arange(0.5,30,1)
+yCenter = np.arange(0.5,20,1)
+centers = np.array([[x,y,0] for x in xCenter for y in yCenter] ) # Takes the center for each 1 x 1 square in a 30(x) x 20(y) grid
+
+# ---- Create the A matrix ----
+A = np.zeros((600,12))
+for i in range(600):
+    for j in range(12):
+       d = np.sum((centers[i] - lamps[j])**2)
+       A[i,j] = 1 / d
+
+# Find better way?
+strenght = np.zeros((12,1))
+for i in range(12):
+    strenght[i] = 20
+
+y = A @ strenght
+
+parkinglot = y.reshape(30,20)
+pain = parkinglot.T
+
+# ---- QR decomposition with least-squared method ----
+
+# see 16.2 in notes
+targetY = np.ones((600,1))
+QRresult = np.linalg.lstsq(A,targetY)
+QRstrength = QRresult[0] # extract the actual strenght values, since lstsq outputs a variety of things
+QRy = A @ QRstrength
+QRparkinglot = QRy.reshape(30,20)
+QRpain =QRparkinglot.T
+
+# ---- SVD type shiz ----
+# using the same targetY as in the QR section
+
+# see 16.3 in notes
+U, S, VT = np.linalg.svd(A, full_matrices=False) # got dimension error so we limit the matrix
+proj = U.T @ targetY
+invS = np.diag(1/S)
+b = invS @ proj
+SVDstrenght = VT.T @ b 
+SVDy = A @ SVDstrenght
+SVDparkinglot = SVDy.reshape(30,20)
+SVDpain = SVDparkinglot.T
+
+
+# ---- check realism ----
+
+print(f'QR realistic? {np.all(QRstrength > 0)}')
+print(f'SVD realistic? {np.all(SVDstrenght > 0)}')
+
+# min max value of 'y' for each method
+
+print(SVDpain.min(), SVDpain.max())
+print(QRpain.min(), QRpain.max())
+
+
+# ---- Condition number ----
+# Reusing the SVD from earlier and a lot of this is directly from the example in chapter 17
+
+kappa_a = S[0] / S[-1] # how much A cause error??
+proj_y = U @ (U.T @ targetY)
+cos_theta = np.linalg.norm(proj_y) / np.linalg.norm(targetY)
+x = VT.T @ (np.diag(1/S) @ (U.T @ targetY))
+eta = S[0] * np.linalg.norm(x) / np.linalg.norm(proj_y)
+
+print(f'{kappa_a = :e}')
+print(f'{cos_theta = :e}')
+print(f'Theta angle = {np.degrees(np.arccos(cos_theta)):.2f} degrees')
+print(f'{eta = :e}')
+
+
+# how many digits i can trust?
+kond_x_y = kappa_a / (eta * cos_theta)
+
+kond_x_a_max = (kappa_a
++ (kappa_a**2 * np.sqrt(1-cos_theta**2)
+/ (eta * cos_theta)))
+
+print(f'{kond_x_y = :e}')
+print(f'{kond_x_a_max = :e}')
+
+machine_epsilon = np.finfo(float).eps
+estimatedPrecision = kond_x_a_max * machine_epsilon
+
+print(f'{estimatedPrecision = :e}')
+
+
+# ---- Plotting ----
+
+# Heatmap for (b)
+fig1, heat = plt.subplots()
+im1 = heat.matshow(pain, cmap='autumn', clim=(0,4), origin='lower') # I hate this...y-axis won't move down ;_;
+fig1.colorbar(im1, shrink=0.65)
+heat.plot(lampsX,lampsY, 'o', color='blue', label='Lamps')
+heat.set_title('Illumination for light strength = 20')
+heat.legend()
+
+# QR
+fig2, QRHeat = plt.subplots()
+im2 = QRHeat.matshow(QRpain ,cmap='autumn', clim=(0.4,1.4), origin='lower', ) # I hate this...y-axis won't move down ;_    
+fig2.colorbar(im2, shrink=0.65)
+QRHeat.plot(lampsX,lampsY, 'o', color='blue', label='Lamps')
+QRHeat.set_title('Averaging illumination strength to 1 via QR-decomp')
+QRHeat.legend()
+
+# SVD
+fig3, SVDHeat = plt.subplots()
+im3 = SVDHeat.matshow(SVDpain ,cmap='autumn', clim=(0.4,1.4), origin='lower') # I hate this...y-axis won't move down ;_;
+fig3.colorbar(im3, shrink=0.65)
+SVDHeat.plot(lampsX,lampsY, 'o', color='blue', label='Lamps')
+SVDHeat.set_title('Averaging illumination strength to 1 via SVD-decomp')
+SVDHeat.legend()
+
+plt.show()
+\end{lstlisting}
+
 \end{document}
