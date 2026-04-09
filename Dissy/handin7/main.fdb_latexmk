@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 1775752332.98306 "main.bcf" "main.bbl" "main" 1775768701.0627 0
-  "main.bcf" 1775768699 108551 70da8deeb7263703667d6229a7ffeac6 "pdflatex"
+["biber main"] 1775752332.98306 "main.bcf" "main.bbl" "main" 1775769079.41735 0
+  "main.bcf" 1775769079 108551 70da8deeb7263703667d6229a7ffeac6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1775768696.613 "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Dissy/handin7/main.tex" "main.pdf" "main" 1775768701.06501 0
+["pdflatex"] 1775769076.07472 "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Dissy/handin7/main.tex" "main.pdf" "main" 1775769079.41814 0
   "Aarhus_University_seal.png" 1774212918 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/smed_/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1774301106 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/smed_/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1775752332 14064 8727e5d2b5900870a908a16355fd55ec ""
@@ -270,12 +270,12 @@
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1773584792 2269 91cd03da61ab1da00145ba8a81560051 ""
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1773584792 20785 8db5f0a2b2ce96dda9fac87ccab29449 ""
-  "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Dissy/handin7/main.tex" 1775768691 5843 10cd8b809273080b4e5737522e0ee6fb ""
-  "main.aux" 1775768699 540 1999306d7eb5d55d17cb43b59782b874 "pdflatex"
+  "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Dissy/handin7/main.tex" 1775769075 5845 da80af8e7da7d644d490469bc83f21bc ""
+  "main.aux" 1775769079 540 1999306d7eb5d55d17cb43b59782b874 "pdflatex"
   "main.bbl" 1775752345 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.out" 1775768699 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1775768699 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1775768691 5843 10cd8b809273080b4e5737522e0ee6fb ""
+  "main.out" 1775769078 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1775769079 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1775769075 5845 da80af8e7da7d644d490469bc83f21bc ""
   (generated)
   "main.aux"
   "main.bcf"

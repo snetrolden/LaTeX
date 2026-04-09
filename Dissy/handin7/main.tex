@@ -148,7 +148,7 @@
 \hspace{0.02cm}
 
 \section*{Implementation of signed transactions}
-The Signatures are implemented, placing the data [TxID, FromAccount, ToAccount, Amount] into a separate struct that is serialized with json, which can be used to create the signature with the \textbf{RSASign} method from exercise 6.15.\\
+The Signatures are implemented by placing the data [TxID, FromAccount, ToAccount, Amount] into a separate struct that is serialized with json, which can be used to create the signature with the \textbf{RSASign} method from exercise 6.15.\\
 The serialized data and the signature can then be placed inside a shared struct that acts as a signed transactions.\\
 \section*{Encoding of RSA as identifiers for accounts}
 The encoding of the RSA public keys, was done by having a PublicKey struct containing [N, E] as a single element, then the struct can be serialized and converted to string, that represent an account, this means whenever someone needs an accounts public key the account name can be easily de-hashed to access E and N.

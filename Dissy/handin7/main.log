@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.23)  9 APR 2026 23:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.23)  9 APR 2026 23:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1345,11 +1345,6 @@ Package pdftex.def Info: Aarhus_University_seal.png  used on input line 142.
  [1
 
 {C:/Users/smed_/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Aarhus_University_seal.png>]
-Overfull \hbox (2.37343pt too wide) in paragraph at lines 151--153
-\OT1/cmr/m/n/12 The Sig-na-tures are im-ple-mented, plac-ing the data [TxID, Fro-mAc-count, ToAc-count, Amount]
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 151--153
 
  []
@@ -1364,7 +1359,7 @@ l.176 \end{itemize}
 LaTeX Warning: Empty bibliography on input line 180.
 
 [2]
-runsystem(latexminted cleantemp  --timestamp 20260409230456 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+runsystem(latexminted cleantemp  --timestamp 20260409231116 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1388,7 +1383,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  99i,5n,108p,782b,1186s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\smed_\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (3 pages, 221241 bytes).
+Output written on main.pdf (3 pages, 221244 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)
