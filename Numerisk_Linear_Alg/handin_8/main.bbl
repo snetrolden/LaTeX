@@ -19,6 +19,32 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
+    \entry{LinearAlgApp}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=30d6dd5c30548cf3f247c3eb73401d7e}{%
+           family={Leaon},
+           familyi={L\bibinitperiod},
+           given={Steven\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education, Inc}%
+      }
+      \strng{namehash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{fullhash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{fullhashraw}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{bibnamehash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{authorbibnamehash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{authornamehash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{authorfullhash}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \strng{authorfullhashraw}{30d6dd5c30548cf3f247c3eb73401d7e}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Numerical Linear Algebra with Applications, Ninth Edition}
+      \field{year}{2015}
+    \endentry
     \entry{NUMLA}{book}{}{}
       \name{author}{1}{}{%
         {{hash=50a8942d75ea6d879bd5599694d2f92a}{%

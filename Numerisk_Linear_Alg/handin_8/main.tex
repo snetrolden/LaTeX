@@ -147,7 +147,7 @@ A = \begin{bmatrix}
 \subsection*{(a) Characteristic Polynomial}
 Determine the characteristic polynomial $\det(A - \lambda I_3)$ of $A$.
 
-\begin{equation*}
+\begin{equation} \label{CharPoly}
     A-\lambda I_3=
     \begin{bmatrix}
 3 & 0 & 0 \\
@@ -164,7 +164,7 @@ Determine the characteristic polynomial $\det(A - \lambda I_3)$ of $A$.
         0 & 1 - \lambda & 1 \\
         0 & 1 & 1 - \lambda
     \end{bmatrix} 
-\end{equation*}
+\end{equation}
 
 \begin{equation*}
     \det(A-\lambda I_3) = (3-\lambda) \cdot \begin{bmatrix} 1-\lambda & 1 \\ 1 & 1-\lambda \end{bmatrix} - 0 \cdot \begin{bmatrix} 0 & 0 \\ 0 & 1- \lambda \end{bmatrix} + 0 \cdot \begin{bmatrix} 0 & 1- \lambda \\ 0 & 1 \end{bmatrix} = (3-\lambda) \cdot ((1-\lambda)\cdot (1-\lambda) - (1\cdot 1))
@@ -205,16 +205,254 @@ which means the the eigenvalues for $A$ is $ [3,2,0]$
 \subsection*{(d) Basis using Eigenvectors}
 Determine a basis of $\mathbb{R}^3$ consisting of eigenvectors of $A$.\\\\
 Proposition 21.5~\cite{NUMLA}, says that if the eigenvalues of $A$ are unique and there is a set of eigenvectores for $A$, then the eigenvectores constitues a basis for $A$.\\
-Eigenvectores can be found by solving for every $v$ in $(A - \lambda I_3)v = 0$ using the eigenvalues $\lambda \in [3,2,0]$\\\\
-
+Eigenvectores can be found by solving for a $v$ in $(A - \lambda I_3)v = 0$ for each of the eigenvalues $\lambda \in [3,2,0]$\\\\
+From equation\eqref{CharPoly} $(A - \lambda I_3)$ is already expressed.\\
+For $\lambda = 3$
+\begin{equation*}
+    \begin{bmatrix}
+        3 - 3 & 0 & 0 \\
+        0 & 1 - 3 & 1 \\
+        0 & 1 & 1 - 3
+    \end{bmatrix} 
+    =
+     \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 &  - 2 & 1 \\
+        0 & 1 &  - 2
+    \end{bmatrix} 
+    = (A - 3 I_3)
+\end{equation*}
+add some $v \in \mathbb{R}^3 \neq 0$ (Does this notation even make sense?)
+\begin{equation*}
+    (A - 3 I_3)v =
+ \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 &  - 2 & 1 \\
+        0 & 1 &  - 2
+    \end{bmatrix} 
+     \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        0
+    \end{bmatrix} 
+\end{equation*}
+Note, there are many solutions for $v$ since $x$ can litereally be any value, but a basis needs to conist of linear independant vectors, which means only a single vector per eigenvalue is needed, hence the simplest vector that can be found is the best.\\
+\begin{equation*}
+    (A - 3 I_3)v =
+    \begin{bmatrix}
+        0 & 0 & 0 \\
+        0 &  - 2 & 1 \\
+        0 & 1 &  - 2
+    \end{bmatrix} 
+     \begin{bmatrix}
+        1 \\
+        0 \\
+        0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        0
+    \end{bmatrix} 
+\end{equation*}
+The vector $\begin{bmatrix}
+     1 \\
+        0 \\
+        0
+\end{bmatrix}$ 
+is an eigenvector for $A$.\\\\
+For $\lambda = 2$
+\begin{equation*}
+    (A-2I_3) =
+    \begin{bmatrix}
+        3 - 2 & 0 & 0 \\
+        0 & 1 - 2 & 1 \\
+        0 & 1 & 1 - 2
+    \end{bmatrix} 
+    =
+     \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 &  - 1 & 1 \\
+        0 & 1 &  - 1
+    \end{bmatrix}
+\end{equation*}
+\begin{equation*}
+    (A-2I_3)v =
+     \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 &  - 1 & 1 \\
+        0 & 1 &  - 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 \\
+        1 \\
+        1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        0
+    \end{bmatrix} 
+\end{equation*}
+For $\lambda = 0$
+\begin{equation*}
+    (A-1I_3) =
+    \begin{bmatrix}
+        3 - 0 & 0 & 0 \\
+        0 & 1 - 0 & 1 \\
+        0 & 1 & 1 - 0
+    \end{bmatrix} 
+    =
+      \begin{bmatrix}
+        3 & 0 & 0 \\
+        0 & 1 & 1 \\
+        0 & 1 & 1
+    \end{bmatrix} 
+\end{equation*}
+\begin{equation*}
+    (A-1I_3)v =
+ \begin{bmatrix}
+        3 & 0 & 0 \\
+        0 & 1 & 1 \\
+        0 & 1 & 1
+    \end{bmatrix} 
+    \begin{bmatrix}
+        0 \\
+        -1 \\
+        1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        0
+    \end{bmatrix} 
+\end{equation*}
+Now for the eigenvalues $[3,2,0]$ we have the following eigenvectores $\begin{bmatrix}
+    1 \\ 0 \\ 0
+\end{bmatrix}, \begin{bmatrix}
+    0 \\ 1\\ 1
+\end{bmatrix}, \begin{bmatrix}
+    0 \\ -1\\ 1
+\end{bmatrix}$
+Which constitutes the basis for $A$
 \subsection*{(e) Panic?!}
-Write $A = V \Lambda V^{-1}$ for suitable $V$ and diagonal $\Lambda$.
+Write $A = V \Lambda V^{-1}$ for suitable $V$ and diagonal $\Lambda$.\\
+Following Proposition 21.6~\cite{NUMLA} with the resulting basis for $A$ from (d) and the eigenvalues from (b-c).\\\\
+\begin{equation*}
+    V = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & -1 \\
+        0 & 1 & 1
+    \end{bmatrix}
+    \qquad 
+    \Lambda = \begin{bmatrix}
+        3 & 0 & 0 \\
+        0 & 2 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+    \qquad V^{-1} =
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \frac{1}{2} & \frac{1}{2} \\
+        0 & -\frac{1}{2} & \frac{1}{2}
+    \end{bmatrix}
+\end{equation*}
+The inverse of $V$ was calculated using python and includ a sanity check for $A = V \Lambda V^{-1}$
+\begin{lstlisting}[language=Python]
+# Defining the Diagonalization of A
+V = np.array([[1,0,0],
+              [0,1,-1],
+              [0,1,1]])
+Vinv = np.linalg.inv(V)
+Lambda = np.array([[3,0,0],
+                   [0,2,0],
+                   [0,0,0]])
+# Sanity check for A
+A = V @ Lambda @ Vinv
+print(A)
+#Output -->
+[[3. 0. 0.]
+ [0. 1. 1.]
+ [0. 1. 1.]]
+\end{lstlisting}
+hence $A$ is Diagonalizable.
 
 \subsection*{(f) Witness me! - Said Donald Duck Calmly}
-Use item (e) to determine $A^k$ for all $k$.
-
-
-
+Use item (e) to determine $A^k$ for all $k$.\\\\
+Item (e) is the factorization of $A = V \Lambda V^{-1}$, refering to Theorem 6.3.2~\cite{LinearAlgApp} remark 4:\\
+\textit{If $A$ is diagonalizable, then A can be factored into a product $V\Lambda V^{-1}$}\\
+it then follows from remark 4 that
+\begin{equation*}
+    A^2 = (V \Lambda V^{-1})(V \Lambda V^{-1}) = V\Lambda^2 V^{-1}
+\end{equation*}
+This leaves $A^k = V\Lambda^k V^{-1}$ which can be refined further by focusing on the right side.
+\begin{equation*}
+    V\Lambda^k V^{-1} =  \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & -1 \\
+        0 & 1 & 1
+    \end{bmatrix} \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^k & 0 \\
+        0 & 0 & 0^k
+    \end{bmatrix} \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \frac{1}{2} & \frac{1}{2} \\
+        0 & -\frac{1}{2} & \frac{1}{2}
+    \end{bmatrix}
+\end{equation*}
+Let's split this Mammoth of matrix multiplicaiton
+\begin{equation*}
+    V \Lambda^k = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & -1 \\
+        0 & 1 & 1
+    \end{bmatrix} \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^k & 0 \\
+        0 & 0 & 0^k
+    \end{bmatrix} = \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^k & 0 \\
+        0 & 2^k & 0
+    \end{bmatrix}
+\end{equation*}
+Then multiply by $V^{-1}$, remember $\frac{2^k}{2} = 2^{k-1}$
+\begin{equation*}
+  V\Lambda^k V^{-1}  = \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^k & 0 \\
+        0 & 2^k & 0
+    \end{bmatrix} 
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & \frac{1}{2} & \frac{1}{2} \\
+        0 & -\frac{1}{2} & \frac{1}{2}
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^{k-1} & 2^{k-1} \\
+        0 & 2^{k-1} & 2^{k-1}
+    \end{bmatrix}
+\end{equation*}
+In conclusion $A^k$ can be expressed/determined using item (e) as such
+\begin{equation*}
+    A^k =  \begin{bmatrix}
+        3^k & 0 & 0 \\
+        0 & 2^{k-1} & 2^{k-1} \\
+        0 & 2^{k-1} & 2^{k-1}
+    \end{bmatrix}
+\end{equation*}
 \section*{Appendix}
+Only code used is explicitely shown when applied.
 \printbibliography
 \end{document}
