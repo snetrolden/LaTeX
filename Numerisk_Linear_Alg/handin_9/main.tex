@@ -216,13 +216,13 @@ Reducing the Eig thingies to just two significant values.
     \end{bmatrix}
 \end{equation}
 
-\subsection*{Solutions}
+\subsection*{Solutions for $y_0(t)$ and $y_1(t)$}
 Finding a solution for $y'_0(t)$ and $y'_1(t)$ using the eigen thingies, proposition 22.3~\cite{NUMLA} says a solution is given using the eigenvalues and eigenvectors as such:
 \begin{equation*}
     y(t) = c_0v_0e^{\lambda_0 t} + c_1v_1e^{\lambda_1 t}
 \end{equation*}
 Inserting the values from \eqref{EigVal} and \eqref{EigVec}.
-\begin{equation*}
+\begin{equation} \label{solution}
     y(t) = c_0  \begin{bmatrix}
         0.92 \\
         0.38
@@ -230,7 +230,7 @@ Inserting the values from \eqref{EigVal} and \eqref{EigVec}.
         -0.38 \\
         0.92
     \end{bmatrix} e^{-0.51t}
-\end{equation*}
+\end{equation}
 To isolate and determine $c_0$ and $c_1$, the initial state for $y(0)$ can be used.
 \begin{equation*}
     y(0) = \begin{bmatrix}
@@ -261,9 +261,31 @@ b = np.array([84, 36])
 
 c0, c1 = np.linalg.solve(A, b)
 
+print('c0 = ', c0)
+print('c1 = ', c1)
 
+# Output for reference (not part of the actual code)
+c0 = 91.80460234154218
+c1 = 1.2111425111021366
 \end{lstlisting}
-
+Rounding down $c_0$ and $c_1$
+\begin{equation*}
+    c_0 = 91.80 \qquad c_1 = 1.21
+\end{equation*}
+Now it's possible to determine a solution for both $y_0(t)$ and $y_1(t)$, by using the newfound constants and plotting them into \eqref{solution}
+\begin{equation*}
+   y(t) =
+    91.80  \begin{bmatrix}
+        0.92 \\
+        0.38
+    \end{bmatrix} e^{-0.09t} + 1.21 \begin{bmatrix}
+        -0.38 \\
+        0.92
+    \end{bmatrix} e^{-0.51t} = \begin{bmatrix}
+84.456e^{-0.09t} - 0.4598e^{-0.51t} \\
+34.884e^{-0.09t} + 1.1132e^{-0.51t}
+\end{bmatrix}
+\end{equation*}
 
 \section*{Appendix}
 Only code used is explicitely shown when applied.
