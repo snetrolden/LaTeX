@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  24 APR 2026 12:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  25 APR 2026 15:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_8/main.tex
-(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_8/main.tex
+**c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex
+(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
 (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -1340,67 +1340,41 @@ Package pdftex.def Info: Aarhus_University_seal.png  used on input line 130.
 [1
 
 {C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Aarhus_University_seal.png>]
-Overfull \hbox (25.96205pt too wide) detected at line 171
-[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^UI[]\OT1/cmr/m/n/12 ) = (3 \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^U\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^A [] ^^@ \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^A [] \OT1/cmr/m/n/12 + 0 \OMS/cmsy/m/n/12 ^^A [] \OT1/cmr/m/n/12 = (3 \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^U\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 ((1 \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^U\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 (1 \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 ^^U\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 (1 \OMS/cmsy/m/n/12 ^^A \OT1/cmr/m/n/12 1))
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 181--184
-
- []
-
+<flowchart.png, id=19, 335.45325pt x 230.66174pt>
+File: flowchart.png Graphic file (type png)
+<use flowchart.png>
+Package pdftex.def Info: flowchart.png  used on input line 147.
+(pdftex.def)             Requested size: 375.80544pt x 258.4168pt.
 
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.205 \subsection
-                 *{(d) Basis using Eigenvectors} [1]
-Underfull \hbox (badness 10000) in paragraph at lines 206--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 206--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--246
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--272
-
- []
-
-
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 348--350
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 348--350
+l.162 \end{align*}
+                   [1 <./flowchart.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 162--167
 
  []
 
 (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 390--394
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
 
 
-[3]
+[2]
 
-[4]
-runsystem(latexminted cleantemp  --timestamp 20260424124827 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+[3]
+runsystem(latexminted cleantemp  --timestamp 20260425154241 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1416,17 +1390,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53263 strings out of 468134
- 1249979 string characters out of 5428804
- 2297226 words of memory out of 5000000
- 81128 multiletter control sequences out of 15000+600000
- 636371 words of font info for 75 fonts, out of 8000000 for 9000
+ 53301 strings out of 468134
+ 1250485 string characters out of 5428804
+ 2287365 words of memory out of 5000000
+ 81158 multiletter control sequences out of 15000+600000
+ 637583 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,8n,101p,792b,1353s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (5 pages, 300978 bytes).
+ 99i,8n,101p,792b,1390s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Bilvagist\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (4 pages, 328505 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 32 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 38 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

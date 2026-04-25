@@ -9,10 +9,10 @@
 \usepackage{mdframed} %For box around text
 \usepackage{hyperref} %For hyperlinks in the PDF
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,
-	urlcolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
 }
 \urlstyle{same}
 \usepackage{amsthm}
@@ -74,11 +74,6 @@
 
 \lstset{style=mystyle}
 
-
-
-
-
-
 \usepackage{lastpage}
 %%%%%     COMMANDS     %%%%%
 %%%% Blue box for subsection text (not figures) %%%%
@@ -91,9 +86,6 @@
   {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
   {\end{mdframed}}
 
-
-
-
 \begin{document}
 
 \begin{titlepage}
@@ -101,14 +93,14 @@
 
 \center
 
-\textsc{\LARGE Aarhus university}\\[1.5cm]
-\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Computer Science}\\[0.5cm]
 \textsc{\large Numerical Linear Algebra}\\[0.5cm]
     
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+    {\huge\bfseries Handin 9 }\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -142,13 +134,104 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
+\section*{Zulu Bravo PsyOp Striker 9}
+Given a system of flowing thingies~\ref{fig:flow} with the following information:
+\begin{enumerate}
+    \item $A$ contains $300\; L$ of mixture and $84 \; g$ of salt.
+    \item $B$ contains $100 \; L$ of muxture and $36 \; g$ of salt.
+    \item $a$ flows with $30\; L\slash\min$ of water
+    \item $b$ flows with $15 \; L \slash\min$ of mixture
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{flowchart.png}
+    \caption{Containers connected  by pipes: Flowchart of the system.}
+    \label{fig:flow}
+\end{figure}
+\subsection*{The Equalizer}
+Determining the flow of $c$ and $d$ so as the amount of liquid in both containers are constant.
+\begin{enumerate}
+    \item \textbf{$A$} has an input $a$ and $b$ which totals to $45 \; L \slash\min$, so $c$ needs to flow with $45 \; L \slash\min$ to cancel out the input from $a$ and $b$.
+    \item \textbf{$B$} has an output $b$ and a newly determined input $c$, so the following should determine the flow of the remaining pipe $c-b = 30 \; L \slash\min = d$ 
+\end{enumerate}
+\subsection*{Two Peens In A System}
+Explain why the salt amounts $y_0(t)$ in $A$ and $y_1(t)$ in $B$ satisfy the system
+\begin{align*}
+    y'_0(t) &= -0.15y_0(t) + 0.15y_1(t)\\
+    y'_1(t) &= 0.15y_0(t) - 0.45y_1(t)
+\end{align*}
+The change in salt corresponds to the input and output, percentages, of mixture in each container.\\
+for $A$: $c$ outputs $45 \; L \slash\min$ which is $15\%$ of $A$ hence $-0.15y_0(t)$, and $b$ inputs $15 \; L \slash\min$ which is $15\%$ of $B$ hence $+0.15y_1(t)$.\\
+for $B$: $c$ inputs so it's $+0.15y_0(t)$ and $b$ outputs $45 \; L \slash\min$ which is $45\%$ of $B$ hence $-0.45y_1(t)$.\\\\
+This give us a system that can be written as:
+\begin{equation*}
+    y'(t)=Ay = \begin{bmatrix}-0.15 & 0.15\\
+0.15 & -0.45\end{bmatrix} \begin{bmatrix}y_0(t)\\
+y_1(t)\end{bmatrix}
+\end{equation*}
+with the initial value:
+\begin{equation*}
+    y(0) = \begin{bmatrix}
+        84 \\
+        36 
+    \end{bmatrix}
+\end{equation*}
 
-\section*{}
+\subsection*{To Eigen or Not To Eigen}
+The Author calls upon god to protect me against the horros and impending doom of using a numpy function that isn't explicitely shown in the Bibel of Numerical Linear Algebra by Jesus AKA Andrew Swan.\\\\
+\begin{lstlisting}[language=Python]
+import numpy as np
 
+A = np.array([[-0.15, 0.15], 
+              [0.15, -0.45]])
+# Please don't end me... \(;_;)/
+eigvalues, eigvectors = np.linalg.eig(A)
 
+print(f'Eig Values:\n {eigvalues}')
+print(f'Eig Vectors:\n {eigvectors}' )
 
-%put code in the appendix and refer to it here
+# Output (not part of the actual code, just for reference):
+Eig Values:
+ [-0.08786797 -0.51213203]
+Eig Vectors:
+ [[ 0.92387953 -0.38268343]
+ [ 0.38268343  0.92387953]]
+\end{lstlisting}
+Reducing the Eig thingies to just two significant values.
+\begin{equation}\label{EigVal}
+    \Lambda_0 = -0.09 \qquad \Lambda_1 = -0.51
+\end{equation}
+\begin{equation}\label{EigVec}
+    v_0 =
+    \begin{bmatrix}
+        0.92 \\
+        0.38
+    \end{bmatrix}
+    \qquad 
+    v_1 =
+    \begin{bmatrix}
+        -0.38 \\
+        0.92
+    \end{bmatrix}
+\end{equation}
+
+\subsection*{Solutions}
+Finding a solution for $y'_0(t)$ and $y'_1(t)$ using the eigen thingies, proposition 22.3~\cite{NUMLA} says a solution is given using the eigenvalues and eigenvectors as such:
+\begin{equation*}
+    y(t) = c_0v_0e^{\Lambda_0 t} + c_1v_1e^{\Lambda_1 t}
+\end{equation*}
+Inserting the values from \eqref{EigVal} and \eqref{EigVec}.
+\begin{equation*}
+    y(t) = c_0  \begin{bmatrix}
+        0.92 \\
+        0.38
+    \end{bmatrix} e^{-0.09t} + c_1 \begin{bmatrix}
+        -0.38 \\
+        0.92
+    \end{bmatrix} e^{-0.51t}
+\end{equation*}
+
 \section*{Appendix}
-Clearly a misguided appendixed left redundant after its creator realized that the code was not that long and could be easily included in the main text without a kerfuffle.\\
+Only code used is explicitely shown when applied.
 \printbibliography
 \end{document}
