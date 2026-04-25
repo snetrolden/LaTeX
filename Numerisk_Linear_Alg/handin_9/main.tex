@@ -187,8 +187,8 @@ A = np.array([[-0.15, 0.15],
 # Please don't end me... \(;_;)/
 eigvalues, eigvectors = np.linalg.eig(A)
 
-print(f'Eig Values:\n {eigvalues}')
-print(f'Eig Vectors:\n {eigvectors}' )
+print('Eig Values:\n', eigvalues)
+print('Eig Vectors:\n', eigvectors)
 
 # Output (not part of the actual code, just for reference):
 Eig Values:
@@ -199,9 +199,10 @@ Eig Vectors:
 \end{lstlisting}
 Reducing the Eig thingies to just two significant values.
 \begin{equation}\label{EigVal}
-    \Lambda_0 = -0.09 \qquad \Lambda_1 = -0.51
+   \text{Eigenvalues} \qquad \lambda_0 = -0.09 \qquad \lambda_1 = -0.51
 \end{equation}
 \begin{equation}\label{EigVec}
+    \text{Eigenvectors} \qquad
     v_0 =
     \begin{bmatrix}
         0.92 \\
@@ -218,7 +219,7 @@ Reducing the Eig thingies to just two significant values.
 \subsection*{Solutions}
 Finding a solution for $y'_0(t)$ and $y'_1(t)$ using the eigen thingies, proposition 22.3~\cite{NUMLA} says a solution is given using the eigenvalues and eigenvectors as such:
 \begin{equation*}
-    y(t) = c_0v_0e^{\Lambda_0 t} + c_1v_1e^{\Lambda_1 t}
+    y(t) = c_0v_0e^{\lambda_0 t} + c_1v_1e^{\lambda_1 t}
 \end{equation*}
 Inserting the values from \eqref{EigVal} and \eqref{EigVec}.
 \begin{equation*}
@@ -230,6 +231,39 @@ Inserting the values from \eqref{EigVal} and \eqref{EigVec}.
         0.92
     \end{bmatrix} e^{-0.51t}
 \end{equation*}
+To isolate and determine $c_0$ and $c_1$, the initial state for $y(0)$ can be used.
+\begin{equation*}
+    y(0) = \begin{bmatrix}
+        84 \\
+        36
+    \end{bmatrix} = c_0  \begin{bmatrix}
+        0.92 \\
+        0.38
+    \end{bmatrix} + c_1 \begin{bmatrix}
+        -0.38 \\
+        0.92
+    \end{bmatrix} = \begin{bmatrix}
+        c_0 \cdot 0.92 + c_1 \cdot -0.38 \\
+        c_0 \cdot 0.38 + c_1 \cdot -0.92
+    \end{bmatrix}
+\end{equation*}
+This gives us the following system:
+\begin{align*}
+    0.92c_0 - 0.38c_1 &= 84 \\
+    0.38c_0 + 0.92c_1 &= 36
+\end{align*}
+Using the god-given gift of numpy:
+\begin{lstlisting}[language=Python]
+B = np.array([[0.92, -0.38], 
+              [0.38, 0.92]])
+
+b = np.array([84, 36])
+
+c0, c1 = np.linalg.solve(A, b)
+
+
+\end{lstlisting}
+
 
 \section*{Appendix}
 Only code used is explicitely shown when applied.
