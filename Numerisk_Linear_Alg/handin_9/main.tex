@@ -286,8 +286,88 @@ Now it's possible to determine a solution for both $y_0(t)$ and $y_1(t)$, by usi
 34.884e^{-0.09t} + 1.1132e^{-0.51t}
 \end{bmatrix}
 \end{equation*}
+\subsection*{Plotting}
+Plotting both $y_0$ and $y_1$ versus time, shows an exponential decrease in salt over time which is expected since the biggest term $-0.45$ represents the output in container B from pipe $d$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_1.png}
+    \caption{}
+    \label{fig:time}
+\end{figure}
+For the $y_0$ versus $y_1$ it shows the relation in how the containers salt levels are related.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figure_2.png}
+    \caption{}
+    \label{fig:comp}
+\end{figure}
+This specifically shows a linear relation in the salt levels, since both container $A$ and $B$ drain the same rate over time.
+\subsection*{Limits of $\infty$}
+Taking \eqref{solution} and splitting it into $y_0$ and $y_1$
+\begin{align*}
+    y_0(t) &=c_0 0.92 e^{-0.09t} - c_1 0.38  e^{-0.51t} \\
+    y_1(t) &=c_0 0.38 e^{-0.09t} + c_1 0.92 e^{-0.51t}
+\end{align*}
+it's know that $e^{-t} \to 0$ as $t \to \infty$ so the solution will approach zero as $t$ grows, which makes sense in regards to \ref{fig:time} and \ref{fig:comp}.\\
+It also means that the terms that decay the fastest can be seen as neglible, so any terms with $e^{-0.51t}$
+\begin{equation} \label{inf}
+   \lim_{t \to \infty} \frac{y_1(t)}{y_0(t)} = \frac{c_0 0.38e^{-0.09t}}{c_0 0.92e^{-0.09t}} = \frac{0.38}{0.92} \approx 0.41
+\end{equation}
+Which is the ratio between the salt level in $A$ and $B$ as $t$ changes.
+
+
+
 
 \section*{Appendix}
-Only code used is explicitely shown when applied.
+\begin{lstlisting}[language=Python]
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Finding Eigenvalues/vectors (c)
+A = np.array([[-0.15, 0.15], 
+              [0.15, -0.45]])
+# Please don't end me... \(;_;)/
+eigvalues, eigvectors = np.linalg.eig(A)
+
+
+# solving for the constants c_0 and c_1 in (d)
+B = np.array([[0.92, -0.38], 
+              [0.38, 0.92]])
+
+    b = np.array([84, 36])
+
+c0, c1 = np.linalg.solve(B, b)
+
+
+# (e)
+t = np.linspace(0,100,1000)
+y_0 = 84.456 * np.e**(-0.09*t) - 0.4598 * np.e**(-0.51*t)
+y_1 = 34.884 * np.e**(-0.09*t) + 1.1132 * np.e**(-0.51*t)
+
+
+## Brr brrr printing section
+print(f'Eig Values:\n {eigvalues}')
+print(f'Eig Vectors:\n {eigvectors}' )
+print('c0 = ', c0)
+print('c1 = ', c1)
+
+fig1, y = plt.subplots()
+y.plot(t,y_0, color='pink', label='Container A')
+y.plot(t, y_1, color='purple', label='Container B')
+y.set_title('Amount of salt in containers over time')
+y.set_xlabel('Time')
+y.set_ylabel('Salt Amount(g)')
+y.grid()
+y.legend()
+
+fig2, pl = plt.subplots()
+pl.plot(y_0,y_1, color='peru')
+pl.set_xlabel('Salt amount in container A')
+pl.set_ylabel('Salt amount in container B')
+pl.grid()
+pl.set_title('Salt amount in both containers in relation to each other over time')
+
+plt.show()    
+\end{lstlisting}
 \printbibliography
 \end{document}

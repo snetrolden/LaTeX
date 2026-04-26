@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  26 APR 2026 12:37
-=======
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.23)  25 APR 2026 22:43
->>>>>>> 4b66e31ab72ac0a9d45ca81ac6bf87365e117e2c
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  26 APR 2026 15:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1373,19 +1369,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 181--182
 
  []
 
-<<<<<<< HEAD
 
 
 [2]
+<Figure_1.png, id=72, 462.528pt x 346.896pt>
+File: Figure_1.png Graphic file (type png)
+<use Figure_1.png>
+Package pdftex.def Info: Figure_1.png  used on input line 293.
+(pdftex.def)             Requested size: 375.80544pt x 281.86818pt.
+
 
 [3]
+<Figure_2.png, id=96, 462.528pt x 346.896pt>
+File: Figure_2.png Graphic file (type png)
+<use Figure_2.png>
+Package pdftex.def Info: Figure_2.png  used on input line 300.
+(pdftex.def)             Requested size: 375.80544pt x 281.86818pt.
 
-[4]
-runsystem(latexminted cleantemp  --timestamp 20260426123757 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
-=======
-[2] [3] [4]
-runsystem(latexminted cleantemp  --timestamp 20260425224322 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
->>>>>>> 4b66e31ab72ac0a9d45ca81ac6bf87365e117e2c
+
+[4 <./Figure_1.png> <./Figure_2.png>]
+
+[5]
+
+[6]
+runsystem(latexminted cleantemp  --timestamp 20260426154359 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
@@ -1401,28 +1408,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
-<<<<<<< HEAD
- 53336 strings out of 468134
- 1250931 string characters out of 5428804
- 2285461 words of memory out of 5000000
- 81177 multiletter control sequences out of 15000+600000
+ 53435 strings out of 468134
+ 1252288 string characters out of 5428804
+ 2357667 words of memory out of 5000000
+ 81220 multiletter control sequences out of 15000+600000
  640733 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,8n,101p,792b,1390s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,101p,792b,2683s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Bilvagist\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-=======
- 53416 strings out of 467871
- 1252600 string characters out of 5418376
- 2300262 words of memory out of 5000000
- 81519 multiletter control sequences out of 15000+600000
- 641629 words of font info for 92 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 99i,8n,108p,797b,1393s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\smed_\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/smed_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
->>>>>>> 4b66e31ab72ac0a9d45ca81ac6bf87365e117e2c
-Output written on main.pdf (5 pages, 333379 bytes).
+Output written on main.pdf (7 pages, 398556 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 54 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
