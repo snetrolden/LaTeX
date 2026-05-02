@@ -9,10 +9,10 @@
 \usepackage{mdframed} %For box around text
 \usepackage{hyperref} %For hyperlinks in the PDF
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,
-	urlcolor=cyan,
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
 }
 \urlstyle{same}
 \usepackage{amsthm}
@@ -74,11 +74,6 @@
 
 \lstset{style=mystyle}
 
-
-
-
-
-
 \usepackage{lastpage}
 %%%%%     COMMANDS     %%%%%
 %%%% Blue box for subsection text (not figures) %%%%
@@ -91,9 +86,6 @@
   {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
   {\end{mdframed}}
 
-
-
-
 \begin{document}
 
 \begin{titlepage}
@@ -101,14 +93,14 @@
 
 \center
 
-\textsc{\LARGE Aarhus university}\\[1.5cm]
-\textsc{\Large Computer-Science}\\[0.5cm]
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Computer Science}\\[0.5cm]
 \textsc{\large Numerical Linear Algebra}\\[0.5cm]
     
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries Handin 2 }\\[0.4cm] % Title of your document
+    {\huge\bfseries Handin 10 }\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -142,13 +134,82 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
+\section*{I'm gonna be flipping burgers in 1 year ;\_;}
+Anyway, consider the matrix
+\begin{equation}\label{A}
+    A =
+    \begin{bmatrix}
+        0.5 & 0.25 & 0.25 \\
+        0.25 & 0.3 &  0.45 \\
+        0.25 & 0.45 & 0.3 
+    \end{bmatrix}
+\end{equation}
+\subsection*{(a) Verify that $A$ is symmetric and explain why $A$ is diagonalizable with only
+real eigenvalues}
+Verifying that $A$ is symmetric can be done by looking at it and saying 'Yep that's symmetric', since $row_i == column_i$\\\\
+Or verify it using python.
+\begin{lstlisting}[language=Python]
+A = np.array([[0.5, 0.25, 0.25], 
+              [0.25, 0.3, 0.45],
+              [0.25, 0.45, 0.3]])
 
-\section*{}
+if np.array_equal(A, A.T):
+    print(True)
+# Output for reference
+True
+\end{lstlisting}
+Per the spectral theorem 23.10~\cite{NUMLA} any real symmetric matrix $A \in \mathbb{R}^{n \times x}$ there exist an orthogonal
+ matrix $V \in \mathbb{R}^{n \times n}$ such that $A = V \Lambda V^T$ where $\Lambda$ is
+ a diagonal matrix, and because we can factor the matrix~\eqref{A} into that, then it can be said to be diagonalizable.\\
+ To go even further, the Theorem also states that $A$ has $n$ real eigenvalues and an orthonormal basis consisting of it's egenvectores...Yeah take that 7-year old Gauss! I'm smart too!
+
+\subsection*{(b) Verify that 1.0 is an eigenvalue of $A$, and then determine the other eigen-values of $A$.}
+The characteristic polynomial for $A$ is
+\begin{equation*}
+    p(\lambda) = \det(A-\lambda I_3) = 
+    \det\begin{bmatrix}
+        0.5 - \lambda & 0.25 & 0.25 \\
+        0.25 & 0.3 - \lambda & 0.45 \\
+        0.25 & 0.45 & 0.3 - \lambda 
+    \end{bmatrix}\\
+\end{equation*}
+
+\begin{align*}
+    &= (0.5- \lambda) \det\begin{bmatrix}
+        0.3 - \lambda & 0.45 \\
+        0.45 & 0.3 -\lambda
+    \end{bmatrix} - (0.25) \det\begin{bmatrix}
+        0 & 0.15 - \lambda \\
+        0.25 & 0.3 - \lambda
+    \end{bmatrix} + (0.25)\det\begin{bmatrix}
+        0.25 & 0.3 - \lambda \\
+        0.25 & 0.45
+    \end{bmatrix}\\ % skip some middle calculations
+    &= ((0.3-\lambda) \cdot (0.3- \lambda))- (0.45 \cdot 0.45))
+\end{align*}
+
+
+\subsection*{(c) Compute an orthonormal basis for $\mathbb{R}^3$ consisting of eigenvectors of $A$.}
+
+\subsection*{(d) Determine an orthogonal matrix $V$ and a diagonal matrix $\Lambda$ such that}
+\begin{equation}\label{decomp}
+    A = V \Lambda V^T
+\end{equation}
+
+\subsection*{(e) For}
+\begin{equation}
+    v = \begin{bmatrix}
+        0.12 \\
+        0.21 \\
+        0.39
+    \end{bmatrix}
+\end{equation}
+Use the results to determine the limits of $A^k v$ for $ k \to \infty$
 
 
 
-%put code in the appendix and refer to it here
+
 \section*{Appendix}
-Clearly a misguided appendixed left redundant after its creator realized that the code was not that long and could be easily included in the main text without a kerfuffle.\\
+
 \printbibliography
 \end{document}
