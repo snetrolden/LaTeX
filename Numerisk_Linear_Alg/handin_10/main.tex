@@ -164,19 +164,23 @@ Per the spectral theorem 23.10~\cite{NUMLA} any real symmetric matrix $A \in \ma
  To go even further, the Theorem also states that $A$ has $n$ real eigenvalues and an orthonormal basis consisting of it's egenvectores...Yeah take that 7-year old Gauss! I'm smart too!
 
 \subsection*{(b) Verify that 1.0 is an eigenvalue of $A$, and then determine the other eigen-values of $A$.}
-The characteristic polynomial for $A$ is
-\begin{equation*}
-    p(\lambda) = \det(A-\lambda I_3) = 
+%use proposition 24.4, stochastic matrix
+To verify it's possible to use proposition 24.4~\cite{NUMLA} which says if $A$ is a stochastic matrix, then 1.0 is an eigenvalue of $A$.
+ A stochastic matrix is a square matrix $n \times n$ with non-negative entries and the sum of each row is 1.0. Looking at the matrix~\eqref{A} it's trivial
+  that the sum of each row is 1.0, so 1.0 is an eigenvalue of $A$.\\\\
+
+
+%for finding the rest of the eigenvalues
+\noindent To find the rest of the eigenvalues needed to construct the basis for $A$, the characteristic polynomial for $A$ is used:
+\begin{align*}
+      &p(\lambda) = \det(A-\lambda I_3) = 
     \det\begin{bmatrix}
         0.5 - \lambda & 0.25 & 0.25 \\
         0.25 & 0.3 - \lambda & 0.45 \\
         0.25 & 0.45 & 0.3 - \lambda 
     \end{bmatrix}\\
-\end{equation*}
-
-\begin{align*}
     &= (0.5- \lambda) \det\begin{bmatrix}
-        0.3 - \lambda & 0.45 \\
+       0.3 - \lambda & 0.45 \\
         0.45 & 0.3 -\lambda
     \end{bmatrix} - (0.25) \det\begin{bmatrix}
         0 & 0.15 - \lambda \\
@@ -184,8 +188,7 @@ The characteristic polynomial for $A$ is
     \end{bmatrix} + (0.25)\det\begin{bmatrix}
         0.25 & 0.3 - \lambda \\
         0.25 & 0.45
-    \end{bmatrix}\\ % skip some middle calculations
-    &= ((0.3-\lambda) \cdot (0.3- \lambda))- (0.45 \cdot 0.45))
+    \end{bmatrix}
 \end{align*}
 
 
