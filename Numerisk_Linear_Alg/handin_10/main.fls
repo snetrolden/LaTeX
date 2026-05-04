@@ -418,12 +418,6 @@ INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\ep
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-INPUT .\main.out
-INPUT .\main.out
-INPUT main.out
-INPUT main.out
-INPUT .\main.out
-INPUT .\main.out
 OUTPUT main.out
 OUTPUT main.pdf
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex\latex\translations\dicts\translations-basic-dictionary-english.trsl
@@ -508,7 +502,6 @@ INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti1
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
-INPUT main.run.xml
 OUTPUT main.run.xml
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
