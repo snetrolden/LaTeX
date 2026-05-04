@@ -164,13 +164,13 @@ Per the spectral theorem 23.10~\cite{NUMLA} any real symmetric matrix $A \in \ma
  To go even further, the Theorem also states that $A$ has $n$ real eigenvalues and an orthonormal basis consisting of it's egenvectores...Yeah take that 7-year old Gauss! I'm smart too!
 
 \subsection*{(b) Verify that 1.0 is an eigenvalue of $A$, and then determine the other eigen-values of $A$.}
-%use proposition 24.4, stochastic matrix
+% use proposition 24.4, stochastic matrix
 To verify it's possible to use proposition 24.4~\cite{NUMLA} which says if $A$ is a stochastic matrix, then 1.0 is an eigenvalue of $A$.
  A stochastic matrix is a square matrix $n \times n$ with non-negative entries and the sum of each row is 1.0. Looking at the matrix~\eqref{A} it's trivial
   that the sum of each row is 1.0, so 1.0 is an eigenvalue of $A$.\\\\
 
 
-%for finding the rest of the eigenvalues
+% for finding the rest of the eigenvalues
 \noindent To find the rest of the eigenvalues needed to construct the basis for $A$, the characteristic polynomial for $A$ is used:
 \begin{align*}
       &p(\lambda) = \det(A-\lambda I_3) = 
@@ -191,13 +191,248 @@ To verify it's possible to use proposition 24.4~\cite{NUMLA} which says if $A$ i
     \end{bmatrix}
 \end{align*}
 
-
+\begin{align*}
+    p(\lambda) &= \det(A-\lambda I_3) = 
+    \det\begin{bmatrix}
+        0.5 - \lambda & 0.25 & 0.25 \\
+        0.25 & 0.3 - \lambda & 0.45 \\
+        0.25 & 0.45 & 0.3 - \lambda 
+    \end{bmatrix}\\
+    &= (0.5- \lambda) \det\begin{bmatrix}
+       0.3 - \lambda & 0.45 \\
+        0.45 & 0.3 -\lambda
+    \end{bmatrix} - 0.25 \det\begin{bmatrix}
+        0.25 & 0.45 \\
+        0.25 & 0.3 - \lambda
+    \end{bmatrix} + 0.25\det\begin{bmatrix}
+        0.25 & 0.3 - \lambda \\
+        0.25 & 0.45
+    \end{bmatrix} \\
+    &= (0.5 - \lambda) \left( (0.3 - \lambda)^2 - 0.45^2 \right) - 0.25 \left( 0.25(0.3 - \lambda) - 0.25(0.45) \right) + 0.25 \left( 0.25(0.45) - 0.25(0.3 - \lambda) \right) \\
+    &= (0.5 - \lambda) (\lambda^2 - 0.6\lambda - 0.1125) - 0.0625(-0.15 - \lambda) + 0.0625(0.15 + \lambda) \\
+    &= (-\lambda^3 + 1.1\lambda^2 - 0.1875\lambda - 0.05625) + 0.125\lambda + 0.01875 \\
+    &= -\lambda^3 + 1.1\lambda^2 - 0.0625\lambda - 0.0375 = p(\lambda)
+\end{align*}
+That was a lot of math...But it's not done yet, to extract the remaining eigenvalues a polynomial of the second degree is needed, not this wet dirty cloth of a third degree polynomial. BUT with the pwoer of 23.1~\cite{NUMLA}, by knowing $\lambda_0 = 1$ the polynomial can be factored.
+\begin{equation*}
+    -\lambda^3 + 1.1\lambda^2 - 0.0625\lambda - 0.0375 = (\lambda-1)q(\lambda)
+\end{equation*}
+where $q(\lambda)$ is polynomial of $n-1$ degrees, which can be found by coefficient comparison.
+\begin{equation*}
+    -\lambda^3 + 1.1\lambda^2 - 0.0625\lambda - 0.0375 = (\lambda -1)(A\lambda^2 + B\lambda + C) = A\lambda^3 + (B-A)\lambda^2 + (C-B)\lambda - C 
+\end{equation*}
+It's known that $A = -1$ which is then used to determine $B$ and  $C$.
+\begin{align*}
+    A &= -1 \\
+    B - A &= 1.1 \implies B = 0.1 \\
+    C - B &= -0.0625 \implies C = 0.0375 \\
+    -C &= -0.0375
+\end{align*}
+Then inserting the values of $A$, $B$ and $C$ into $q(\lambda)$.
+\begin{equation*}
+    -\lambda^3 + 1.1\lambda^2 - 0.0625\lambda - 0.0375 = (\lambda - 1)(-\lambda^2 + 0.1\lambda + 0.0375) = 0
+\end{equation*}
+Now, since $\lambda_0 = 1$, is only possible if $(\lambda - 1) = 0$. this leaves the second term to be solved, which luckily for us is a second degree polynomial.
+\begin{equation*}
+    -\lambda^2 + 0.1\lambda + 0.0375 = 0
+\end{equation*}
+Quadratic formula go!
+\begin{equation*}
+    \lambda = \frac{-0.1 \pm \sqrt{(0.1)^2 - 4(-1)(0.0375)}}{2(-1)} = \frac{-0.1 \pm 0.4}{-2}
+\end{equation*}
+\begin{align*}
+\lambda_1 &= \frac{-0.1 + 0.4}{-2} = -0.15 \\
+\lambda_2 &= \frac{-0.1 - 0.4}{-2} = 0.25
+\end{align*}
+Wich give the eigenvalues of $A$ as $\lambda_0 = 1$, $\lambda_1 = -0.15$ and $\lambda_2 = 0.25$.
 \subsection*{(c) Compute an orthonormal basis for $\mathbb{R}^3$ consisting of eigenvectors of $A$.}
+The eigenvectors of $A$ can be found by solving the system $(A - \lambda I)v = 0$ for each eigenvalue $\lambda$ and a non-zero vector $v \in \mathbb{R}^3$\\
+Note that whenever a free variable is found, the variable is set to $1$
+\subsubsection*{$\lambda_0 = 1$}
+\begin{equation*}
+    (A - (1)I)v_0 = \begin{bmatrix}
+        -0.5 & 0.25 & 0.25 \\
+        0.25 & -0.7 & 0.45 \\
+        0.25 & 0.45 & -0.7 
+    \end{bmatrix}v_0 = 0
+\end{equation*}
+Continue with row reduction to find a free variable.
+\begin{align*}
+     &R_1 \to R_1 + \frac{1}{2}R_0 \\
+    &R_2 \to R_2 + \frac{1}{2}R_0 \\
+    &R_2 \to R_2 + R_1 
+\end{align*}
+\begin{equation*}
+    \begin{bmatrix}
+       -0.5 & 0.25 & 0.25 \\
+       0 & -0.575 & 0.575 \\
+       0 & 0 & 0
+    \end{bmatrix}
+\end{equation*}
+Back-substitution yields the eigenvector $v_0$
+\begin{equation*}
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1
+    \end{bmatrix}
+\end{equation*}
 
+\subsubsection*{$\lambda_1 = -0.15$}
+\begin{equation*}
+    (A+(0.15)I_3)v_1=
+    \begin{bmatrix}
+        0.65 & 0.25 & 0.25 \\
+        0.25 & 0.45 & 0.45 \\
+        0.25 & 0.45 & 0.45 
+    \end{bmatrix}v_1 = 0
+\end{equation*}
+Continue with row reduction to find a free variable.
+\begin{align*}
+    &R_2 \to R_2 - R_1\\
+    &R_0 \to \frac{R_0}{2.6}\\
+    &R_1 \to R_1 - R_0
+\end{align*}
+\begin{equation*}
+    \begin{bmatrix}
+        0.25 & 0.096 & 0.096 \\
+        0 & 0.35 & 0.35 \\
+        0 & 0 & 0 
+    \end{bmatrix}
+\end{equation*}
+Back-substitution yields the eigenvector $v_1$
+\begin{equation*}
+ \begin{bmatrix}
+        0 \\
+        -1 \\
+        1
+    \end{bmatrix}
+\end{equation*}
+\subsubsection*{$\lambda_2 = 0.25$}
+\begin{equation*}
+    (A-(0.25)I_3)v_2 =
+    \begin{bmatrix}
+        0.25 & 0.25 & 0.25 \\
+        0.25 & 0.05 & 0.45 \\
+        0.25 & 0.45 & 0.05 
+    \end{bmatrix}v_2 = 0
+\end{equation*}
+Continue with row reduction to find a free variable.
+\begin{align*}
+    &R_0 \to R_0 \cdot 2\\
+    &R_0 \to R_0 - R_1\\
+    &R_0 \to R_0 - R_2 \\
+    &R_1 \to R_1 - R_2
+\end{align*}
+\begin{equation*}
+    \begin{bmatrix}
+       0 & 0 & 0 \\
+       0 & -0.4 & 0.4 \\
+       0.25 & 0.45 & 0.05
+    \end{bmatrix}
+\end{equation*}
+Back-substitution yields the eigenvector $v_2$
+\begin{equation*}
+    \begin{bmatrix}
+        -2 \\
+        1  \\
+        1
+    \end{bmatrix}
+\end{equation*}
+So $A$ has  the eigenvalues $\lambda \in \{1, -0.15, 0.25\}$ with the corresponding eigenvectores\\ $v_0 = \begin{bmatrix}
+    1\\
+    1 \\
+    1
+\end{bmatrix}$, $v_1 = \begin{bmatrix}
+    0 \\
+    -1 \\
+    1
+\end{bmatrix}$ and $ v_2 = \begin{bmatrix}
+    -2 \\
+    1 \\
+    1
+\end{bmatrix}$  which, according the spectral theorem 23.10~\cite{NUMLA} is an orthonormal basis for $A$ on the form.
+\begin{equation*}
+    V_{fake} = 
+    \begin{bmatrix}
+        1 & 0 & -2 \\
+        1 & -1 & 1 \\
+        1 & 1 & 1
+    \end{bmatrix}
+\end{equation*}
+BUT WAIT Mr.Author! you're forgetting something! You're dumb!\\
+This isn't orthonormal, you need to normalize the eigenvectors! Please don't call me dumb, I'm just a student trying to learn!\\
+nah, you derserve that you poser, you starbucks sipping long haired hipster looking vinyl licking plant bingo wannabe. \#SelfBurn\\\\
+Anyway, the eigenvectors are normalised by dividing them with their respective norms.
+\begin{align*}
+    v_0 &= \frac{1}{\sqrt{3}}\begin{bmatrix}
+        1 \\
+        1 \\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        \frac{1}{\sqrt{3}} \\
+        \frac{1}{\sqrt{3}} \\
+        \frac{1}{\sqrt{3}}
+    \end{bmatrix} \\
+    v_1 &= \frac{1}{\sqrt{2}}\begin{bmatrix}
+        0 \\
+        -1 \\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        0 \\
+        -\frac{1}{\sqrt{2}} \\
+        \frac{1}{\sqrt{2}}
+    \end{bmatrix} \\
+    v_2 &= \frac{1}{\sqrt{6}}\begin{bmatrix}
+        -2 \\
+        1 \\
+        1
+    \end{bmatrix} = \begin{bmatrix}
+        -\frac{2}{\sqrt{6}} \\
+        \frac{1}{\sqrt{6}} \\
+        \frac{1}{\sqrt{6}}
+    \end{bmatrix}
+\end{align*}
+So the real treasure (V) is 
+\begin{equation}\label{Ortho basis}
+    V = 
+    \begin{bmatrix}
+        \frac{1}{\sqrt{3}} & 0 & -\frac{2}{\sqrt{6}} \\
+        \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} \\
+        \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}}
+    \end{bmatrix}
+\end{equation}
 \subsection*{(d) Determine an orthogonal matrix $V$ and a diagonal matrix $\Lambda$ such that}
 \begin{equation}\label{decomp}
     A = V \Lambda V^T
 \end{equation}
+$V$ is determined in equation~\eqref{Ortho basis} and $\Lambda$ is the diagonal matrix consisting of the eigenvalues
+\begin{equation*}
+    \Lambda = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & -0.15 & 0 \\
+        0 & 0 & 0.25
+    \end{bmatrix}
+\end{equation*}
+This can be verified with python to see if the determined matrices are correct.
+\begin{lstlisting}[language=Python]
+V0 = np.array([1, 1, 1]) / np.sqrt(3)
+V1 = np.array([0, -1, 1]) / np.sqrt(2)
+V2 = np.array([-2, 1, 1]) / np.sqrt(6)
+
+V = np.column_stack((V0, V1, V2))
+
+Lambda = np.array([[1,0,0],
+                   [0,-0.15,0],
+                   [0,0,0.25]])
+print(V@Lambda@V.T)
+
+# Output for reference
+[[0.5  0.25 0.25]
+ [0.25 0.3  0.45]
+ [0.25 0.45 0.3 ]]
+\end{lstlisting}
+Crazy! it works! I can't believe it, I'm so good at this! I'm a genius! I might be flipping burgers in 1 year! 
 
 \subsection*{(e) For}
 \begin{equation}
@@ -208,11 +443,51 @@ To verify it's possible to use proposition 24.4~\cite{NUMLA} which says if $A$ i
     \end{bmatrix}
 \end{equation}
 Use the results to determine the limits of $A^k v$ for $ k \to \infty$
-
-
+Usage of the decomposition fo $A$ has been permitted by a higher power, (The Authors Brain).
+\begin{equation*}
+    A^k v = (V \Lambda V^T)^k v = V \Lambda^k V^T v
+\end{equation*}
+\begin{equation*}
+    \Lambda^k = \begin{bmatrix}
+        1^k & 0 & 0 \\
+        0 & (-0.15)^k & 0 \\
+        0 & 0 & (0.25)^k
+    \end{bmatrix}
+\end{equation*}
 
 
 \section*{Appendix}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+A = np.array([[0.5, 0.25, 0.25], 
+              [0.25, 0.3, 0.45],
+              [0.25, 0.45, 0.3]])
+
+
+if np.array_equal(A, A.T):
+    print(True)
+
+V0 = np.array([1, 1, 1]) / np.sqrt(3)
+V1 = np.array([0, -1, 1]) / np.sqrt(2)
+V2 = np.array([-2, 1, 1]) / np.sqrt(6)
+
+V = np.column_stack((V0, V1, V2))
+
+Lambda = np.diag([1, -0.15, 0.25])
+print(V@Lambda@V.T)
+
+
+
+
+
+
+
+
+
+
+
 
 \printbibliography
 \end{document}
