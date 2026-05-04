@@ -454,17 +454,26 @@ Usage of the decomposition fo $A$ has been permitted by a higher power, (The Aut
         0 & 0 & (0.25)^k
     \end{bmatrix}
 \end{equation*}
-
+Letting $k \to \infty$ means the values $-0.15^\infty$ and $0.25^\infty$ get the big ol' zero treatment which leaves $1^\infty$,
+ and that is always just 1.\\
+ So the matrix $\Lambda$ becomes
+ \begin{equation*}
+    \Lambda^{k \to \infty} = \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix}
+ \end{equation*}
+So when $\Lambda$ gets multiplied by $V$, only the first column remains
 
 \section*{Appendix}
-
+\begin{lstlisting}[language = Python]
 import numpy as np
 import matplotlib.pyplot as plt
 
 A = np.array([[0.5, 0.25, 0.25], 
               [0.25, 0.3, 0.45],
               [0.25, 0.45, 0.3]])
-
 
 if np.array_equal(A, A.T):
     print(True)
@@ -477,17 +486,6 @@ V = np.column_stack((V0, V1, V2))
 
 Lambda = np.diag([1, -0.15, 0.25])
 print(V@Lambda@V.T)
-
-
-
-
-
-
-
-
-
-
-
-
+\end{lstlisting}
 \printbibliography
-\end{document}
+\end{document}y
