@@ -465,6 +465,67 @@ Letting $k \to \infty$ means the values $-0.15^\infty$ and $0.25^\infty$ get the
     \end{bmatrix}
  \end{equation*}
 So when $\Lambda$ gets multiplied by $V$, only the first column remains
+\begin{equation*}
+    V \Lambda^{k \to \infty} = \begin{bmatrix}
+        \frac{1}{\sqrt{3}} & 0 & -\frac{2}{\sqrt{6}} \\
+        \frac{1}{\sqrt{3}} & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}} \\
+        \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{6}}
+    \end{bmatrix} 
+    \begin{bmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{1}{\sqrt{3}} & 0 & 0 \\
+        \frac{1}{\sqrt{3}} & 0 & 0 \\
+        \frac{1}{\sqrt{3}} & 0 & 0
+    \end{bmatrix}
+\end{equation*}
+and then $(V \Lambda^{k \to \infty})V^T$
+\begin{equation*}
+    (V \Lambda^{k \to \infty})V^T = 
+    \begin{bmatrix}
+        \frac{1}{\sqrt{3}} & 0 & 0 \\
+        \frac{1}{\sqrt{3}} & 0 & 0 \\
+        \frac{1}{\sqrt{3}} & 0 & 0
+    \end{bmatrix} 
+    \begin{bmatrix}
+        \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+        0 & -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+        -\frac{2}{\sqrt{6}} & \frac{1}{\sqrt{6}} & \frac{1}{\sqrt{6}}
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+    \end{bmatrix}
+\end{equation*}
+finally multiplying the result of $V\Lambda^\infty V^T$ with $v$
+\begin{equation*}
+    (V \Lambda^{k \to \infty} V^T)v = 
+    \begin{bmatrix}
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3} \\
+        \frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.12 \\
+        0.21 \\
+        0.39
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        0.24 \\
+        0.24 \\
+        0.24
+    \end{bmatrix}
+\end{equation*}
+So the limit of $A^k v$ for $k \to \infty$ is $\begin{bmatrix}
+    0.24 \\
+    0.24 \\
+    0.24
+\end{bmatrix}$
+
 
 \section*{Appendix}
 \begin{lstlisting}[language = Python]

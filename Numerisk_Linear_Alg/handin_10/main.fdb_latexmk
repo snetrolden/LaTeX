@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1777919804.17707 "main.bcf" "main.bbl" "main" 1777929221.91808 0
-  "main.bcf" 1777929221 108791 fb206a900fdd455b317b88c886715020 "pdflatex"
+["biber main"] 1777919804.17707 "main.bcf" "main.bbl" "main" 1777971682.80659 0
+  "main.bcf" 1777971682 108791 fb206a900fdd455b317b88c886715020 "pdflatex"
   "references.bib" 1777749521 723 96facdafd8e94ac1925c45158c9ee856 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1777929218.68081 "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Numerisk_Linear_Alg/handin_10/main.tex" "main.pdf" "main" 1777929221.91902 0
+["pdflatex"] 1777971679.44955 "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Numerisk_Linear_Alg/handin_10/main.tex" "main.pdf" "main" 1777971682.80745 0
   "Aarhus_University_seal.png" 1774212918 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/smed_/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1774301106 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/smed_/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1774300962 13333487 87972f7225c1c2079f8f0186cca57940 ""
@@ -277,12 +277,12 @@
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1773584792 2269 91cd03da61ab1da00145ba8a81560051 ""
   "C:/Users/smed_/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1773584792 20785 8db5f0a2b2ce96dda9fac87ccab29449 ""
-  "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Numerisk_Linear_Alg/handin_10/main.tex" 1777929217 16195 ada5d7a285dc4b9c52c5d15638ee51c5 ""
-  "main.aux" 1777929221 1360 a7e7a7c2883c29843f51ddee9dd0c6f2 "pdflatex"
+  "c:/Users/smed_/Desktop/Code/Uni/Latex/LaTeX/Numerisk_Linear_Alg/handin_10/main.tex" 1777971678 18100 91f3f2b27932db42757d129111030392 ""
+  "main.aux" 1777971682 1360 a7e7a7c2883c29843f51ddee9dd0c6f2 "pdflatex"
   "main.bbl" 1777919896 1689 88de15c8be840b7e4f6959cface4ad93 "biber main"
-  "main.out" 1777929220 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1777929221 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1777929217 16195 ada5d7a285dc4b9c52c5d15638ee51c5 ""
+  "main.out" 1777971681 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1777971682 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1777971678 18100 91f3f2b27932db42757d129111030392 ""
   (generated)
   "main.aux"
   "main.bcf"
