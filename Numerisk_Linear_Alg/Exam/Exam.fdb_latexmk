@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1778070140.89585 "main.bcf" "main.bbl" "main" 1778073336.04954 0
-  "main.bcf" 1778073334 108611 513265c6f0248624500cc604cd2eebe2 "pdflatex"
-  "references.bib" 1777027654 696 96facdafd8e94ac1925c45158c9ee856 ""
+["biber Exam"] 1780746376.7808 "Exam.bcf" "Exam.bbl" "Exam" 1780746755.85593 0
+  "Exam.bcf" 1780746755 108851 64e21856c091718e35da4b1ade53215c "pdflatex"
+  "references.bib" 1780568030 702 0519fd9bb7938a781b28acd102c4b048 ""
   (generated)
-  "main.bbl"
-  "main.blg"
+  "Exam.bbl"
+  "Exam.blg"
   (rewritten before read)
-["pdflatex"] 1778073331.34719 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex" "main.pdf" "main" 1778073336.0505 0
+["pdflatex"] 1780746752.91508 "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/Exam/Exam.tex" "Exam.pdf" "Exam" 1780746755.85679 0
   "Aarhus_University_seal.png" 1756119290 154201 296b3687239dcf113046a259b808d84f ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1761583268 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt1000.pk" 1770300520 9492 6e48b0933163860cee756c1c8ab905e0 ""
@@ -52,6 +52,7 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1247596667 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb" 1247596667 36118 fad905eba93cff5bce1e185fe980a177 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1247596667 31099 342ef5a582aacbd3346f3cf4579679fa ""
+  "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 870c211f62cb72718a00e353f14f254d ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/generic/bigintcalc/bigintcalc.sty" 1576433602 40635 c40361e206be584d448876bba8a64a3b ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/generic/bitset/bitset.sty" 1575926576 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
@@ -281,20 +282,18 @@
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-abspage.sty" 1750428951 2269 2de6c7a5fd634dfef00a960544463a38 ""
   "C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/tex/latex/zref/zref-base.sty" 1750428951 20785 198a9cb2e04238d92c320d0d9edbd76a ""
-  "Figure_1.png" 1777205052 26465 971d71fc3e7ed7aa92f65a8102bc9694 ""
-  "Figure_2.png" 1777205048 28358 fcd80c8374aa3ba2dd4fad9d974798a4 ""
-  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex" 1778073324 12751 1278d485373188e101331f3acf17044e ""
-  "flowchart.png" 1777028467 17338 a11c2022bfcc72eb7d277d3bc13ddb2c ""
-  "main.aux" 1778073334 2067 e71b11bc9ca4a9173b54512aaf9f7a65 "pdflatex"
-  "main.bbl" 1778070155 1689 88de15c8be840b7e4f6959cface4ad93 "biber main"
-  "main.out" 1778073333 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1778073334 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1778073324 12751 1278d485373188e101331f3acf17044e ""
+  "Exam.aux" 1780746755 947 b0b6f4af11cfe322706b55b97ba0c34e "pdflatex"
+  "Exam.bbl" 1780746384 1738 01fd465d4fda8b3be15ff295d276acf6 "biber Exam"
+  "Exam.out" 1780746754 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Exam.run.xml" 1780746755 2305 5b76cdf63bf5c662e5cbb58f6816d409 "pdflatex"
+  "Exam.tex" 1780746752 12849 66fd0e8a5777f8c4e57b9a4e3ee90c43 ""
+  "c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/Exam/Exam.tex" 1780746752 12849 66fd0e8a5777f8c4e57b9a4e3ee90c43 ""
+  "problem6c.png" 1780739870 39260 291b6540e6370efe101210d8b723477e ""
   (generated)
-  "main.aux"
-  "main.bcf"
-  "main.log"
-  "main.out"
-  "main.pdf"
-  "main.run.xml"
+  "Exam.aux"
+  "Exam.bcf"
+  "Exam.log"
+  "Exam.out"
+  "Exam.pdf"
+  "Exam.run.xml"
   (rewritten before read)

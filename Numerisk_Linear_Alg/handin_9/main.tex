@@ -177,44 +177,71 @@ with the initial value:
     \end{bmatrix}
 \end{equation*}
 
-\subsection*{To Eigen or Not To Eigen}
-The Author calls upon god to protect me against the horros and impending doom of using a numpy function that isn't explicitely shown in the Bibel of Numerical Linear Algebra by Jesus AKA Andrew Swan.\\\\
-\begin{lstlisting}[language=Python]
-import numpy as np
+\subsection*{(c)Finding the EigenValues and EigenVectors as an Atheist}
 
-A = np.array([[-0.15, 0.15], 
-              [0.15, -0.45]])
-# Please don't end me... \(;_;)/
-eigvalues, eigvectors = np.linalg.eig(A)
-
-print('Eig Values:\n', eigvalues)
-print('Eig Vectors:\n', eigvectors)
-
-# Output (not part of the actual code, just for reference):
-Eig Values:
- [-0.08786797 -0.51213203]
-Eig Vectors:
- [[ 0.92387953 -0.38268343]
- [ 0.38268343  0.92387953]]
-\end{lstlisting}
-Reducing the Eig thingies to just two significant values.
-\begin{equation}\label{EigVal}
-   \text{Eigenvalues} \qquad \lambda_0 = -0.09 \qquad \lambda_1 = -0.51
+\textcolor{red}{Given the matrix $A$ 
+\begin{equation*}
+    A = \begin{bmatrix}
+        -0.15 & 0.15 \\
+        0.15 & -0.45
+    \end{bmatrix}
+\end{equation*}
+it's characteristic polynomial is
+\[
+\det(A-\lambda I_2) = \begin{bmatrix}
+        -0.15- \lambda & 0.15 \\
+        0.15 & -0.45 - \lambda
+    \end{bmatrix} = \lambda^2 + 0.60\lambda + 0.045
+\]
+Using the quadratic formula to do stuff (find the concrete eigenvalues)
+\[
+\lambda = \frac{-0.60 \pm \sqrt{0.60^2 - 4(1)(0.045)}}{2(1)} = \frac{-0.60 \pm \sqrt{0.18}}{2} = \frac{-0.60 \pm 0.42}{2}
+\]
+This gives the eigenvalues:
+\begin{equation} \label{EigVal}
+    \lambda_0 = -0.09 \qquad \lambda_1 = -0.51
 \end{equation}
-\begin{equation}\label{EigVec}
-    \text{Eigenvectors} \qquad
-    v_0 =
-    \begin{bmatrix}
+Let's find the corresponding eigenvectors, starting with $\lambda_0$.
+\begin{equation*}
+    (A - \lambda_0 I_2)v_0 = \begin{bmatrix}
+        -0.06 & 0.15 \\
+        0.15 & -0.36
+    \end{bmatrix}v_0 = 0
+\end{equation*}
+ which gives us the eigenvector $v_0$ (after normalizing it).
+\begin{equation*}
+    v_0 = \begin{bmatrix}
         0.92 \\
         0.38
     \end{bmatrix}
-    \qquad 
-    v_1 =
-    \begin{bmatrix}
+\end{equation*}
+Now for $\lambda_1$.
+\begin{equation*}
+    (A - \lambda_1 I_2)v_1 = \begin{bmatrix}
+        0.36 & 0.15 \\
+        0.15 & 0.06
+    \end{bmatrix}v_1 = 0
+\end{equation*}
+which gives us the eigenvector $v_1$ (after normalizing it).
+\begin{equation*}
+    v_1 = \begin{bmatrix}
+        -0.38 \\
+        0.92
+    \end{bmatrix}
+\end{equation*}
+So the eigenvectores associateed with the eigenvalues are.
+\begin{equation} \label{EigVec}
+    v_0 = \begin{bmatrix}
+        0.92 \\
+        0.38
+    \end{bmatrix} \qquad v_1 = \begin{bmatrix}
         -0.38 \\
         0.92
     \end{bmatrix}
 \end{equation}
+The Author argues that since god is dead, no one will judge the lack of intermediates shown for the eigenvectores...please? \#PuppyEyes
+}
+
 
 \subsection*{Solutions for $y_0(t)$ and $y_1(t)$}
 Finding a solution for $y'_0(t)$ and $y'_1(t)$ using the eigen thingies, proposition 22.3~\cite{NUMLA} says a solution is given using the eigenvalues and eigenvectors as such:

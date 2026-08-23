@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  6 MAY 2026 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.8.25)  6 JUN 2026 13:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex
-(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/handin_9/main.tex
+**c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/Exam/Exam.tex
+(c:/Users/Bilvagist/Desktop/LaTeX/LaTeX/Numerisk_Linear_Alg/Exam/Exam.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
 (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -1197,8 +1197,8 @@ Package: lastpagemodern 2025-06-06 v2.1g Refers to last page's name (HMM; JPG)
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 89.
 \@quotelevel=\count552
 \@quotereset=\count553
- (main.aux)
-\openout1 = `main.aux'.
+ (Exam.aux)
+\openout1 = `Exam.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
 LaTeX Font Info:    ... okay on input line 89.
@@ -1273,9 +1273,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring ON on input line 89.
- (main.out) (main.out)
+ (Exam.out) (Exam.out)
 \@outlinefile=\write6
-\openout6 = `main.out'.
+\openout6 = `Exam.out'.
 
  (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
@@ -1311,103 +1311,93 @@ File: english.lbx 2025/07/10 v3.21 biblatex localization (PK/MW)
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout4 = `main.bcf'.
+\openout4 = `Exam.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'main.bbl' found.
- (main.bbl)
+Package biblatex Info: ... file 'Exam.bbl' found.
+ (Exam.bbl)
 Package biblatex Info: Reference section=0 on input line 89.
 Package biblatex Info: Reference segment=0 on input line 89.
  (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
 \c@lstlisting=\count560
-LaTeX Font Info:    Trying to load font information for U+msa on input line 113.
- (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 113.
- (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 <Aarhus_University_seal.png, id=6, 1027.84pt x 1037.8775pt>
 File: Aarhus_University_seal.png Graphic file (type png)
 <use Aarhus_University_seal.png>
-Package pdftex.def Info: Aarhus_University_seal.png  used on input line 130.
+Package pdftex.def Info: Aarhus_University_seal.png  used on input line 112.
 (pdftex.def)             Requested size: 93.94957pt x 94.86192pt.
 
 
 [1
 
 {C:/Users/Bilvagist/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Aarhus_University_seal.png>]
-<flowchart.png, id=19, 335.45325pt x 230.66174pt>
-File: flowchart.png Graphic file (type png)
-<use flowchart.png>
-Package pdftex.def Info: flowchart.png  used on input line 147.
-(pdftex.def)             Requested size: 375.80544pt x 258.4168pt.
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 121.
+ (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 121.
+ (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.162 \end{align*}
-                   [1 <./flowchart.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 162--167
+l.170 mgs(
+          u) [1]
 
- []
-
-
-
-[2] (C:\Users\Bilvagist\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
+[2]
 
 [3]
-<Figure_1.png, id=77, 462.528pt x 346.896pt>
-File: Figure_1.png Graphic file (type png)
-<use Figure_1.png>
-Package pdftex.def Info: Figure_1.png  used on input line 320.
-(pdftex.def)             Requested size: 375.80544pt x 281.86818pt.
-<Figure_2.png, id=78, 462.528pt x 346.896pt>
-File: Figure_2.png Graphic file (type png)
-<use Figure_2.png>
-Package pdftex.def Info: Figure_2.png  used on input line 327.
-(pdftex.def)             Requested size: 375.80544pt x 281.86818pt.
+<problem6c.png, id=77, 650.43pt x 361.35pt>
+File: problem6c.png Graphic file (type png)
+<use problem6c.png>
+Package pdftex.def Info: problem6c.png  used on input line 323.
+(pdftex.def)             Requested size: 375.80544pt x 208.78365pt.
 
 
-[4 <./Figure_1.png>]
+[4]
 
-[5 <./Figure_2.png>]
+[5 <./problem6c.png>]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 363.
+
 
 [6]
-runsystem(latexminted cleantemp  --timestamp 20260506151531 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+
+[7]
+
+[8]
+runsystem(latexminted cleantemp  --timestamp 20260606135233 B66068CF75E5ACB6CF1AF2AD1D0642ED)...disabled (restricted).
 
  
 enddocument/afterlastpage (AED): lastpage setting LastPage.
-(main.aux)
+(Exam.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-07-20>
  ***********
-Package rerunfilecheck Info: File `main.out' has not changed.
+Package rerunfilecheck Info: File `Exam.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package logreq Info: Writing requests to 'main.run.xml'.
-\openout1 = `main.run.xml'.
+Package logreq Info: Writing requests to 'Exam.run.xml'.
+\openout1 = `Exam.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53417 strings out of 468134
- 1252077 string characters out of 5428804
- 2453733 words of memory out of 5000000
- 81219 multiletter control sequences out of 15000+600000
- 640733 words of font info for 92 fonts, out of 8000000 for 9000
+ 53487 strings out of 468134
+ 1252645 string characters out of 5428804
+ 2531076 words of memory out of 5000000
+ 81192 multiletter control sequences out of 15000+600000
+ 636929 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,8n,101p,792b,2683s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Bilvagist\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (7 pages, 398594 bytes).
+ 99i,8n,101p,788b,2809s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Bilvagist\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1000.pk><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Bilvagist/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Exam.pdf (9 pages, 378101 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 93 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 357 PDF objects out of 1000 (max. 8388607)
+ 190 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
