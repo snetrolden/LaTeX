@@ -145,10 +145,10 @@
     \]
     The base case for $n = 1$
     \[
-    \text{LHS:} \quad \frac{1}{1^2} = 1 \qquad \text{RHS:} \quad 2-1 = 1
+    \text{LHS:} \quad \frac{1}{1^2} = 1 \qquad \text{RHS:} \quad 2-\frac{1}{1} = 1
     \]
     the base case is satisfied since $1 \leq 1$\\
-    Next step is the hypothesis for induction ThingyMaBob, which is to assume it holds for some positive number $\Omega$ = n (Queue introduction to the Omegaverse) \#KnotMeDaddyFunch\\
+    Next step is the hypothesis for induction ThingyMaBob, which is to assume it holds for some positive number $\Omega$ = n (Queue introduction to the Omegaverse) \#FanficForLife\\
     The Goofy ah $\Omega$ goes to town \#Purr 
     \[
         \sum_{k=1}^{\Omega}\frac{1}{k^2} \leq 2-\frac{1}{\Omega}
@@ -156,8 +156,32 @@
     Now it is time for marriage, which is to prove it for $\Omega + 1$, the next number in the chain, so the actual induction step.\\
     But remember as a true Alpha, we know the left side is just the summation:
     \[
-        \textit{ Goofy ah søren, insert summation or something}
+        \frac{1}{1^2} + \frac{1}{2^2} + \hdots + \frac{1}{\Omega^2}
     \]
+    This means the next one in the series is just $\frac{1}{(\Omega + 1)^2}$ so the summation for $\Omega +1$ becomes
+    \[
+    \sum_{k=1}^{\Omega+1} \frac{1}{k^2}
+    \]
+    And for the right hand side, the next number is just added as so \#HowlingForTheMoon
+    \[
+     \sum_{k=1}^{\Omega+1} \frac{1}{(k^2} = 2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2}
+    \]
+    From here it's a matter of transformation (under the fullmoon \#WerewolfBaddie)
+    \begin{align}
+         &2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2} \\
+         &2 - \frac{1 \cdot (\Omega+1)^2 + \Omega \cdot 1}{\Omega (\Omega + 1)^2} \\
+         &2 - \frac{(\Omega + 1)^2+\Omega}{\Omega(\Omega + 1)^2} \\
+         &2 - \frac{\Omega^2 + 2\Omega + 1 + \Omega}{\Omega(\Omega + 1)^2} \\
+         &2 - \frac{\Omega^2 + \Omega}{\Omega(\Omega + 1)^2} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2} \\
+         &2 - \frac{\Omega(\Omega + 1)}{\Omega(\Omega + 1)^2} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2} \\
+         &2 - \frac{1}{\Omega + 1} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2}
+    \end{align}
+    
+
+
+
+
+
 
     \item Conclude that for all natural numbers $n$, it holds that
     \[
