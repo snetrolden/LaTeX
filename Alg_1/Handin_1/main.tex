@@ -100,7 +100,7 @@
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries  Into The Omegaverse}\\[0.4cm] % Title of your document
+    {\huge\bfseries  Into The Omegaverse *Wolf Sounds*}\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -127,7 +127,7 @@
     {\large\today}
 
 \vfill\vfill
-    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    \includegraphics[width=0.5\textwidth]{wolf.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
     
 
 \vfill
@@ -149,7 +149,7 @@
     \text{LHS:} \quad \frac{1}{1^2} = 1 \qquad \text{RHS:} \quad 2-\frac{1}{1} = 1
     \]
     the base case is satisfied since $1 \leq 1$\\
-    Next step is the hypothesis for induction ThingyMaBob, which is to assume it holds for some positive number $\Omega$ = n (Queue introduction to the Omegaverse) \#FanficForLife\\
+    Next step is the hypothesis for induction ThingyMaBob, which is to assume it holds for some positive integer $\Omega$ = n (Queue introduction to the Omegaverse) \#FanficForLife\\
     The Goofy ah $\Omega$ goes to town \#Purr 
     \[
         \sum_{k=1}^{\Omega}\frac{1}{k^2} \leq 2-\frac{1}{\Omega}
@@ -161,36 +161,85 @@
     \]
     This means the next one in the series is just $\frac{1}{(\Omega + 1)^2}$ so the summation for $\Omega +1$ becomes
     \[
-    \sum_{k=1}^{\Omega+1} \frac{1}{k^2}
+    \sum_{k=1}^{\Omega+1} \frac{1}{k^2} = \frac{1}{1^2} + \frac{1}{2^2} + \hdots + \frac{1}{\Omega^2} + \frac{1}{(\Omega+1)^2}
     \]
     And for the right hand side, the next number is just added as so \#HowlingForTheMoon
     \[
-     \sum_{k=1}^{\Omega+1} \frac{1}{(k^2} = 2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2}
+     \sum_{k=1}^{\Omega+1} \frac{1}{k^2} \leq 2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2}
     \]
-    From here it's a matter of transformation (under the fullmoon \#WerewolfBaddie)
-    \begin{align}
-         &2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2} \\
-         &2 - \frac{1 \cdot (\Omega+1)^2 + \Omega \cdot 1}{\Omega (\Omega + 1)^2} \\
-         &2 - \frac{(\Omega + 1)^2+\Omega}{\Omega(\Omega + 1)^2} \\
-         &2 - \frac{\Omega^2 + 2\Omega + 1 + \Omega}{\Omega(\Omega + 1)^2} \\
-         &2 - \frac{\Omega^2 + \Omega}{\Omega(\Omega + 1)^2} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2} \\
-         &2 - \frac{\Omega(\Omega + 1)}{\Omega(\Omega + 1)^2} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2} \\
-         &2 - \frac{1}{\Omega + 1} - \frac{2\Omega + 1}{\Omega(\Omega + 1)^2}
-    \end{align}
-
-
-
-
-
+    This holds per the induction hypothesis, which means if we can use the collective intelligence of our pack to show the following induction step
+    \[
+        2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2} \leq 2 - \frac{1}{\Omega + 1}
+    \]
+    Then it should hold for all natural numbers $n$ per the transitive property\\\\
+    From here it's a matter of transformation, which is to be undertaken in the algebraic forrest under the fullmoon \#WerewolfBaddieUnderTheMoon\\
+\begingroup
+\addtolength{\jot}{1em}
+\begin{align}
+&= 2 - \frac{1}{\Omega} + \frac{1}{(\Omega + 1)^2} \\
+&= 2 - \left( \frac{(\Omega + 1)^2 - \Omega}{\Omega(\Omega + 1)^2} \right) \\
+&= 2 - \frac{\Omega^2 + 2\Omega + 1 - \Omega}{\Omega(\Omega + 1)^2} \\
+&= 2 - \frac{\Omega^2 + \Omega + 1}{\Omega(\Omega + 1)^2} \\
+&= 2 - \frac{\Omega^2 + \Omega}{\Omega(\Omega + 1)^2} - \frac{1}{\Omega(\Omega + 1)^2} \\
+&= 2 - \frac{\Omega(\Omega + 1)}{\Omega(\Omega + 1)^2} - \frac{1}{\Omega(\Omega + 1)^2} \\
+&= 2 - \frac{1}{\Omega + 1} - \frac{1}{\Omega(\Omega + 1)^2}
+\end{align}
+\endgroup
+At this point we have reduced it to a submissive and breedable form we can use \#BetaHumanTypeShiz\\
+But we need to show that this is less than $2 - \frac{1}{\Omega + 1}$.
+\[
+2- \frac{1}{\Omega + 1} - \frac{1}{\Omega(\Omega + 1)^2} \leq 2 - \frac{1}{\Omega + 1}
+\]
+The term $\frac{1}{\Omega(\Omega + 1)^2}$ is always positive since $\Omega > 0$, and because it subtracted from $2-\frac{1}{\Omega + 1}$, which is on both sides of the inequality,
+ it's clear as a true Alpha that the left side is a lesser beta, which means the inequality holds, and the induction step is complete, like the meeting of a true Alpha and it's destined Omega.\\\\
+ In conclusion the following holds for all natural numbers $n$:
+\[
+    \sum_{k=1}^{n} \frac{1}{k^2} \leq 2 - \frac{1}{n}.
+\]
 
 
     \item Conclude that for all natural numbers $n$, it holds that
     \[
         \sum_{k=1}^{n} \frac{1}{k^2} < 2.
     \]
+    This is a direct resu- "Ugh! step away from me pwincess! i can't contain it any longer! AAARHHOOOUUUWW" *Queue - Animal by Maroon 5*\\\\\\\\
+    Anyway, from the previous exercise it holds that $2 - \frac{1}{n} < 2$ for all natural numbers $n$.\\
+    Which by transitivity holds that
+    \[
+        \sum_{k=1}^{n} \frac{1}{k^2} \leq 2 - \frac{1}{n} < 2.
+    \]
+    \[
+    \sum_{k=1}^{n} \frac{1}{k^2} < 2
+    \]
     
     \item Consider whether the conclusion in 2 can be shown directly by induction on $n$.
+    No Alpha ever backs down from a challenge *Queue - Animal by Maroon 5, again but Louder*\\\\
+    Base case for $n = 1$
+    \[
+    \text{LHS:} \quad \frac{1}{1^2} = 1 \qquad \text{RHS:} \quad 2
+    \]
+    Pfft $1 < 2$, next is the hypthesis, which is the same as in (1)
+    \[
+        \sum_{k=1}^{\Omega}\frac{1}{k^2} < 2
+    \]
+    Then force feed the sum until it level up, and add the next term on both sides.
+    \[
+        \sum_{k=1}^{\Omega+1} \frac{1}{k^2} = \frac{1}{1^2} + \frac{1}{2^2} + \hdots + \frac{1}{\Omega^2} + \frac{1}{(\Omega+1)^2}
+    \]
+    \[
+        \sum_{k=1}^{\Omega+1} \frac{1}{k^2} < 2 + \frac{1}{(\Omega + 1)^2}
+    \]
+    Hmm...Hmm indeed, it seems like there might be a slight complication...
+    \begin{figure}[H]
+        \includegraphics[width=0.5\textwidth]{image.png}
+    \end{figure}
+Not even Alphabob can make this work, since the right isn't less than 2, the induction step kinda goes kaput, so it cannot, to my very Alpha knowledge, be shown directly by induction on $n$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{azlzlj.jpg}
+\end{figure}
+    
 \end{enumerate}
 
 \printbibliography
-\end{document}y
+\end{document}
