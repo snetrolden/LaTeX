@@ -134,34 +134,33 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
-\section*{Goofy ah Math}
 \subsection*{Evaluator}
 \subsubsection*{Question 1}
-Does this function need to recursively explore its argument, and why (or why not)?\\\\
-The function \textmd{eval} explicetly uses recursion to make it possible for BinOp to chain expressions, allowing for longer expressions with multiple operations.
+Does this function need to recursively explore its arguments, and why (or why not)?\\\\
+The function \textmd{eval} explicitly uses recursion to make it possible for BinOp to chain expressions, allowing for longer expressions with multiple operations.
 \subsubsection*{Question 2}
 Why does this function have the return type int? What other return types may be
 suitable?\\\\
-Since the function inout is an 'expr' and its type is defined as reuslting in a $Int$ via either $Int \rightarrow Int$ or its $BinOp$ which eventually leads to an $Int$.\\
-Other thibgs that might work, would be types such as $Float$ for more precise $Div$ operations, or it could also return $None$ incase of some error, like division by zero.
+Since the function input is an 'expr' and its type is defined as resulting in a $Int$ via either $Int \rightarrow Int$ or its $BinOp$ which eventually leads to an $Int$.\\
+Other things that might work, would be types such as $Float$ for more precise $Div$ operations, or it could also return $None$ in case of some error, like division by zero.
 \subsubsection*{Question 3}
 How does your evaluation handle the case of division by zero? Note that it may be just
 fine to not special-treat division by zero, but it is important you understand what actually
 happens at runtime.\\\\
 No work was put towards treating the division by zero case, since it's compiled by the in-house OCaml compiler
- it will raise an exception right now, but if the compiler wasn't there to handle it, there will be a funreal.
+ it will raise an exception right now, but if the compiler wasn't there to handle it, there will be a funeral.
 
-\subsection{Pretty Printer}
+\subsection*{Pretty Printer}
 \subsubsection*{Question 4}
 Are the functions you have defined recursive, and why (or why not)?\\\\
 The function is recursive for the same reason as the evaluator function is recursive, it has to traverse down
  the AST to find the lowest $Int$ and make sure to print from the left side of the tree, while it slowly bubbles
-  up througout the tree.  
+  up throughout the tree.  
 \subsubsection*{Question 5}
 Skipped this one. -Aura \#StupidestProgrammerInTheNorth \#ReadyToBeWhippedIntoShape
 \subsubsection*{Question 6}
 What is the OCaml type of asm\_example?\\\\
-The type is $elem_list$, but it can be traced to the type $asm$ in the $x86.ml$ file, where it is defined as lists of various datatypes such as opcodes, operand lists and ascii, so it's appropiate to call it a list of elements.  
+The type is $elem_list$, but it can be traced to the type $asm$ in the $x86.ml$ file, where it is defined as lists of various datatypes such as opcodes, operand lists and ascii, so it's appropriate to call it a list of elements.  
 \subsubsection*{Question 7}
 How would you rewrite this to use the Asm module without the local module open directive?\\\\
 The local module open directive can be replaced by dot notation instead, as an example for accessing $gtext$ in dot notation it could be
@@ -169,7 +168,7 @@ $X86.Asm.gtext$, this can be used for the whole statement.
 \[
 (X86.Movq,\; [X86.Asm.(~\$)\; 23; \; X86.Asm(~\%) \; X86.Rax])
 \]
-This is ugly, so the local module open directive is prefered. Rather it's more readable.
+This is ugly, so the local module open directive is preferred. Rather it's more readable.
 \subsubsection*{Question 8}
 Could we have used text instead of gtext? Why?\\\\
 The $gtext$ and $text$ are helper functions from $x86$ but they only differ in one aspect,
@@ -179,8 +178,8 @@ The $gtext$ and $text$ are helper functions from $x86$ but they only differ in o
 What output do you get from echo \$? when returning the value 2023?\\\\
 Changing the assembly literal to 2023 makes function output 231, the reasoning is for this is explained in the assignment itself, POSIX only reserve only one byte for the return value, hence the cut-off  
 
-\subsection{Translattion}
-
+\subsection*{Translattion}
+These are the expression made the Evaluator:
 \begin{align}
 &20 + 26 * 58 = 1528 \\
 &5 * 1 / 10 = 0\\
@@ -188,7 +187,27 @@ Changing the assembly literal to 2023 makes function output 231, the reasoning i
 &6 / 10 + 49 + 10 * 70 * 77 - 12 / 9 + 5 = 53940\\
 &34 / 72 - 17 / 46 = 0
 \end{align}
+To run the OCaml evaluator and print the generated assembly strings, and run the command \texttt{dune exec main.exe}.\\
+Here it's very apparent that the syntax is missing paranthesese, although the correct semantic of them remain, hence the output is still correct.\\
+The results were cross-referenced by manually creating the assembly files and running them through the C wrapper, checking the output manually like with earlier example given in the assignment.
 
+\subsection*{How to run the code}
+You will have received a zip which contains:
+\begin{enumerate}
+    \item Minimum dune files
+    \item Assembly files for each expression in the assignment
+    \item C wrapper to Assembly, main.c
+    \item The x86.ml file and the main.ml file, which contains all the code
+\end{enumerate}
+To run the main file, and generate the assembly code and the various expression follow the steps: (Beware: A lot of the expressions and assembly code is printed in the terminal):
+\begin{enumerate}
+    \item Unzip the project inside the development container given in the course (docker).
+    \item Move inside the project folder named \texttt{handin\_1}.
+    \item Run the following command in the terminal \texttt{dune exec ./main.exe} to run the main file.
+    \item See your terminal be flooded.
+\end{enumerate}
+To test each assembly file, you have to change a small line in the C wrapper, main.c, and then run \texttt{clang main.c task3\_exp1.s} where you
+ can change the number on the assembly file correlating to the expression you want tested. After each compile, check the output file 'a.out' by using the command './a.out' in the terminal.
 
 \printbibliography
 \end{document}
