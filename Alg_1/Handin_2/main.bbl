@@ -16,5 +16,36 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Algebra}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=150ddf348d8c74ba0c71af2aacc6430c}{%
+           family={Hansen},
+           familyi={H\bibinitperiod},
+           given={Johan\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Aarhus Universitetsforlag}%
+      }
+      \strng{namehash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{fullhash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{fullhashraw}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{bibnamehash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{authorbibnamehash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{authornamehash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{authorfullhash}{150ddf348d8c74ba0c71af2aacc6430c}
+      \strng{authorfullhashraw}{150ddf348d8c74ba0c71af2aacc6430c}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Tal og polynomier. Begreber, metoder, resultater, kodning og kryptografi}
+      \field{year}{2018}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
