@@ -135,11 +135,11 @@
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
 \section*{Goofy ah Math Number 2}
-
+\#Consistency
 \subsection*{Determine $\gcd(175,63).$}
 Theorem 3.2~\cite{Algebra} Euclidean Algorithm.
-
-\begin{table}[h]
+The algorithm is used as described in the book for $r_0 = 175$, $r_1 = 63$
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -147,19 +147,28 @@ $k$ & $r_k$ & $q_k$ & $r_{k+1}$ \\ \hline
 0 & 175 & - & 63 \\ \hline 
 1 & 63  & 2 & 49 \\ \hline
 2 & 49  & 1 & 14 \\ \hline
-3 & 14  & 2 & \underline{\underline{7}} \\ \hline
+3 & 14  & 3 & \underline{\underline{7}} \\ \hline
+4 & 7   & 2 & 0 \\ \hline  
 \end{tabular}
 \vspace{0.2cm}
 \caption{Euclidean Algorithm finding $\gcd(175, 63)$}
 \label{tab:euclid}
 \end{table}
+\noindent Reiterating the conclusion in the table, $\gcd(175, 63) = 7$ since the remainder in the next
+ step $k = 4$ is zero, then according Euclid's Algorithm the $\gcd$ is the $r_{k+1}$ value from the $k-1$ step, which is 7.
 
 
 
 
 \subsection*{Determine the integers $x$ and $y$ so $7 = 175\cdot x + 63 \cdot y$}
 Extended Euclidean algorithm - Bezouts identity: theorem 3.3~\cite{Algebra}
-\begin{table}[h]
+The algorithm  is used as is described in the book.
+\begin{align*}
+    &x_0 = 1,  &y_0 = 0, \\
+    &x_1 = 0,  &y_1 = 1, \\
+    &x_k = x_{k-2} - q_{k-1} \cdot x_{k-1},  &y_k = y_{k-2} - q_{k-1} \cdot y_{k-1},
+\end{align*}
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -174,9 +183,14 @@ $k$ & $r_k$ & $q_k$ & $x_k$ & $y_k$ \\ \hline
 \caption{Extended Euclidean Algorithm finding integers $x$ and $y$ so $7 = 175\cdot x + 63 \cdot y$}
 \label{tab:extended_euclid}
 \end{table}
-\subsection*{Convince God that there doesn't exist some integer $r$ and $s$ so $ 50 = 175 \cdot r + 63 \cdot s$}
+Double checking the result for $x = 7$ and $y= -11$
+\[
+175 \cdot 7 - 63 \cdot 11 = 700 - 693 = 7
+\]
+The values seems to match, so both $x$ and $y$ have been seriously determined and considered and look at and mathed REAL HARD...SERIOUSLY!
+\subsection*{Convince God (Nicolaj) that there doesn't exist some integer $r$ and $s$ so $ 50 = 175 \cdot r + 63 \cdot s$}
 Corollary 3.5~\cite{Algebra}\\
-For some numbers $a,b \in \mathbb{Z}$ that are not both zero, if $d = \gcd(a,b)$, then there is some integers $r$ and $s$ so 
+For some numbers $a,b \in \mathbb{Z}$ that are not both zero, if $d = \gcd(a,b)$ then there is some integers $r$ and $s$ so 
 that $d = ar + bs$ if and only if $d|c$.\\
 This means there should exist some integer $q$ such that $50 = 7q$. Sadly $\frac{50}{7} \notin \mathbb{Z}$ which means $q$ doesn't exist and this follows that $r$ and $s$ don't exist either.
 
