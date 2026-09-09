@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1788881672.34478 -1
-  "main.bcf" 1788881672 108737 d9aceda0afd26885566c893bf7f4ad38 "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1788952282.63275 -1
+  "main.bcf" 1788952282 108737 d9aceda0afd26885566c893bf7f4ad38 "pdflatex"
   "references.bib" 1788250303 931 50ebc91161abe934a72cf1ceeb59f814 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1788881668.32048 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_2/main.tex" "main.pdf" "main" 1788881672.3454 0
+["pdflatex"] 1788952277.08748 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_2/main.tex" "main.pdf" "main" 1788952282.63366 0
   "Aarhus_University_seal.png" 1788250303 154201 296b3687239dcf113046a259b808d84f ""
-  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_2/main.tex" 1788881667 6288 7d0f73e914e6dca2186516a66de2bfb5 ""
+  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_2/main.tex" 1788952276 6313 2dfe64cb7b123374f2ca5e86bee4ea76 ""
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1788253194 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1788250889 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1788250889 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -279,11 +279,11 @@
   "c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1788258893 5655996 795b756740562267ad2ae16e70168a76 ""
   "c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1788259021 3658229 9df1aa28ec275d08a1537ee490bf3e0d ""
   "c:/texlive/2026/texmf.cnf" 1788258867 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1788881672 1686 b909c3d354234acf016b53f3b2a10a60 "pdflatex"
+  "main.aux" 1788952282 1686 b909c3d354234acf016b53f3b2a10a60 "pdflatex"
   "main.bbl" 1788879175 1770 159bb5bb84b496a820b9fd3c349e3222 "biber main"
-  "main.out" 1788881670 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1788881672 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1788881667 6288 7d0f73e914e6dca2186516a66de2bfb5 ""
+  "main.out" 1788952279 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1788952282 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1788952276 6313 2dfe64cb7b123374f2ca5e86bee4ea76 ""
   (generated)
   "main.aux"
   "main.bcf"
