@@ -1,0 +1,204 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Department Of Computer Science }\\[0.5cm]
+\textsc{\large Compilation}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries  Hand-in 2}\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] 
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+\section*{Expression Programs}
+
+\subsection*{Task 1}
+It uses a lot of the same logic as the previous pretty\_printer from the first assignment.\\
+The main function \texttt{string\_of\_eprog} uses the fold\_left list function to iterate over all the statements and letting a helper function evaluate them and then append their variable to their statement, printing them on their own line.
+\section*{Semantic Analysis}
+
+\subsection*{Task 2}
+When checking the semantics, we go through the whole syntax tree and check for undeclared and duplicate variables
+if any errors are found, the compilation will be stopped at the end and a list of errors are presented in order of their happening.
+\subsubsection*{Q1}
+Yes, \texttt{semant} needs to be recursive, althouhg the function in itself isn't recursive, it uses the functions \texttt{aux} and \texttt{c\_expr} to loop through the math in all the statements. \texttt{aux} works great here since it's tail-recursive and \texttt{c\_expr} is recursive since it needs to go through nested operations
+\subsubsection*{Q2}
+Variable declarations are tracked using the \texttt{string list}, which acts as the environment. As we go through statements, the \texttt{List.mem} check if some elemts already exist in the list, which is used for catching both duplicates and undeclared variables.
+
+\subsubsection*{Q3}
+Glory Question - Not Implemented
+
+\section*{Evaluator}
+
+\subsection*{Task 3}
+The evaulator takes the verified/validated expression programs and folds over the statements to create an environment, and wiht the help of \texttt{eval\_expr} it evaluates it all and returns the result of the final expression
+\subsubsection*{Q4}
+If we use onyl 'let' the funciton could be written as\\
+ \texttt{let () = Printf.printf "Please enter an integer: " in let line = read\_line () in int\_of\_string line}
+
+\subsubsection*{Q5}
+Glory Question - Not Implemented
+
+\subsubsection*{Q6}
+The interpreter uses an associative list type \texttt{(string * int) list} which essentially functions like a map, that can be looked up throughout the program.
+\subsubsection*{Q7}
+Right now a classic division by zero would crash the whole program, since no step has been taken to prevent it, although a statement in the \texttt{eval\_expr}
+could possilby fix this by letting it throw an error.
+\section*{Compiling to x86 Assembly}
+
+\subsection*{Task 4}
+The compiler translates the AST into x86 assembly using the stack-spilling strategy. Local variables and temporary values are assigned an 8-byte slot on the stack, and math operations are executed by moving these values into and out of the \texttt{\%rax} register.\\
+Note this part of the code the \texttt{compile.ml} is vibe-coded hence the description here might not be adequite.
+
+\subsubsection*{Q8}
+Glory Question - Not Implemented
+
+\subsubsection*{Q9}
+As mentioned this is not wholly my original work, i went with the associative list again, from the interpreter, to map variables to ther stack layout offset, but the use of \texttt{int ref} to handle mutables/temporaries and standard lists to build the final x86 code wasn't my idea.
+\subsubsection*{Q10}
+This is straight up just pilling everything on the stack and hoping it works, this tends to make things slow compared to using teh CPU's registers.
+\subsubsection*{Q11}
+Glory Question - Not Implemented
+
+\subsection*{Task 5}
+The wrapper functions, \texttt{interpret} and \texttt{compile}, in the main file, first run the semantic analysis to check for errors. 
+If the semantic check returns \texttt{Ok}, it either runs the evaluator to get the final integer, or it generates the x86 assembly and writes it to a file \texttt{program.s}.
+This way it can be cross-tested by feeding the exact program into both of them and checking the output of the evaluator and the x86 assembly + C code.
+
+\subsubsection*{Q12}
+There is only one example program that test the basics, variable binding and addition. 
+\section*{How to run the code}
+You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\\\
+This is run/compiled in VScode using the docker container provided.\\
+To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:
+\begin{enumerate}
+    \item \texttt{dune build} 
+    \item \texttt{dune exec ./main.exe} (this runs the interpreter and compile functions)
+    \item \texttt{clang main.c program.s -o program} 
+    \item \texttt{./program}
+\end{enumerate}
+\end{document}
