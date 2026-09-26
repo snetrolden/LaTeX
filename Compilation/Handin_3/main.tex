@@ -1,0 +1,176 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Department Of Computer Science }\\[0.5cm]
+\textsc{\large Compilation}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries  Hand-in 3 (Individual Report)}\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] 
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+\section*{Task 1 - Implementation of Semantic Analysis}
+The implementation of this heavily focuses on the module \texttt{semant.ml} and it's functions \texttt{infertype\_expr} and \texttt{typecheck\_expr}
+, these functions recursively call each other to traverse the AST translating the untyped AST into a typed AST, making sure to follow Dolphins type rules.\\
+This implementation also uses the modules \texttt{env} and \texttt{errors} to handle variable scopes when encountering nested variables and handling errors/mismatched types.
+\section*{Task 2 - Implementation of Code Generation}
+Generating code by translating the TypedAst to functional LLVM-\- code. is a huge part of this project, hence a seperate module \texttt{codegen.ml} was created\\
+This was doine by using the CfgBuilder to create basic blocks, and allocating variables using \texttt{Ll.Alloca} with a the cgenv environment, that maps symbols to LLVM pointers.\\
+In the code there is an explicit step when using a division or remainder op, it's a \texttt{Icmp Eq} check that safely exits if a divisorr is zero.
+\section*{Task 3 - Testing }
+The module \texttt{compiler.ml} takes an untyped AST program, sends it to the semantic analysis, and if the error list is empty it continues
+to the codegen module that returns a LLVM-\- program, and if an error is found the list of errors is printed and the compile is aborted.\\
+To be extra safe, an entire test corpus was made, with A LOT of tests that covers everything, both trivial and more concrete features.
+
+\section*{Questions}
+
+\subsection*{Question 1 - type Inference or type checking }
+Type inference is used when a variable declaration doesn't have an explicit type, and it has to be infere from the bottom-up in the AST.\\
+Type checking is when the semantics has strict rules, such as arithmetic operators (Plus, Minus) that needs the l/r operands to be Integers.\\
+ Combined, inference and checking supports eachother well.
+
+\subsection*{Question 2}
+The way we implementede error recovery was to make a dedicated ErrorType  if an AST node had a mismatched type.\\
+When the \texttt{typecheck\_expr} encounters a mismatch it appends the error to an Error list and returns the expression with a \texttt{TAst.ErrorType} continuing the analysis,
+ and in the end it logs all errors/mismatch, making it easier to see what went wrong.
+ 
+\subsection*{Question 3}
+*Glory - Didn't do it.
+\section*{How to run the code}
+You will have received a zip file containing the complete compiler source code, for phase 1, the Dune build configurations, and the C runtime file.\\
+\newline
+This is run/compiled in VScode using the docker container provided.\\
+To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:
+\begin{enumerate}
+    \item \texttt{dune build} 
+    \item \texttt{dolphin compile --from-ast --phase 1 tests/<test name>.json -o out.ll} (compiles the serialized AST and outputs an LLVM- - file)
+    \item \texttt{clang runtime.c out.ll -o res} 
+    \item \texttt{./res} (runs the progran and outputs any intermediat prints in the terminal)
+    \item \texttt{echo \$?} (outputs the return statement from he LLVM-- code to the terminal)
+\end{enumerate}
+\end{document}
