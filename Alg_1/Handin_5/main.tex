@@ -154,41 +154,72 @@ the substitute $n_{tsum}$ with the above
 \begin{equation}
     a_n + a_{n-1} + \hdots + a_1+ a_0 \equiv 0 \mod 3
 \end{equation}
-t
+Then we want to show for all $a \in n_{Tsum}$ that $a\cdot 10^i \equiv a\cdot 10^k \mod 3$.\\
+To do that let's look at properties of the number 10
 \begin{equation*}
     10 \equiv 1 \mod 3
 \end{equation*}
 then remember that multiplication is preserved in congruence, so
 \begin{equation*}
-    10 = 10^i \equiv 1 \mod 3 \;\; \text{for } i\in\mathbb{N}
+    10^i \equiv 1 \mod 3 \;\; \text{for } i\in\mathbb{N}
 \end{equation*}
 and then use lemma 9.2~\cite{Algebra} again, so
 \begin{align*}
-    a_i \cdot 10^i \equiv 0 \cdot 1 \mod 3\\
-    =  a_i \cdot 10^i \equiv 0 \mod 3
+    a_i \cdot 10^i \equiv a_i \cdot 1 \mod 3\\
+    =  a_i \cdot 10^i \equiv a_i \mod 3
 \end{align*}
-then apply this to every element in \eqref{piece} to get
+then apply this to every factor in $n_{Tsum}$ to get
 \begin{align*}
-    a_n\cdot 10^n &\equiv 0 \mod 3\\
-    a_{n-1}\cdot10^{n-1} &\equiv 0 \mod 3\\
+    a_n\cdot 10^n &\equiv a_n \mod 3\\
+    a_{n-1}\cdot10^{n-1} &\equiv a_{n-1} \mod 3\\
     &\vdots\\
-    a_1 \cdot 10^1 &\equiv 0 \mod 3\\
-    a_0 \cdot 10^0 &\equiv 0 \mod 3
+    a_1 \cdot 10^1 &\equiv a_1 \mod 3\\
+    a_0 \cdot 10^0 &\equiv a_0 \mod 3
 \end{align*}
-then lastly use lemma 9.2~\cite{Algebra} again, to construct $n$
+then use lemma 9.2~\cite{Algebra} again, to construct $n$
 \begin{equation*}
     \sum_{i=0}^{n}a_i10^i \equiv \sum_{i=0}^{n}a_i\cdot 10^i \mod 3
 \end{equation*}
 which is
 \begin{equation*}
-    n \equiv 0 \mod 3
+    n \equiv a_n + a_{n-1} + \hdots + a_1+ a_0 \mod 3
 \end{equation*}
-
+\begin{equation*}
+    n \equiv n_{Tsum} \mod 3
+\end{equation*}
+and remembering the original assumption $n_{Tsum} \equiv 0 \mod 3$ leads to the following
+\begin{equation}
+    n \equiv 0 \mod 3
+\end{equation}
+This can also be shown the other way around
 
 
 \subsection*{Show some $n \in \mathbb{N}$ is $9|n$ iff. the digit sum of $n$, $n_{tsum}$ is also $9|n$}
-
+The proof for this is equivalent to the above where you replace modulo 3 with modulo 9, since it holds that
+\[
+10 \equiv 1 \mod 9
+\]
+so using lemma 9.2~\cite{Algebra} results in the same conclusion.
 \subsection*{let $n \in \mathbb{N}$ and let $m$ be a number that occures when you shift around the individual numbers in $n$. Show that $n-m$ is a multiple of $9$}
-
+Let $n_{Tsum}$ be the digits sum of $n$ and let $m_{Tsum}$ be the digit sum of $m$. Since $m$ is formed by jumbling the digits of $n$ the digit sum of $m$ and $n$ is the same
+\[
+n_{Tsum} = m_{Tsum}
+\]
+and it's shown from the first part that a number $n$ is always congruent to its digit sum  modulo 9, this gives the following
+\[
+n \equiv n_{Tsum} \mod 9
+\]
+\[
+m \equiv m_{Tsum} \mod 9
+\]
+and using the fact that their digit sums are the same
+\[
+n \equiv m \mod 9
+\]
+then using lemma 9.2.~\cite{Algebra} to subtract $m$ from both sides
+\[
+n-m \equiv 0 \mod 9
+\]
+which means the sum $n-m$ is a multiple of 9.
 \printbibliography
 \end{document}

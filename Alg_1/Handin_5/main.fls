@@ -589,7 +589,6 @@ INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm10.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm10.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/euler/eurm7.tfm
-INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
 INPUT main.aux
 INPUT ./main.out

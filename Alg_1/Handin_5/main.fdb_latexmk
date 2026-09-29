@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber main"] 1790346122.03765 "main.bcf" "main.bbl" "main" 1790351018.77362 0
-  "main.bcf" 1790351018 108675 e81d3c71e3d98cdee21deb2ea8358472 "pdflatex"
+["biber main"] 1790683973.63793 "main.bcf" "main.bbl" "main" 1790684401.65643 0
+  "main.bcf" 1790684401 108799 22bf30dd0b7b1051637b907dc1b6c3dd "pdflatex"
   "references.bib" 1788250303 931 50ebc91161abe934a72cf1ceeb59f814 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1790348053.56068 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_5/main.tex" "main.pdf" "main" 1790351018.77539 0
+["pdflatex"] 1790684395.93662 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_5/main.tex" "main.pdf" "main" 1790684401.65731 0
   "Aarhus_University_seal.png" 1788250303 154201 296b3687239dcf113046a259b808d84f ""
-  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_5/main.tex" 1790348052 5901 bc9af4ee98e39e557657221eaef6e4ce ""
+  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Alg_1/Handin_5/main.tex" 1790684395 7164 3522c2dcb4e7bc0d9288d81f2192a097 ""
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1788253194 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1788250889 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1788250889 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -275,11 +275,11 @@
   "c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1788258893 5655996 795b756740562267ad2ae16e70168a76 ""
   "c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1788259021 3658229 9df1aa28ec275d08a1537ee490bf3e0d ""
   "c:/texlive/2026/texmf.cnf" 1788258867 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1790351018 983 3c48098d50c52ca81a9f148614a33acd "pdflatex"
-  "main.bbl" 1790346124 1770 159bb5bb84b496a820b9fd3c349e3222 "biber main"
-  "main.out" 1790348055 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1790351018 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1790348052 5901 bc9af4ee98e39e557657221eaef6e4ce ""
+  "main.aux" 1790684401 1093 7e51938a2820f50ba0da1368b66b346a "pdflatex"
+  "main.bbl" 1790683985 1770 159bb5bb84b496a820b9fd3c349e3222 "biber main"
+  "main.out" 1790684398 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1790684401 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1790684395 7164 3522c2dcb4e7bc0d9288d81f2192a097 ""
   (generated)
   "main.aux"
   "main.bcf"
