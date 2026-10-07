@@ -160,11 +160,45 @@ To determine this, see definition 9.18~\cite{Algebra} to see how to determine su
 Some prerequisites to use the method in definition 9.18~\cite{Algebra} is to know the value of $\Phi(m)$ for $m = p\cdot q, \quad p \neq q $ where $p$ and $q$ are primes, and that $k$ is coprime to $\Phi(m)$. All of these prerequisites are satisfied in the previous section.\\
 \newline 
 The method uses the extended Euclidean algorithm 3.3~\cite{Algebra} to find bezout coefficients $u$ and $v$ such that $k \cdot u + \Phi(m) \cdot v = 1$.\\
-Use the algorithm to find $u$:
-let $au + bv = \gcd(a, b)$, where $a = 5$ and $b = 13356$. the quotients $q_1 = 2671$ and $q_2 = 5$ are already computed in the previous section.\\
-
-
-
-
+Use the algorithm to find $u$:\\
+let $ku + \Phi(m)v = \gcd(k, \Phi(m))$, where $k = 5$ and $\Phi(m) = 13356$. the quotients $q_1 = 2671$ and $q_2 = 5$ are already computed in the previous section.\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$i$ & $r_i$ & $q_i$ & $u_i$ & $v_i$ \\ \hline
+0 & 13356 & -- & 0 & 1 \\ \hline
+1 & 5 & 2671 & 1 & 0 \\ \hline
+2 & 1 & 5 & -2671 & 1 \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\caption{Extended Euclidean algorithm for $5$ and $\Phi(m)=13356$}
+\label{tab:extended_euclid_rsa}
+\end{table}
+sanity check:
+\begin{align*}
+    k \cdot u + \Phi(m) \cdot v = 1\\
+    5 \cdot (-2671) + 13356 \cdot 1 = 1\\
+\end{align*}
+even though the current $u = -2671$ is a valid solution, in accordance to definition 9.18~\cite{Algebra} it needs $u > 0$ and $v < 0$.\\
+To accomodate this, let $v' = v \cdot -1 = -1$ and $u' = \Phi(m) - u = 10685 = 13356 -2671$, and then double check that it's still valid:
+\begin{align*}
+    k \cdot u' + \Phi(m) \cdot v' = 1\\
+    5 \cdot 10685 + 13356 \cdot (-1) = 1\\
+\end{align*}
+which it still is, hence $u' = 10685$ and $v' = -1$ is a valid solution.\\
+Then it follow from equation 9.13~\cite{Algebra}:
+\begin{equation*}
+    ku' + \Phi(m)v' = 1 \implies ku' = 1 - \Phi(m)v' \implies ku' = 1 + \Phi(m)w
+\end{equation*}
+for $w=-v'$ and letting the multiplier be a modulo $\Phi(m)$, then it follows that
+\begin{equation*}
+    ku' = 1 + \mod \Phi(m)w \implies ku' \equiv 1 \mod \Phi(m)
+\end{equation*}
+and for $u' = 10685$ and the rest of the values
+\begin{equation*}
+    5 \cdot 10685 \equiv 1 \mod 13356
+\end{equation*}
+and since $u'$ was found via the extended Euclidean algorithm, then $u' = 10685$ is a valid solution to the equation $ku' \equiv 1 \mod \Phi(m)$, which means that $u' = 10685$ is a valid private exponent.\\
 \printbibliography
 \end{document}
