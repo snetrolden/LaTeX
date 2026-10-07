@@ -139,10 +139,31 @@
 \section*{RSA-Encryption}
 Let Alice have the primes $p = 107$, $q = 127$ and the exponent $k = 5$.
 \subsection*{Determine $m$ and $\Phi(m)$ and show that $k = 5$ is a valid choice by computing $\gcd(k, \Phi(m))$.}
-
+from chapter 16.1~\cite{Algebra} it follows that $m = p\cdot q = 107 \cdot 127 = 13589$.
+Then, $\Phi(m) = (p-1)(q-1) = 106 \cdot 126 = 13356$.\\
+Computing  $\gcd(k, \Phi(m)) = \gcd(5, 13356)$, since $k$ and $\Phi(m)$ needs to be coprime for $k$ to be a valid choice.\\
+This can be computed using the Euclidean algorithm 3.2~\cite{Algebra}:
+let $r_0 = 13356$, $r_1 = 5$, and compute the sequence of remainders:
+\begin{align*}
+13356 &= q_1 \cdot 5 + 1 \quad \text{for } q_1 = 2671 \text{ and } r_2 = 1\\ 
+5 &= q_2 \cdot 1 + 0 \quad \text{for } q_2 = 5 \text{ and } r_3 = 0
+\end{align*}
+hence 
+\begin{equation*}
+    \gcd(5, 13356) = r_2 = 1
+\end{equation*}
+since the greatest common divisor is 1, according to definition 3.1~\cite{Algebra} then $k = 5$ is coprime to $\Phi(m) = 13356$ and is a certified valid choice for a public key.
 \subsection*{Determine Alice's private exponent $u$}
 A number $u$ is a valid private exponent if it satisfies the equation $k \cdot u \equiv 1 \mod \Phi(m)$.\\
 \newline
+To determine this, see definition 9.18~\cite{Algebra} to see how to determine such a number $u$.\\
+Some prerequisites to use the method in definition 9.18~\cite{Algebra} is to know the value of $\Phi(m)$ for $m = p\cdot q, \quad p \neq q $ where $p$ and $q$ are primes, and that $k$ is coprime to $\Phi(m)$. All of these prerequisites are satisfied in the previous section.\\
+\newline 
+The method uses the extended Euclidean algorithm 3.3~\cite{Algebra} to find bezout coefficients $u$ and $v$ such that $k \cdot u + \Phi(m) \cdot v = 1$.\\
+Use the algorithm to find $u$:
+let $au + bv = \gcd(a, b)$, where $a = 5$ and $b = 13356$. the quotients $q_1 = 2671$ and $q_2 = 5$ are already computed in the previous section.\\
+
+
 
 
 \printbibliography
