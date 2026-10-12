@@ -1,17 +1,17 @@
 # Fdb version 4
-["biber main"] 1791540453.90866 "main.bcf" "main.bbl" "main" 1791541135.3729 0
-  "main.bcf" 1791541134 108148 3482af5e30e047a5cb3937854020a3c6 "pdflatex"
+["biber main"] 1791540453.90866 "main.bcf" "main.bbl" "main" 1791581080.8253 0
+  "main.bcf" 1791581080 108148 3482af5e30e047a5cb3937854020a3c6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1791541127.48743 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Machine_Learning/Handin_1/main.tex" "main.pdf" "main" 1791541135.37477 0
+["pdflatex"] 1791581071.24677 "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Machine_Learning/Handin_1/main.tex" "main.pdf" "main" 1791581080.8265 0
   "Aarhus_University_seal.png" 1788250303 154201 296b3687239dcf113046a259b808d84f ""
   "Images/logreg_text_cost_per_epoch.png" 1791539409 21054 0dc64e12c29c2394dea6122069667127 ""
   "Images/softmax_cost_per_epoch.png" 1791539468 24601 1f8b6d13d2186edeef1be88a184460c0 ""
   "Images/softmax_weight_vector.png" 1791539522 34618 60797938d9d8ddef8702d9e8d0e627c5 ""
   "Images/softmax_wine_cost_per_epoch.png" 1791539425 23851 ed4d95b1ce516bdd101873db432236d1 ""
-  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Machine_Learning/Handin_1/main.tex" 1791541125 14446 e114b25e1afef21f694fee63e8c6ed5f ""
+  "c:/Users/smed_/Desktop/Uni Thingies/Latex/LaTeX/Machine_Learning/Handin_1/main.tex" 1791581068 12784 606645d10046f0269a8c50effbcf08db ""
   "c:/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1788251804 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1788251804 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1788253194 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -72,7 +72,6 @@
   "c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1788250889 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1788250889 32587 65067f817f408bc71a7312f3d9828a9b ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1788250889 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
-  "c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1788250889 34694 870c211f62cb72718a00e353f14f254d ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb" 1788251804 145408 bcd327f112f643a875638eafb48d1d8b ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb" 1788251804 154600 32e699453da826d3cdd1305e7e476670 ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1788251804 140176 d0f50dba675c56d445f84a32c1f93a79 ""
@@ -91,7 +90,6 @@
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb" 1788251804 187615 bb451e62cf0d8d93a332d893f0d610a9 ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb" 1788251804 175641 e37e2df5b70b76a1b78bfb3b804197c7 ""
   "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb" 1788251804 169670 061d76bd536389c258413384f964e74a ""
-  "c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb" 1788251804 167085 3b331a8ed51d2a40eb9422e52a3bcab8 ""
   "c:/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1788255895 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "c:/texlive/2026/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1788251402 40635 c40361e206be584d448876bba8a64a3b ""
   "c:/texlive/2026/texmf-dist/tex/generic/bitset/bitset.sty" 1788251417 33961 6b5c75130e435b2bfdb9f480a09a39f9 ""
@@ -326,11 +324,11 @@
   "c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1788258893 5655996 795b756740562267ad2ae16e70168a76 ""
   "c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1788259021 3658229 9df1aa28ec275d08a1537ee490bf3e0d ""
   "c:/texlive/2026/texmf.cnf" 1788258867 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1791541134 2793 587d2d453b6d3ee26ea5a395f877df8c "pdflatex"
+  "main.aux" 1791581080 2793 587d2d453b6d3ee26ea5a395f877df8c "pdflatex"
   "main.bbl" 1791540456 486 76d65a242ec496c9b4361af646ff12cb "biber main"
-  "main.out" 1791541130 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1791541134 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
-  "main.tex" 1791541125 14446 e114b25e1afef21f694fee63e8c6ed5f ""
+  "main.out" 1791581076 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1791581080 2305 52095dfad395b381e9a32937e764a41c "pdflatex"
+  "main.tex" 1791581068 12784 606645d10046f0269a8c50effbcf08db ""
   (generated)
   "main.aux"
   "main.bcf"

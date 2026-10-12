@@ -100,7 +100,7 @@
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries  Hand-in 2}\\[0.4cm] % Title of your document
+    {\huge\bfseries  Phase 2}\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -134,71 +134,49 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
-\section*{Expression Programs}
+\section*{Overview of phase 2}
+The point of this phase is to implement \texttt{ForStm}, \texttt{WhileStm}, \texttt{BreakStm}, \texttt{ContinueStm} and the support of multiple variable declarations, 
+into the semantics and code generation, while extending the test environment to include the newly added code.
 
-\subsection*{Task 1}
-It uses a lot of the same logic as the previous pretty\_printer from the first assignment.\\
-The main function \texttt{string\_of\_eprog} uses the fold\_left list function to iterate over all the statements and letting a helper function evaluate them and then append their variable to their statement, printing them on their own line.
-\section*{Semantic Analysis}
+\section*{Task 1 - Semantic Analysis}
+To support multiple variables \texttt{VarDeclStm} was refactored, the original code made into a helper function \texttt{typecheck\_single\_declaration}, the new code calls another helper function 
+\texttt{typecheck\_decl\_block} that uses foldleft to iterate over a list on declarations applying \texttt{typecheck\_single\_declaration} on them.\\
+\newline
+For the loops, a bool flag was added to the \texttt{Env} to ascertain wether we are in a loop or not, the \texttt{BreakStm} and \texttt{ContinueStm} use this for validity.\\
+The \texttt{WhileStm} force the condition to evalaute to a bool, while the body is evaluated in a loop env where the loop flag is flipped, the new environment is discarded after evaluation to avoid side-effects from the loop, and to reverse the flag.\\
+The \texttt{ForStm} does a lot of the same, but it does so inside a new scope to allow variable declarations in the 'init' statement, and it uses the 'Option' type to allow the condition and update statements to be optional.
 
-\subsection*{Task 2}
-When checking the semantics, we go through the whole syntax tree and check for undeclared and duplicate variables
-if any errors are found, the compilation will be stopped at the end and a list of errors are presented in order of their happening.
-\subsubsection*{Q1}
-Yes, \texttt{semant} needs to be recursive, althouhg the function in itself isn't recursive, it uses the functions \texttt{aux} and \texttt{c\_expr} to loop through the math in all the statements. \texttt{aux} works great here since it's tail-recursive and \texttt{c\_expr} is recursive since it needs to go through nested operations
-\subsubsection*{Q2}
-Variable declarations are tracked using the \texttt{string list}, which acts as the environment. As we go through statements, the \texttt{List.mem} check if some elemts already exist in the list, which is used for catching both duplicates and undeclared variables.
+\section*{Task 2 - Code generation}
+The code generation of \texttt{VarDeclStm} follows the same form refactoring that was made in the semantic part, move orignal code and use helepr functions with foldleft.\\
+\newline
+For the loop part a new tuple of type 'option' was added to \texttt{cgenv} containing the jump label for continue and break, this means they can be none whenever we aren't in a loop.\\
+The \texttt{BreakStm} and \texttt{ContinueStm} use this as their flag, if the the labels are 'none' it fails.\\
+For the \texttt{WhileStm} and \texttt{ForStm}, the logic remains the same as in the semantic analysis, in regards to optional statement and having closed scopes for the loops.\\
 
-\subsubsection*{Q3}
-Glory Question - Not Implemented
 
-\section*{Evaluator}
-
-\subsection*{Task 3}
-The evaulator takes the verified/validated expression programs and folds over the statements to create an environment, and wiht the help of \texttt{eval\_expr} it evaluates it all and returns the result of the final expression
-\subsubsection*{Q4}
-If we use onyl 'let' the funciton could be written as\\
- \texttt{let () = Printf.printf "Please enter an integer: " in let line = read\_line () in int\_of\_string line}
-
-\subsubsection*{Q5}
-Glory Question - Not Implemented
-
-\subsubsection*{Q6}
-The interpreter uses an associative list type \texttt{(string * int) list} which essentially functions like a map, that can be looked up throughout the program.
-\subsubsection*{Q7}
-Right now a classic division by zero would crash the whole program, since no step has been taken to prevent it, although a statement in the \texttt{eval\_expr}
-could possilby fix this by letting it throw an error.
-\section*{Compiling to x86 Assembly}
-
-\subsection*{Task 4}
-The compiler translates the AST into x86 assembly using the stack-spilling strategy. Local variables and temporary values are assigned an 8-byte slot on the stack, and math operations are executed by moving these values into and out of the \texttt{\%rax} register.\\
-Note this part of the code the \texttt{compile.ml} is vibe-coded hence the description here might not be adequite.
-
-\subsubsection*{Q8}
-Glory Question - Not Implemented
-
-\subsubsection*{Q9}
-As mentioned this is not wholly my original work, i went with the associative list again, from the interpreter, to map variables to ther stack layout offset, but the use of \texttt{int ref} to handle mutables/temporaries and standard lists to build the final x86 code wasn't my idea.
-\subsubsection*{Q10}
-This is straight up just pilling everything on the stack and hoping it works, this tends to make things slow compared to using teh CPU's registers.
-\subsubsection*{Q11}
-Glory Question - Not Implemented
-
-\subsection*{Task 5}
-The wrapper functions, \texttt{interpret} and \texttt{compile}, in the main file, first run the semantic analysis to check for errors. 
-If the semantic check returns \texttt{Ok}, it either runs the evaluator to get the final integer, or it generates the x86 assembly and writes it to a file \texttt{program.s}.
-This way it can be cross-tested by feeding the exact program into both of them and checking the output of the evaluator and the x86 assembly + C code.
-
-\subsubsection*{Q12}
-There is only one example program that test the basics, variable binding and addition. 
+\section*{Task 3 - Tests}
+The test environment has been refactored, so it uses the \texttt{OUnit2} library, and tests now exists in separate folders, respective of their phase in which they were implemented.\\
+\section*{Individual Contribution}
+A lot of the coding was done together on the same computer, by taking turns coding cases in both the semantic and codegen files, and for the testing 
+we both implemented tests from a testlist covering most of the new code.
 \section*{How to run the code}
-You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\\\
+You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\
+\newline
 This is run/compiled in VScode using the docker container provided.\\
-To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:
+To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:\\
+The following commands is to run a test file manually
 \begin{enumerate}
     \item \texttt{dune build} 
-    \item \texttt{dune exec ./main.exe} (this runs the interpreter and compile functions)
-    \item \texttt{clang main.c program.s -o program} 
-    \item \texttt{./program}
+    \item \texttt{dune exec dolphin -- compile --from-ast --phase 2 tests/phase2/[name of test].json -o out.ll  } (This runs and compiles a test, and outputs it into a file out.ll)
+    \item \texttt{clang runtime.c out.ll -o ret} 
+    \item \texttt{./ret} (outputs any prints into the terminal, like 'print\_integer()')
+    \item \texttt{echo \$?} (Outputs the result of the test)
 \end{enumerate}
+The following commands is to run all the test suits using \texttt{OUnit2}
+\begin{enumerate}
+    \item \texttt{dune build} (if not already doen)
+    \item \texttt{dune test} (runs the 'test\_dolphin.ml' file) 
+\end{enumerate}
+The test file asserts each test case with the expected output, be it error messages or numerical output.
+
 \end{document}
