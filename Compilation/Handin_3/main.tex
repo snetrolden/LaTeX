@@ -100,7 +100,7 @@
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries  Hand-in 3 (Individual Report)}\\[0.4cm] % Title of your document
+    {\huge\bfseries  Hand-in for Phase 3 (Individual Report)}\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -134,43 +134,41 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
-\section*{Task 1 - Implementation of Semantic Analysis}
-The implementation of this heavily focuses on the module \texttt{semant.ml} and it's functions \texttt{infertype\_expr} and \texttt{typecheck\_expr}
-, these functions recursively call each other to traverse the AST translating the untyped AST into a typed AST, making sure to follow Dolphins type rules.\\
-This implementation also uses the modules \texttt{env} and \texttt{errors} to handle variable scopes when encountering nested variables and handling errors/mismatched types.
-\section*{Task 2 - Implementation of Code Generation}
-Generating code by translating the TypedAst to functional LLVM-\- code. is a huge part of this project, hence a seperate module \texttt{codegen.ml} was created\\
-This was doine by using the CfgBuilder to create basic blocks, and allocating variables using \texttt{Ll.Alloca} with a the cgenv environment, that maps symbols to LLVM pointers.\\
-In the code there is an explicit step when using a division or remainder op, it's a \texttt{Icmp Eq} check that safely exits if a divisorr is zero.
-\section*{Task 3 - Testing }
-The module \texttt{compiler.ml} takes an untyped AST program, sends it to the semantic analysis, and if the error list is empty it continues
-to the codegen module that returns a LLVM-\- program, and if an error is found the list of errors is printed and the compile is aborted.\\
-To be extra safe, an entire test corpus was made, with A LOT of tests that covers everything, both trivial and more concrete features.
+\section*{Task 1 - Implementing the Lexer}
+The lexer was implemneted in \texttt{lexer.mll} using ocamllex, regular expression are defined to see/recognize keywords, ops, literals ect... and also ignores/removes any whitespace and comments found.
 
-\section*{Questions}
+\section*{Task 2 - Implementing the Parser}
+The parser was implemented in \texttt{parser.mly} using Menhir, that helps by mapping the token streams to an Ast structure.\\
+This is done by letting Menhir recursively go through a list of statements that map tokens to Ast modules/structures, this works since Dolphin programs are just sequences of statements.\\
+it's also here that precedence and associativity are defined using \texttt{\%nonassoc}, \texttt{\%left} and \texttt{\%right}, which 
+should parse the syntax without shift/reduce conflicts as it is now.
 
-\subsection*{Question 1 - type Inference or type checking }
-Type inference is used when a variable declaration doesn't have an explicit type, and it has to be infere from the bottom-up in the AST.\\
-Type checking is when the semantics has strict rules, such as arithmetic operators (Plus, Minus) that needs the l/r operands to be Integers.\\
- Combined, inference and checking supports eachother well.
-
-\subsection*{Question 2}
-The way we implementede error recovery was to make a dedicated ErrorType  if an AST node had a mismatched type.\\
-When the \texttt{typecheck\_expr} encounters a mismatch it appends the error to an Error list and returns the expression with a \texttt{TAst.ErrorType} continuing the analysis,
- and in the end it logs all errors/mismatch, making it easier to see what went wrong.
- 
-\subsection*{Question 3}
-*Glory - Didn't do it.
+\section*{Task 3 - Updating the Semantic Analysis }
+The updated \texttt{semant.ml} includes attached location parameter to each node, the location is used in
+the \texttt{errors.ml} module so that errors now include the line/column when encountering it and reporting it to the user. 
+\section*{Task 4 - Testing}
+The testing pipeline was yet again updated by implementing \texttt{compile\_prog\_from\_filename}, which now combines the reading, lexing, parsing semantic analysis and the LLVM IR generation,
+and catches any errors underway, although right now it doesn't differentiate between errors in the parser or lexer, the frontend errors are generalized to the standard error type.\\
+\newline
+New negative tests were also added and older tests now also uses the new parser and lexer via \texttt{.dlp} files, and older tests were updated with location information, note that the locations are hardcoded for the assertions to better verifify and report errors.
 \section*{How to run the code}
-You will have received a zip file containing the complete compiler source code, for phase 1, the Dune build configurations, and the C runtime file.\\
+You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\
 \newline
 This is run/compiled in VScode using the docker container provided.\\
-To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:
+To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:\\
+The following commands is to run a test file manually
 \begin{enumerate}
     \item \texttt{dune build} 
-    \item \texttt{dolphin compile --from-ast --phase 1 tests/<test name>.json -o out.ll} (compiles the serialized AST and outputs an LLVM- - file)
-    \item \texttt{clang runtime.c out.ll -o res} 
-    \item \texttt{./res} (runs the progran and outputs any intermediat prints in the terminal)
-    \item \texttt{echo \$?} (outputs the return statement from he LLVM-- code to the terminal)
+    \item \texttt{dune exec dolphin -- compile --phase 3 tests/phase3/[name of test].dlp -o out.ll  } (This runs and compiles a test, and outputs it into a file out.ll, prints error in terminal if any.)
+    \item \texttt{clang runtime.c out.ll -o ret} 
+    \item \texttt{./ret} (outputs any prints into the terminal, like 'print\_integer()')
+    \item \texttt{echo \$?} (Outputs the result of the test)
 \end{enumerate}
+The following commands is to run all the test suits using \texttt{OUnit2}
+\begin{enumerate}
+    \item \texttt{dune build} (if not already doen)
+    \item \texttt{dune test} (runs the 'test\_dolphin.ml' file) 
+\end{enumerate}
+The test file asserts each test case with the expected output, be it error messages or numerical output.
+
 \end{document}

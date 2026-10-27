@@ -1,0 +1,191 @@
+%%%%%     PACKS     %%%%%
+\documentclass[12pt]{article}
+\usepackage[margin=1in,headsep=.60in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[table, dvipsnames]{xcolor}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mdframed} %For box around text
+\usepackage{hyperref} %For hyperlinks in the PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+\urlstyle{same}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{pgfplots}
+\graphicspath{{Images/}}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cleveref}
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{grffile}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{biblatex} %Imports biblatex package
+\addbibresource{references.bib}
+\usepackage{outlines}
+\usepackage{minted}
+\usepackage{pdflscape}
+\usepackage{everypage}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage[labelfont=bf, font=small]{caption}
+\usepackage{upgreek}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% style sheet for code
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\usepackage{lastpage}
+%%%%%     COMMANDS     %%%%%
+%%%% Blue box for subsection text (not figures) %%%%
+\newenvironment{bluebox}
+  {\begin{mdframed}[backgroundcolor=blue!5,linecolor=blue!40,roundcorner=8pt]}
+  {\end{mdframed}}
+
+%%%% Simple neutral box for figures %%%%
+\newenvironment{figbox}
+  {\begin{mdframed}[roundcorner=8pt,shadow=true,shadowsize=4pt,shadowcolor=black!40]}
+  {\end{mdframed}}
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\center
+
+\textsc{\LARGE Aarhus University}\\[1.5cm]
+\textsc{\Large Department Of Mathematics}\\[0.5cm]
+\textsc{\large Introduction to Algebra 2}\\[0.5cm]
+    
+
+\HRule\\[0.4cm]
+    \center 
+    {\huge\bfseries  Handin 1}\\[0.4cm] % Title of your document
+\HRule\\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+        \begin{flushleft}
+            \large
+            \textit{Author}\\   
+            Søren M. \textsc{Damsgaard}\\
+                 % Your name
+        \end{flushleft}
+    \end{minipage}
+~
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \large
+            \textit{Student number}\\
+            \textbf{202309814}\\
+                 % Studienummer\
+            
+        \end{flushright}
+    \end{minipage}
+
+\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+    
+    {\large\today}
+
+\vfill\vfill
+    \includegraphics[width=0.2\textwidth]{Aarhus_University_seal.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+    
+
+\vfill
+\end{titlepage}
+%%%%%      CHAPTERS      %%%%%
+\hspace{0.02cm}
+\section*{Exercise 13.5}
+Show Theorem 13.3~\cite{Algebra}.
+\subsection*{Show first that $K[X]$ has at least one monic irreducible polynomial.}
+First, a quick definition of what we are working with:
+\begin{enumerate}
+    \item $K$ is a field, see Definition 12.4~\cite{Algebra}.
+    \item $K[X]$ is a polynomial ring, see Chapter 13.1~\cite{Algebra}.
+    \item Monic is when the leading coefficient of a polynomial is 1, see Chapter 13.1~\cite{Algebra}.
+    \item Irreducible is when every factorization of a non-constant polynomial in $K[X]$ only has trivial factorizations (where one factor is a unit), see Section 13.2~\cite{Algebra}.
+\end{enumerate}
+
+Let's start by showing that a monic polynomial exists in $K[X]$.\\
+Per the definition of a ring 12.1(f)~\cite{Algebra}, there exists a neutral element $1_K \in K$.\\
+Now, let there be a polynomial of the first degree, $X^1$
+\begin{equation*}
+    X^1 \cdot 1 = 1 \cdot X^1 = X^1
+\end{equation*} 
+Here, it holds that the leading coefficient is $1$, so the polynomial is monic!\\
+\newline
+Now we must show that the monic polynomial $X^1$ is also irreducible.\\
+This is done by showing that all factorizations
+\begin{equation} \label{trivial}
+    X^1 = f(X)\cdot g(X)
+\end{equation}
+are trivial. A factorization is called trivial if one of the factors is a unit, definition 12.8~\cite{Algebra}.\\
+According to Theorem 13.1(a)~\cite{Algebra}, it holds that the degrees of $f(X)$ and $g(X)$ must sum to the degree of $X^1$:
+\begin{equation*}
+    \deg f(X) + \deg g(X) = 1 \qquad \text{for } \deg f(X), \deg g(X) \geq 0
+\end{equation*}
+This means at least one of them must have a degree of $0$ and be a constant. It holds from Theorem 13.1(c)~\cite{Algebra}, a polynomial in $K[X]$ is a unit if and only if it is a constant and a unit in $K$.\\
+ $K$ is a field where all non-zero elements are units (Definition 12.4)~\cite{Algebra}, so one of the factors must be a unit in $K[X]$.\\
+This makes all factorizations in \eqref{trivial} trivial, making $X^1$ irreducible.\\
+This shows that there is AT LEAST ONE monic irreducible polynomial in $K[X]$.
+
+\subsection*{Show that the assumption that a finite number of irreducible monic polynomials exists leads to a contradiction}
+This can be shown using the Euclids proof from 5.1 ~\cite{Algebra}.\\
+Assume there is a finite number of irreducible monic polynomials, $P_1(X),P_2(X)\hdots P_n(X)$.\\
+Construct a new polynomial $F(X)$
+\begin{equation*}
+    F(X) = P_1(X) \cdot P_2(X) \cdots P_n(X) + 1
+\end{equation*} 
+This new polynomial is monic according to Theorem 13.1(a) ~\cite{Algebra}, the leading coefficient of $F(X)$ is the product of the coefficient of all its polynomial factors, which we know to be 1, since they're all monic, hence $F(X)$ is monic\\
+Now from Theorem 13.2 ~\cite{Algebra}, and because $\deg F(X) > 0$, $F(X)$ then either $F(X)$ is irreducible or one of its factors must be irreducible, in both cases a monic irreducible factor exists, let's call it $q(X)$.\\
+\newline
+This new factor $q(X)$ must be in the the list $P_1(X),P_2(X)\hdots P_n(X)$ since it's assumed to contain all monic irreducible polynomials, so $q(X) = P_i(X)$ for some $ i \in \{1,2, \hdots ,n\}$.\\
+This leads to the following
+\begin{align*}
+    & P_i(X) \mid F(X) \land P_i(X) \mid P_1(X) \cdot P_2(X) \cdots P_n(X) \\
+    & \implies P_i(X) \mid F(X) - (P_1(X) \cdot P_2(X) \cdots P_n(X)) \\
+    & \implies P_i(X) \mid 1
+\end{align*}
+This leads to a contradiction since the polynomials that can divide 1 is the constant polynomials, but since $P_i(X)$ is irreducible it can't be constant, which means the assumption of there being a finite number of monic irreducible polynomials must be false and there must be an infinite amount of monic irreducible polynomials.
+
+\printbibliography
+\end{document}
