@@ -100,7 +100,7 @@
 
 \HRule\\[0.4cm]
     \center 
-    {\huge\bfseries  Hand-in 2}\\[0.4cm] % Title of your document
+    {\huge\bfseries  Hand-in for Phase 4 (Individual Report)}\\[0.4cm] % Title of your document
 \HRule\\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
@@ -134,71 +134,53 @@
 \end{titlepage}
 %%%%%      CHAPTERS      %%%%%
 \hspace{0.02cm}
-\section*{Expression Programs}
+\section*{Task 1 - The Parser}
+The lexer didn't need any changes, so all the work happened in \texttt{parser.mly}. The entry rule \texttt{prog} now parses a \texttt{nonempty\_list} of \texttt{fundecl}, where each function is a return type (\texttt{rettyp}, either \texttt{void} or a normal type), a name, a comma separated list of \texttt{param} (\texttt{name : type}) and a list of statements as the body. A new rule \texttt{RETURN; SEMICOLON} was added so \texttt{return;} gives a \texttt{ReturnStm} with \texttt{ret = None}.\\
+\newline
+Comma expressions got their own rule \texttt{expr\_with\_comma}, which is left recursive so \texttt{a, b, c} is parsed as \texttt{(a, b), c}. It's used everywhere a "full" expression is allowed (conditions, return, the for-loop init/update, expression statements and inside parentheses), while function call arguments still use the plain \texttt{expr} rule. That way a comma inside a function call is always an argument separator, and a comma expression has to be wrapped in parentheses to be used as an argument.
 
-\subsection*{Task 1}
-It uses a lot of the same logic as the previous pretty\_printer from the first assignment.\\
-The main function \texttt{string\_of\_eprog} uses the fold\_left list function to iterate over all the statements and letting a helper function evaluate them and then append their variable to their statement, printing them on their own line.
-\section*{Semantic Analysis}
-
-\subsection*{Task 2}
-When checking the semantics, we go through the whole syntax tree and check for undeclared and duplicate variables
-if any errors are found, the compilation will be stopped at the end and a list of errors are presented in order of their happening.
-\subsubsection*{Q1}
-Yes, \texttt{semant} needs to be recursive, althouhg the function in itself isn't recursive, it uses the functions \texttt{aux} and \texttt{c\_expr} to loop through the math in all the statements. \texttt{aux} works great here since it's tail-recursive and \texttt{c\_expr} is recursive since it needs to go through nested operations
-\subsubsection*{Q2}
-Variable declarations are tracked using the \texttt{string list}, which acts as the environment. As we go through statements, the \texttt{List.mem} check if some elemts already exist in the list, which is used for catching both duplicates and undeclared variables.
-
-\subsubsection*{Q3}
-Glory Question - Not Implemented
-
-\section*{Evaluator}
-
-\subsection*{Task 3}
-The evaulator takes the verified/validated expression programs and folds over the statements to create an environment, and wiht the help of \texttt{eval\_expr} it evaluates it all and returns the result of the final expression
-\subsubsection*{Q4}
-If we use onyl 'let' the funciton could be written as\\
- \texttt{let () = Printf.printf "Please enter an integer: " in let line = read\_line () in int\_of\_string line}
-
-\subsubsection*{Q5}
-Glory Question - Not Implemented
-
-\subsubsection*{Q6}
-The interpreter uses an associative list type \texttt{(string * int) list} which essentially functions like a map, that can be looked up throughout the program.
-\subsubsection*{Q7}
-Right now a classic division by zero would crash the whole program, since no step has been taken to prevent it, although a statement in the \texttt{eval\_expr}
-could possilby fix this by letting it throw an error.
-\section*{Compiling to x86 Assembly}
-
-\subsection*{Task 4}
-The compiler translates the AST into x86 assembly using the stack-spilling strategy. Local variables and temporary values are assigned an 8-byte slot on the stack, and math operations are executed by moving these values into and out of the \texttt{\%rax} register.\\
-Note this part of the code the \texttt{compile.ml} is vibe-coded hence the description here might not be adequite.
-
-\subsubsection*{Q8}
-Glory Question - Not Implemented
-
-\subsubsection*{Q9}
-As mentioned this is not wholly my original work, i went with the associative list again, from the interpreter, to map variables to ther stack layout offset, but the use of \texttt{int ref} to handle mutables/temporaries and standard lists to build the final x86 code wasn't my idea.
-\subsubsection*{Q10}
-This is straight up just pilling everything on the stack and hoping it works, this tends to make things slow compared to using teh CPU's registers.
-\subsubsection*{Q11}
-Glory Question - Not Implemented
-
-\subsection*{Task 5}
-The wrapper functions, \texttt{interpret} and \texttt{compile}, in the main file, first run the semantic analysis to check for errors. 
-If the semantic check returns \texttt{Ok}, it either runs the evaluator to get the final integer, or it generates the x86 assembly and writes it to a file \texttt{program.s}.
-This way it can be cross-tested by feeding the exact program into both of them and checking the output of the evaluator and the x86 assembly + C code.
-
-\subsubsection*{Q12}
-There is only one example program that test the basics, variable binding and addition. 
-\section*{How to run the code}
-You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\\\
-This is run/compiled in VScode using the docker container provided.\\
-To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:
+\section*{Task 2 - The Semantic's}
+The type checking in \texttt{semant.ml} is done in two passes, as suggested in the assignment, so that functions can call/use each other no matter the order they're declared in.
 \begin{enumerate}
-    \item \texttt{dune build} 
-    \item \texttt{dune exec ./main.exe} (this runs the interpreter and compile functions)
-    \item \texttt{clang main.c program.s -o program} 
-    \item \texttt{./program}
+    \item \textbf{Pass 1} (\texttt{check\_signatures}) goes through all the function signatures only. It checks for duplicate parameter names, duplicate function names (also against the built-in library functions) and that there is exactly one \texttt{main} with the signature \texttt{int main()}. The valid signatures are then put into the function environment together with the library functions.
+    \item \textbf{Pass 2} (\texttt{typecheck\_fundecl}) checks each function body with that environment. Every function gets a fresh scope where the parameters are added as normal local variables (so they can be modified), and the return type is saved in the environment so every \texttt{return} can be checked against it. Non-void functions are also checked so all paths end in a return.
 \end{enumerate}
+For comma expressions we followed the type settings $\tau(e_1,e_2) \implies \tau(e_2)$ where $\tau(e_1)$ is discarded sicne it's only used for it's side-effects.\\
+\newline
+The \texttt{TypedAst} was extended with \texttt{Param}, \texttt{FunTyp} and \texttt{fundecl}, and \texttt{errors.ml} got a handful of new errors to accomodate errors when checking singatures in pass 1 and funciton bodies in pass 2\\
+\section*{Task 3 - Code Generation}
+Each Dolphin function is translated into a LLVM function by \texttt{cgen\_fundecl}, and \texttt{codegen\_prog} just maps it. Every parameter becomes an LLVM argument, which is copied into a memory/stack slot with \texttt{alloca} + \texttt{store} at the start of the function, like in the example from the assignment. The stack/memory slot is then put into the codegen environment, so the function can treat the parameters as local variables.\\
+\newline
+Our functions get's a prefix \texttt{dolphin\_fun\_} and the \texttt{main} becomes \texttt{dolphin\_main} (which is what \texttt{runtime.c} calls), so our functions can't clash with  the C or library functions with the same name.\\
+\newline
+A comma expression generates the code for the left side first, ignores its value, then generates the right side and uses its value as the result.
+
+\section*{Task 4 - Testing}
+All the old tests from phase 1--3 were wrapped in \texttt{int main() \{ ... \}} so they work with the new syntax, and the old JSON test files were removed and new ones added to cover most of the new functionality.
+\newline
+Like in phase 3, all the tests are run by \texttt{test\_dolphin.ml} with \texttt{OUnit2}, which checks the printed output and exit code of positive tests, and the location and message of the error for negative tests,
+all the good shiz.
+\section*{Task 5}
+Glory Task - Not Implemented
+
+\section*{How to run the code}
+You will have received a zip file containing the complete OCaml compiler source code, the Dune build configurations, and the C runtime environment.\\
+\newline
+This is run/compiled in VScode using the docker container provided.\\
+To compile and run the project inside a VS Code development container, execute the following commands in the terminal while inside the folder:\\
+The following commands is to run a test file manually
+\begin{enumerate}
+    \item \texttt{dune build}
+    \item \texttt{dune exec dolphin -- compile --phase 4 assignment-06-tests/phase4/[name of test].dlp -o out.ll} (This compiles a test and outputs it into a file out.ll, prints errors in the terminal if any.)
+    \item \texttt{clang runtime.c out.ll -o ret}
+    \item \texttt{./ret} (outputs any prints into the terminal, like 'print\_integer()')
+    \item \texttt{echo \$?} (Outputs the result of the test)
+\end{enumerate}
+The following commands is to run all the test suites using \texttt{OUnit2}
+\begin{enumerate}
+    \item \texttt{dune build} (if not already done)
+    \item \texttt{dune test} (runs the 'test\_dolphin.ml' file)
+\end{enumerate}
+The test file asserts each test case with the expected output, be it error messages or numerical output.
+
 \end{document}
